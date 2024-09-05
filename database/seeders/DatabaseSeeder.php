@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
             SpecializationSeeder::class,
             MessageSeeder::class,
             ReviewSeeder::class,
+            UserSeeder::class,
             ChefSeeder::class,
         ]);
     }
