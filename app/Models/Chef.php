@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Chef extends Model
 {
     use HasFactory;
-    use SoftDeletes;
+
 
     protected $fillable = [
         'address',
@@ -22,18 +22,20 @@ class Chef extends Model
     ];
 
     // Relazione many to many con il model Sponsor
-    public function sponsorships(){
+    public function sponsorships()
+    {
         return $this->belongsToMany(Sponsorship::class);
     }
 
     // Relazione many to many con il model Specialization
-    public function specializations(){
+    public function specializations()
+    {
         return $this->belongsToMany(Specialization::class);
     }
 
     // Relazione many to many con il model Vote
-    public function votes(){
+    public function votes()
+    {
         return $this->belongsToMany(Vote::class);
     }
 }
-

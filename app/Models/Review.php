@@ -9,7 +9,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Review extends Model
 {
     use HasFactory;
-    use SoftDeletes;
 
     protected $fillable = [
         'review_title',

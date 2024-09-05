@@ -9,13 +9,14 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Specialization extends Model
 {
     use HasFactory;
-    use SoftDeletes;
+
 
     protected $fillable = [
         'name',
     ];
 
-    public function chefs(){
+    public function chefs()
+    {
         return $this->belongsToMany(Chef::class);
     }
 }

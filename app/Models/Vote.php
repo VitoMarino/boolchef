@@ -9,14 +9,14 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Vote extends Model
 {
     use HasFactory;
-    use SoftDeletes;
 
     protected $fillable = [
         'Vote',
         'Label',
     ];
 
-    public function chefs(){
+    public function chefs()
+    {
         $this->belongsToMany(Chef::class);
     }
 }

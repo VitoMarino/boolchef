@@ -10,7 +10,6 @@ class Sponsorship extends Model
 {
 
     use HasFactory;
-    use SoftDeletes;
 
     protected $fillable = [
         'name',
@@ -19,7 +18,8 @@ class Sponsorship extends Model
     ];
 
     // Relazione many to many con il model Chef
-    public function chefs(){
+    public function chefs()
+    {
         return $this->belongsToMany(Chef::class);
     }
 }
