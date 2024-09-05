@@ -9,7 +9,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Chef extends Model
 {
     use HasFactory;
-    use SoftDeletes;
 
     protected $fillable = [
         'address',
