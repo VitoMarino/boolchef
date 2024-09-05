@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\Sponsor;
+use App\Models\Sponsorship;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -14,11 +14,10 @@ class SponsorshipSeeder extends Seeder
      */
     public function run(): void
     {
-        $SponsorshipsData = [
+        $sponsorshipsData = [
             [
 
                 "name" => "Base",
-
                 "price" => 2.99,
                 "length" => 24
             ],
@@ -36,8 +35,8 @@ class SponsorshipSeeder extends Seeder
 
         ];
 
-        foreach ($SponsorshipsData as $SponsorshipData) {
-            Sponsor::create($SponsorshipData);
+        foreach ($sponsorshipsData as $sponsorshipData) {
+            Sponsorship::create($sponsorshipData);
         }
     }
 }

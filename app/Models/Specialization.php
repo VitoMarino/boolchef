@@ -14,4 +14,8 @@ class Specialization extends Model
     protected $fillable = [
         'name',
     ];
+
+    public function chefs(){
+        return $this->belongsToMany(Chef::class);
+    }
 }

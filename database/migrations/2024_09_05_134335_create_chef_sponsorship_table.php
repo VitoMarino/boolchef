@@ -15,11 +15,11 @@ return new class extends Migration
 
             // Dati tabella Chef
             $table->unsignedBigInteger('chef_id');
-            $table->foreign('chef_id')->references('id')->on('sponsorship');
+            $table->foreign('chef_id')->references('id')->on('chefs');
 
             // Dati tabella Sponsorship
             $table->unsignedBigInteger('sponsorship_id');
-            $table->foreign('sponsorship_id')->references('id')->on('chef');
+            $table->foreign('sponsorship_id')->references('id')->on('sponsorships');
 
             //
             $table->primary(['chef_id', 'sponsorship_id']);

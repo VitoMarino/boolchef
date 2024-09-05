@@ -13,7 +13,7 @@ class VoteSeeder extends Seeder
      */
     public function run(): void
     {
-        $VotesData = [
+        $votesData = [
             [
                 "Vote" => 7,
                 "Label" => "Sopra la media"
@@ -66,8 +66,8 @@ class VoteSeeder extends Seeder
             ],
 
         ];
-        foreach ($VotesData as $VoteData) {
-            Vote::create($VoteData);
+        foreach ($votesData as $voteData) {
+            Vote::create($voteData);
         }
     }
 }
