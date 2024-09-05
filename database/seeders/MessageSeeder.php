@@ -7,13 +7,14 @@ use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Message;
+use Faker\Generator as Faker;
 
 class MessageSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
-    public function run(): void
+    public function run(Faker $faker): void
     {
         $chefs = Chef::all()->pluck('id');
         $messages =
@@ -101,11 +102,8 @@ class MessageSeeder extends Seeder
         ];
 
         foreach ($messages as $messageData) {
-            $newMessageData = new Message();
-            $newMessageData->chef_id = $chefs;
-            $newMessageData->text_mes = $messageData['text_mes'];
-            $newMessageData->email_customer = $messageData['email_customer'];
-            $newMessageData->save();
+            $messageData['chef_id'] = $faker->randomElement($chefs);
+            Message::create($messageData);
         }
     }
 }

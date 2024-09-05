@@ -6,13 +6,14 @@ use App\Models\Chef;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Review;
+use Faker\Generator as Faker;
 
 class ReviewSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
-    public function run(): void
+    public function run(Faker $faker): void
     {
         $chefs = Chef::all()->pluck('id');
         $reviews =
@@ -80,13 +81,8 @@ class ReviewSeeder extends Seeder
         ];
 
         foreach ($reviews as $review) {
-            $newReview = new Review();
-            $newReview->chef_id = $chefs;
-            $newReview->review_title = $review['review_title'];
-            $newReview->review = $review['review'];
-            $newReview->user_name = $review['user_name'];
-            $newReview->email = $review['email'];
-            $newReview->save();
+            $review['chef_id'] = $faker->randomElement($chefs);
+            Review::create($review);
         }
     }
 }
