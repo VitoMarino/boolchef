@@ -77,12 +77,7 @@ class ReviewSeeder extends Seeder
         ];
 
         foreach($reviews as $review) {
-            $newReview = new Review();
-            $newReview-> review_title = $review['review_title'];
-            $newReview-> review = $review['review'];
-            $newReview-> user_name = $review['user_name'];
-            $newReview-> email = $review['email'];
-            $newReview-> save();
+            Review::create($review);
         }
     }
 }

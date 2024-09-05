@@ -99,14 +99,7 @@ class ChefSeeder extends Seeder
         ];
 
         foreach ($chefs as $chef) {
-            $newChef = new Chef();
-            $newChef->address = $chef['address'];
-            $newChef->CV = $chef['CV'];
-            $newChef->photograph = $chef['photograph'];
-            $newChef->telephone = $chef['telephone'];
-            $newChef->description_of_dishes = $chef['description_of_dishes'];
-            $newChef->visibility = $chef['visibility'];
-            $newChef->save();
+            Chef::create($chef);
         }
     }
 }

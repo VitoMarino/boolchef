@@ -4,7 +4,8 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Models\sponsorship;
+use App\Models\Sponsorship;
+
 
 class SponsorshipSeeder extends Seeder
 {
@@ -36,11 +37,7 @@ class SponsorshipSeeder extends Seeder
         ];
 
         foreach ($SponsorshipsData as $SponsorshipData) {
-            $Sponsorship = new sponsorship();
-            $Sponsorship->name = $SponsorshipData["name"];
-            $Sponsorship->price = $SponsorshipData["price"];
-            $Sponsorship->length = $SponsorshipData["length"];
-            $Sponsorship->save();
+            Sponsorship::create($SponsorshipData);
         }
     }
 }
