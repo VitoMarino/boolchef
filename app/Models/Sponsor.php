@@ -5,8 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Sponsorship extends Model
+class Sponsor extends Model
 {
+
     use HasFactory;
 
     protected $fillable = [
@@ -15,4 +16,3 @@ class Sponsorship extends Model
         'length',
     ];
 }
-
