@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Chef;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -14,7 +15,9 @@ class MessageSeeder extends Seeder
      */
     public function run(): void
     {
-        $messages = [
+        $chefs = Chef::all()->pluck('id');
+        $messages =
+        [
             [
                 "text_mes" => "Ciao, vorrei sapere se è possibile avere un menu vegetariano per il mio evento. Grazie!",
                 "email_customer" => "giulia.rossi91@gmail.com"
@@ -98,7 +101,11 @@ class MessageSeeder extends Seeder
         ];
 
         foreach ($messages as $messageData) {
-            Message::create($messageData);
+            $newMessageData = new Message();
+            $newMessageData->chef_id = $chefs;
+            $newMessageData->text_mes = $messageData['text_mes'];
+            $newMessageData->email_customer = $messageData['email_customer'];
+            $newMessageData->save();
         }
     }
 }

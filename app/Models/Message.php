@@ -8,8 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Message extends Model
 {
     use HasFactory;
-    protected $fillable = [
-        "text_mes",
-        "email_customer",
-    ];
+
+    // Relazione one to many con Chef. Message è la tabella secondaria.
+    public function chef(){
+        return $this->belongsTo(Chef::class);
+    }
 }
