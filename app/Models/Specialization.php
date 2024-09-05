@@ -14,7 +14,8 @@ class Specialization extends Model
         'name',
     ];
 
-    public function chefs(){
+    public function chefs()
+    {
         return $this->belongsToMany(Chef::class);
     }
 }

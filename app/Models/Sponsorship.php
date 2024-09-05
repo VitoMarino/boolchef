@@ -18,7 +18,8 @@ class Sponsorship extends Model
     ];
 
     // Relazione many to many con il model Chef
-    public function chefs(){
+    public function chefs()
+    {
         return $this->belongsToMany(Chef::class);
     }
 }
