@@ -11,9 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('vote', function (Blueprint $table) {
+        Schema::create('votes', function (Blueprint $table) {
             $table->id();
-            $table->tinyInteger('Votes');
+            $table->tinyInteger('Vote');
             $table->string('Label', length: 30);
             $table->timestamps();
         });
