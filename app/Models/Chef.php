@@ -26,8 +26,14 @@ class Chef extends Model
         return $this->belongsToMany(Sponsorship::class);
     }
 
+    // Relazione many to many con il model Specialization
     public function specializations(){
         return $this->belongsToMany(Specialization::class);
+    }
+
+    // Relazione many to many con il model Vote
+    public function votes(){
+        return $this->belongsToMany(Vote::class);
     }
 }
 

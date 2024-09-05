@@ -15,4 +15,8 @@ class Vote extends Model
         'Vote',
         'Label',
     ];
+
+    public function chefs(){
+        $this->belongsToMany(Chef::class);
+    }
 }
