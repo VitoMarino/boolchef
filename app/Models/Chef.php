@@ -4,10 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Chef extends Model
 {
     use HasFactory;
+    use SoftDeletes;
 
     protected $fillable = [
         'address',
@@ -18,4 +20,14 @@ class Chef extends Model
         'visibility',
 
     ];
+
+    // Relazione many to many con il model Sponsor
+    public function sponsorships(){
+        return $this->belongsToMany(Sponsorship::class);
+    }
+
+    public function specializations(){
+        return $this->belongsToMany(Specialization::class);
+    }
 }
+
