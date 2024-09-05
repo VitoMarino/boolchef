@@ -2,19 +2,23 @@
 
 namespace Database\Seeders;
 
+use App\Models\Chef;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Message;
+use Faker\Generator as Faker;
 
 class MessageSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
-    public function run(): void
+    public function run(Faker $faker): void
     {
-        $messages = [
+        $chefs = Chef::all()->pluck('id');
+        $messages =
+        [
             [
                 "text_mes" => "Ciao, vorrei sapere se è possibile avere un menu vegetariano per il mio evento. Grazie!",
                 "email_customer" => "giulia.rossi91@gmail.com"
@@ -98,6 +102,7 @@ class MessageSeeder extends Seeder
         ];
 
         foreach ($messages as $messageData) {
+            $messageData['chef_id'] = $faker->randomElement($chefs);
             Message::create($messageData);
         }
     }

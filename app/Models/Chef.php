@@ -10,9 +10,6 @@ class Chef extends Model
 {
     use HasFactory;
 
-
-
-
     protected $fillable = [
         'address',
         'CV',
@@ -39,5 +36,15 @@ class Chef extends Model
     public function votes()
     {
         return $this->belongsToMany(Vote::class);
+    }
+
+    // Relazione one to many con message. Chef è la tabella primaria.
+    public function messages(){
+        return $this->hasMany(Message::class);
+    }
+
+    // Relazione one to many con reviews. Chef è la tabella principale.
+    public function reviews(){
+        return $this->hasMany(Review::class);
     }
 }
