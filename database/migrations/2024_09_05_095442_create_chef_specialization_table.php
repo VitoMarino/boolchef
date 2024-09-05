@@ -11,21 +11,21 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('chefs_specializations', function (Blueprint $table) {
-            $table->unsignedBigInteger('chef_id');
-            $table  ->foreign('chefs_id')
-                    ->references('id')
-                    ->on('chefs')
-                    ->onDelete('cascade');
+        // Schema::create('chefs_specializations', function (Blueprint $table) {
+        //     $table->unsignedBigInteger('chef_id');
+        //     $table  ->foreign('chefs_id')
+        //             ->references('id')
+        //             ->on('chefs')
+        //             ->onDelete('cascade');
 
-            $table->unsignedBigInteger('specialization_id');
-            $table  ->foreign('specialization_id')
-                    ->references('id')
-                    ->on('specializations')
-                    ->onDelete('cascade');
+        //     $table->unsignedBigInteger('specialization_id');
+        //     $table  ->foreign('specialization_id')
+        //             ->references('id')
+        //             ->on('specializations')
+        //             ->onDelete('cascade');
 
-            $table->primary(['chef_id', 'specialization_id']);
-        });
+        //     $table->primary(['chef_id', 'specialization_id']);
+        // });
     }
 
     /**
@@ -33,6 +33,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('chefs_specializations');
+        // Schema::dropIfExists('chefs_specializations');
     }
 };
