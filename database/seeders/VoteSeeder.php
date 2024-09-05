@@ -67,10 +67,7 @@ class VoteSeeder extends Seeder
 
         ];
         foreach ($VotesData as $VoteData) {
-            $Vote = new Vote();
-            $Vote->Vote = $VoteData["Vote"];
-            $Vote->Label = $VoteData["Label"];
-            $Vote->save();
+            Vote::create($VoteData);
         }
     }
 }
