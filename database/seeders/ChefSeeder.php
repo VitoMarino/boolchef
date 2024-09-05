@@ -14,98 +14,99 @@ class ChefSeeder extends Seeder
     public function run(): void
     {
         //
-        $chefs = [
+        $chefs =
+        [
             [
                 'address' => "Via Esempio 123, Città Esempio",
-                'CV' => "Curriculum Vitae di Chef Esempio: Laureato in Scienze Gastronomiche presso l'Università di Esempio, con 10 anni di esperienza nel campo della ristorazione. Ha lavorato presso rinomati ristoranti stellati e ha partecipato a numerosi concorsi culinari, vincendo diversi premi.",
+                'CV' => "Curriculum Vitae di Chef Esempio: Laureato in Scienze Gastronomiche presso l'Università di Esempio.",
                 'photograph' => "link_fotografia_chef_esempio.jpg",
-                'telephone' => "123-456-7890",
+                'telephone' => "3456789012",
                 'description_of_dishes' => "Specialità culinarie di Chef Esempio: piatti della tradizione rivisitati in chiave moderna, con particolare attenzione all'utilizzo di ingredienti freschi e di stagione. Ama sperimentare con sapori e tecniche innovative.",
                 'visibility' => true
             ],
             [
                 'address' => "Via Esempio 234, Città Esempio",
-                'CV' => "Curriculum Vitae di Chef Esempio: Laureato in Scienze Gastronomiche presso l'Università di Esempio, con 10 anni di esperienza nel campo della ristorazione. Ha lavorato presso rinomati ristoranti stellati e ha partecipato a numerosi concorsi culinari, vincendo diversi premi.",
+                'CV' => "Curriculum Vitae di Chef Esempio: Laureato in Scienze Gastronomiche presso l'Università di Esempio.",
                 'photograph' => "link_fotografia_chef_esempio.jpg",
-                'telephone' => "33333333333",
+                'telephone' => "9876543210",
                 'description_of_dishes' => "Specialità culinarie di Chef Esempio: piatti della tradizione rivisitati in chiave moderna, con particolare attenzione all'utilizzo di ingredienti freschi e di stagione. Ama sperimentare con sapori e tecniche innovative.",
                 'visibility' => true
             ],
             [
                 'address' => "Via Esempio 1999002, Città Esempio",
-                'CV' => "Curriculum Vitae di Chef Esempio: Laureato in Scienze Gastronomiche presso l'Università di Esempio, con 10 anni di esperienza nel campo della ristorazione. Ha lavorato presso rinomati ristoranti stellati e ha partecipato a numerosi concorsi culinari, vincendo diversi premi.",
+                'CV' => "Curriculum Vitae di Chef Esempio: Laureato in Scienze Gastronomiche presso l'Università di Esempio.",
                 'photograph' => "link_fotografia_chef_esempio.jpg",
-                'telephone' => "102927373738",
+                'telephone' => "1234567890",
                 'description_of_dishes' => "Specialità culinarie di Chef Esempio: piatti della tradizione rivisitati in chiave moderna, con particolare attenzione all'utilizzo di ingredienti freschi e di stagione. Ama sperimentare con sapori e tecniche innovative.",
                 'visibility' => true
             ],
             [
                 'address' => "Via Esempio 37373, Città Esempio",
-                'CV' => "Curriculum Vitae di Chef Esempio: Laureato in Scienze Gastronomiche presso l'Università di Esempio, con 10 anni di esperienza nel campo della ristorazione. Ha lavorato presso rinomati ristoranti stellati e ha partecipato a numerosi concorsi culinari, vincendo diversi premi.",
+                'CV' => "Curriculum Vitae di Chef Esempio: Laureato in Scienze Gastronomiche presso l'Università di Esempio.",
                 'photograph' => "link_fotografia_chef_esempio.jpg",
-                'telephone' => "483737728218181",
+                'telephone' => "2345678901",
                 'description_of_dishes' => "Specialità culinarie di Chef Esempio: piatti della tradizione rivisitati in chiave moderna, con particolare attenzione all'utilizzo di ingredienti freschi e di stagione. Ama sperimentare con sapori e tecniche innovative.",
                 'visibility' => true
             ],
             [
                 'address' => "Via Esempio 16262, Città Esempio",
-                'CV' => "Curriculum Vitae di Chef Esempio: Laureato in Scienze Gastronomiche presso l'Università di Esempio, con 10 anni di esperienza nel campo della ristorazione. Ha lavorato presso rinomati ristoranti stellati e ha partecipato a numerosi concorsi culinari, vincendo diversi premi.",
+                'CV' => "Curriculum Vitae di Chef Esempio: Laureato in Scienze Gastronomiche presso l'Università di Esempio.",
                 'photograph' => "link_fotografia_chef_esempio.jpg",
-                'telephone' => "365167179073",
+                'telephone' => "4567890123",
                 'description_of_dishes' => "Specialità culinarie di Chef Esempio: piatti della tradizione rivisitati in chiave moderna, con particolare attenzione all'utilizzo di ingredienti freschi e di stagione. Ama sperimentare con sapori e tecniche innovative.",
                 'visibility' => true
             ],
             [
                 'address' => "Via Esempio 278379, Città Esempio",
-                'CV' => "Curriculum Vitae di Chef Esempio: Laureato in Scienze Gastronomiche presso l'Università di Esempio, con 10 anni di esperienza nel campo della ristorazione. Ha lavorato presso rinomati ristoranti stellati e ha partecipato a numerosi concorsi culinari, vincendo diversi premi.",
+                'CV' => "Curriculum Vitae di Chef Esempio: Laureato in Scienze Gastronomiche presso l'Università di Esempio.",
                 'photograph' => "link_fotografia_chef_esempio.jpg",
-                'telephone' => "1152683920",
+                'telephone' => "5678901234",
                 'description_of_dishes' => "Specialità culinarie di Chef Esempio: piatti della tradizione rivisitati in chiave moderna, con particolare attenzione all'utilizzo di ingredienti freschi e di stagione. Ama sperimentare con sapori e tecniche innovative.",
                 'visibility' => true
             ],
             [
                 'address' => "Via Esempio 18273903, Città Esempio",
-                'CV' => "Curriculum Vitae di Chef Esempio: Laureato in Scienze Gastronomiche presso l'Università di Esempio, con 10 anni di esperienza nel campo della ristorazione. Ha lavorato presso rinomati ristoranti stellati e ha partecipato a numerosi concorsi culinari, vincendo diversi premi.",
+                'CV' => "Curriculum Vitae di Chef Esempio: Laureato in Scienze Gastronomiche presso l'Università di Esempio.",
                 'photograph' => "link_fotografia_chef_esempio.jpg",
-                'telephone' => "123-456-7890",
+                'telephone' => "6789012345",
                 'description_of_dishes' => "Specialità culinarie di Chef Esempio: piatti della tradizione rivisitati in chiave moderna, con particolare attenzione all'utilizzo di ingredienti freschi e di stagione. Ama sperimentare con sapori e tecniche innovative.",
                 'visibility' => true
             ],
             [
                 'address' => "Via Esempio 71627829, Città Esempio",
-                'CV' => "Curriculum Vitae di Chef Esempio: Laureato in Scienze Gastronomiche presso l'Università di Esempio, con 10 anni di esperienza nel campo della ristorazione. Ha lavorato presso rinomati ristoranti stellati e ha partecipato a numerosi concorsi culinari, vincendo diversi premi.",
+                'CV' => "Curriculum Vitae di Chef Esempio: Laureato in Scienze Gastronomiche presso l'Università di Esempio.",
                 'photograph' => "link_fotografia_chef_esempio.jpg",
-                'telephone' => "6262782901028737",
+                'telephone' => "7890123456",
                 'description_of_dishes' => "Specialità culinarie di Chef Esempio: piatti della tradizione rivisitati in chiave moderna, con particolare attenzione all'utilizzo di ingredienti freschi e di stagione. Ama sperimentare con sapori e tecniche innovative.",
                 'visibility' => true
             ],
             [
                 'address' => "Via Esempio 018273, Città Esempio",
-                'CV' => "Curriculum Vitae di Chef Esempio: Laureato in Scienze Gastronomiche presso l'Università di Esempio, con 10 anni di esperienza nel campo della ristorazione. Ha lavorato presso rinomati ristoranti stellati e ha partecipato a numerosi concorsi culinari, vincendo diversi premi.",
+                'CV' => "Curriculum Vitae di Chef Esempio: Laureato in Scienze Gastronomiche presso l'Università di Esempio.",
                 'photograph' => "link_fotografia_chef_esempio.jpg",
-                'telephone' => "27819199832",
+                'telephone' => "8901234567",
                 'description_of_dishes' => "Specialità culinarie di Chef Esempio: piatti della tradizione rivisitati in chiave moderna, con particolare attenzione all'utilizzo di ingredienti freschi e di stagione. Ama sperimentare con sapori e tecniche innovative.",
                 'visibility' => true
             ],
             [
                 'address' => "Via Esempio 102835, Città Esempio",
-                'CV' => "Curriculum Vitae di Chef Esempio: Laureato in Scienze Gastronomiche presso l'Università di Esempio, con 10 anni di esperienza nel campo della ristorazione. Ha lavorato presso rinomati ristoranti stellati e ha partecipato a numerosi concorsi culinari, vincendo diversi premi.",
+                'CV' => "Curriculum Vitae di Chef Esempio: Laureato in Scienze Gastronomiche presso l'Università di Esempio.",
                 'photograph' => "link_fotografia_chef_esempio.jpg",
-                'telephone' => "383929101",
+                'telephone' => "0123456789",
                 'description_of_dishes' => "Specialità culinarie di Chef Esempio: piatti della tradizione rivisitati in chiave moderna, con particolare attenzione all'utilizzo di ingredienti freschi e di stagione. Ama sperimentare con sapori e tecniche innovative.",
                 'visibility' => true
             ]
-
         ];
 
         foreach ($chefs as $chef) {
-            $newChef = new Chef;
+            $newChef = new Chef();
             $newChef->address = $chef['address'];
             $newChef->CV = $chef['CV'];
             $newChef->photograph = $chef['photograph'];
             $newChef->telephone = $chef['telephone'];
             $newChef->description_of_dishes = $chef['description_of_dishes'];
-            $newChef->visibility = $chef[true];
+            $newChef->visibility = $chef['visibility'];
+            $newChef->save();
         }
     }
 }
