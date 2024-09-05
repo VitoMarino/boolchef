@@ -5,7 +5,6 @@ namespace Database\Seeders;
 use App\Models\Sponsor;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Models\Sponsorship;
 
 
 class SponsorshipSeeder extends Seeder
