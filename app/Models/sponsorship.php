@@ -15,3 +15,4 @@ class Sponsorship extends Model
         'length',
     ];
 }
+
