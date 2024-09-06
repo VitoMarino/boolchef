@@ -18,7 +18,6 @@ class UserSeeder extends Seeder
                 'name'=> 'Matteo',
                 'lastname'=> 'Rossi',
                 'address'=> 'Via dei Mille 10, Milano',
-                'specialty'=> 'Cucina italiana',
                 'email'=> 'matteo.rossi@example.com',
                 'password'=> '12345678'
             ]
