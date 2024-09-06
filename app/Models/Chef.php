@@ -11,6 +11,7 @@ class Chef extends Model
     use HasFactory;
 
     protected $fillable = [
+        'user_id',
         'address',
         'CV',
         'photograph',
@@ -46,5 +47,10 @@ class Chef extends Model
     // Relazione one to many con reviews. Chef è la tabella principale.
     public function reviews(){
         return $this->hasMany(Review::class);
+    }
+
+    // Relazione one to one con User.
+    public function users(){
+        return $this->belongsTo(User::class, 'user_id', 'id');
     }
 }
