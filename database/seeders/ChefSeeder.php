@@ -3,15 +3,17 @@
 namespace Database\Seeders;
 
 use App\Models\Chef;
+use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Faker\Generator as Faker;
 
 class ChefSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
-    public function run(): void
+    public function run(Faker $faker): void
     {
         //
         $chefs =
@@ -97,8 +99,10 @@ class ChefSeeder extends Seeder
                 'visibility' => true
             ]
         ];
-
+        $users = User::all()->pluck('id')->toArray();
         foreach ($chefs as $chef) {
+            $userId = array_splice($users, array_rand($users), 1)[0];
+            $chef['user_id'] = $userId;
             Chef::create($chef);
         }
     }
