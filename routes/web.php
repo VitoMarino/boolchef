@@ -24,7 +24,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [GuestHomeController::class, 'index'])->name('home');
+Route::get('admin/dashboard', [GuestHomeController::class, 'index'])->name('dashboard');
 
 // Questo sistema serve per raggruppare tutte le rotte e avere dei prefissi e un raggruppamento che mi velocizza la scrittura delle rotte
 Route::middleware('auth')->name('admin.')->prefix('admin/')->group(
