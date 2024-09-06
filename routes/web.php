@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\Admin\ChefController as AdminChefController;
 use App\Http\Controllers\Admin\HomeController as AdminHomeController;
+use App\Http\Controllers\Guest\CustomerController as GuestCustomerController;
 use App\Http\Controllers\HomeController as GuestHomeController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -31,6 +33,8 @@ Route::middleware('auth')->name('admin.')->prefix('admin/')->group(
 
 
         // Mi creo anche una risorsa
+        Route::resource('/chefs', AdminChefController::class);
 
+        Route::resource('/customers', GuestCustomerController::class);
     }
 );
