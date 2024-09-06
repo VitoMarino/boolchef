@@ -100,7 +100,7 @@ class MessageSeeder extends Seeder
                 "email_customer" => "sara.caruso87@fastwebnet.it"
             ]
         ];
-
+        $chefs = Chef::all()->pluck('id');
         foreach ($messages as $messageData) {
             $messageData['chef_id'] = $faker->randomElement($chefs);
             Message::create($messageData);
