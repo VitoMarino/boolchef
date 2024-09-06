@@ -11,12 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('sponsorships', function (Blueprint $table) {
-            $table->id();
-            $table->string("name", length: 20)->unique();
-            $table->decimal("price");
-            $table->mediumInteger("length");
-            $table->timestamps();
+        Schema::table('chef_sponsorship', function (Blueprint $table) {
+            $table->date('start_date')->nullable();
+            $table->date('end_date')->nullable();
+
         });
     }
 
@@ -25,6 +23,9 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('sponsorships');
+        Schema::table('chef_sponsorship', function (Blueprint $table) {
+            $table->dropColumn('start_date');
+            $table->dropColumn('end_date');
+        });
     }
 };

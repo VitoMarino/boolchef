@@ -21,7 +21,6 @@ class User extends Authenticatable
         'name',
         'lastname',
         'address',
-        'specialty',
         'email',
         'password',
     ];
@@ -45,4 +44,9 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    // Relazione one to one con chef
+    public function Chef(){
+        return $this->hasOne(Chef::class, 'user_id', 'id');
+    }
 }

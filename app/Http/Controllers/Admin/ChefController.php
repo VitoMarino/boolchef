@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Chef;
+use App\Models\Specialization;
 use Illuminate\Http\Request;
 
 class ChefController extends Controller
@@ -13,6 +15,8 @@ class ChefController extends Controller
     public function index()
     {
         //
+        $chefs = Chef::all();
+        return view('admin.chefs.index', compact('chefs'));
     }
 
     /**
@@ -21,6 +25,9 @@ class ChefController extends Controller
     public function create()
     {
         //
+        $chefs = new Chef();
+        $specializations = Specialization::all();
+        return view('admin.chefs.create', compact('chefs', 'specializations'));
     }
 
     /**
@@ -34,9 +41,10 @@ class ChefController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Chef $chef)
     {
         //
+        return view('admin.chefs.show', compact('chef'));
     }
 
     /**
@@ -58,8 +66,12 @@ class ChefController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Chef $chef)
     {
         //
+        $chef->delete();
+
+        return redirect()->route('admin.chefs.index');
+
     }
 }
