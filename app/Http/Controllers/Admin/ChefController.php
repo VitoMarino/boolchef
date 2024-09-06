@@ -5,7 +5,10 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Chef;
 use App\Models\Specialization;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class ChefController extends Controller
 {
@@ -14,8 +17,9 @@ class ChefController extends Controller
      */
     public function index()
     {
-        //
+
         $chefs = Chef::all();
+
         return view('admin.chefs.index', compact('chefs'));
     }
 
@@ -35,7 +39,16 @@ class ChefController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+
+
+        // $img_path = Storage::disk('public')->put('uploads/Images', $data['photograph']);
+        //$file_path = Storage::disk('public')->put('uploads/Cv', $data['CV']);
+        // $data["photograph"] = $img_path;
+        // $data["CV"] = $file_path;
+        $data['user_id'] = Auth::id();
+        $newChef = Chef::create($data);
+        return redirect()->route('admin.chefs.show', $newChef);
     }
 
     /**
@@ -43,7 +56,9 @@ class ChefController extends Controller
      */
     public function show(Chef $chef)
     {
-        //
+
+
+
         return view('admin.chefs.show', compact('chef'));
     }
 
@@ -60,7 +75,11 @@ class ChefController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $data = $request->validated([]);
+        $img_path = Storage::disk('public')->put('uploads/Images', $data['photograph']);
+        $file_path = Storage::disk('public')->put('uploads/Cv', $data['CV']);
+        $data["photograph"] = $img_path;
+        $data["CV"] = $file_path;
     }
 
     /**
@@ -72,6 +91,5 @@ class ChefController extends Controller
         $chef->delete();
 
         return redirect()->route('admin.chefs.index');
-
     }
 }
