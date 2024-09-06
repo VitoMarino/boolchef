@@ -80,6 +80,7 @@ class ReviewSeeder extends Seeder
             ]
         ];
 
+        $chefs = Chef::all()->pluck('id');
         foreach ($reviews as $review) {
             $review['chef_id'] = $faker->randomElement($chefs);
             Review::create($review);
