@@ -1,31 +1,66 @@
 @extends('layouts.admin')
 
 @section('content')
-    <form action="{{ route('admin.chefs.store') }}" method="POST" enctype="multipart/form-data">
+<div class="container">
+    <!--Inzio del FORM-->
+    <form class="d-flex justify-content-center flex-column" action="{{ route('admin.chefs.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
-        <label for="address">Indirizzo</label>
-        <input type="text" value="address" name="address" class="form-control">
-        <label for="telephone"> Numero di telefono</label>
-        <input type="number" value="telephone" name="telephone" class="form-control">
-        <label for="descriprion_of_dishes">Descrizione dei piatti</label>
-        <textarea value="descriprion_of_dishes" name="descriprion_of_dishes"></textarea>
+        <label for="address">
+            <strong>
+                Indirizzo
+            </strong>
+        </label>
+        <input type="text" value="Address" name="address" class="form-control mb-3">
 
-        <select name="visibility">
+        <label for="telephone">
+            <strong>
+                Numero di telefono
+            </strong>
+        </label>
+        <input type="text" value="Telephone" name="telephone" class="form-control mb-3">
+
+        <label for="descriprion_of_dishes">
+            <strong>
+                Descrizione dei piatti
+            </strong>
+        </label>
+        <textarea class="form-control mb-3" placeholder="Descriprion of dishes" value="descriprion_of_dishes" name="descriprion_of_dishes">
+        </textarea>
+
+        <!--Select della visibilità-->
+        <label for="visibility">
+            <strong>
+                Seleziona visibilità
+            </strong>
+        </label>
+        <select class="form-select mb-3" aria-label="Default select example" name="visibility" id="visibility">
             <option value="0">
-                Non visibile
+                Not visible
             </option>
             <option value="1">
-                visibile
+                Visible
             </option>
-
         </select>
+
+        <!--Checkbox-->
+        <label for="specializations">
+            <strong>
+                Seleziona la specializzazione
+            </strong>
+        </label>
         @foreach ($specializations as $specialization)
-            <input type="checkbox" name="specializations[]" value="{{ $specialization->id }}"
-                id="specialization-check-{{ $specialization->id }}" autocomplete="off">
-            <label for="specialization-check-{{ $specialization->name }}">{{ $specialization->name }}</label>
+        <input type="checkbox" name="specializations[]" value="{{ $specialization->id }}"
+        id="specialization-check-{{ $specialization->id }}" autocomplete="off">
+        <label class="mb-2" for="specialization-check-{{ $specialization->name }}">
+            {{ $specialization->name }}
+        </label>
         @endforeach
-        <input type="submit">
 
-
+        <!--Button submit-->
+        <div class="mt-4">
+            <input type="submit" class="btn btn-info">
+        </div>
     </form>
+
+</div>
 @endsection

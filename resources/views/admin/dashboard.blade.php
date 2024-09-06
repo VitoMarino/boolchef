@@ -16,7 +16,6 @@
 
                         {{ __('You are logged in!') }}
                     </div>
-                    <a href="{{ route('admin.chefs.index') }}">Peni colossali bro ma proprio cazzi giganti</a>
                 </div>
             </div>
         </div>
