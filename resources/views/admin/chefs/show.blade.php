@@ -4,7 +4,8 @@
     <div class="container d-flex justify-content-center">
 
         <div class="card" style="width: 18rem;">
-            <img :src="{{ $chef->photograph }}" alt="la foto">
+            <img src="{{asset('storage/'.$chef->photograph)}}" alt="Img">
+            <a href="{{asset('storage/'.$chef->CV)}}">Scarica CV</a>
             <div class="card-body">
                 <h2 class="card-title">Chef {{ $chef->users->name }} {{ $chef->users->lastname }} </h2>
                 <p class="card-text">Località {{ $chef->users->address }} </p>

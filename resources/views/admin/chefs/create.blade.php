@@ -27,6 +27,12 @@
         <textarea class="form-control mb-3" placeholder="Descriprion of dishes" value="descriprion_of_dishes" name="descriprion_of_dishes">
         </textarea>
 
+        <!--Input file--->
+        <label for="photograph">Carica foto profilo</label>
+        <input class="mb-3" type="file" name="photograph" id="photograph">
+        <label for="file">Carica CV</label>
+        <input class="mb-3" type="file" name="CV" id="CV">
+
         <!--Select della visibilità-->
         <label for="visibility">
             <strong>
