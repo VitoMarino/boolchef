@@ -4,7 +4,7 @@
     <div class="container d-flex justify-content-center">
 
         <div class="card" style="width: 18rem;">
-            <img :src="{{ $chef->photograph }}" alt="la foto">
+            <img src="{{asset('storage/'.$chef->photograph)}}" alt="Img">
             <div class="card-body">
                 <h2 class="card-title">Chef {{ $chef->users->name }} {{ $chef->users->lastname }} </h2>
                 <p class="card-text">Località {{ $chef->users->address }} </p>
@@ -34,7 +34,10 @@
                     {{ $chef->description_of_dishes }}
                 </li>
             </ul>
-            <div class="card-body">
+            <div class="text-center mt-1">
+                <a href="{{asset('storage/'.$chef->CV)}}">Scarica CV</a>
+            </div>
+            <div class="card-body text-center">
                 <a href="{{ route('admin.chefs.index') }}" class="card-link">Back to the chefs</a>
             </div>
         </div>
