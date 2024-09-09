@@ -57,30 +57,35 @@ class ChefController extends Controller
      */
     public function show(Chef $chef)
     {
-
-
-
         return view('admin.chefs.show', compact('chef'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Chef $chef)
     {
         //
+        $specializations = Specialization::all();
+        return view('admin.chefs.edit', compact('chef', 'specializations'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Chef $chef)
     {
-        $data = $request->validated([]);
-        $img_path = Storage::disk('public')->put('uploads/Images', $data['photograph']);
-        $file_path = Storage::disk('public')->put('uploads/Cv', $data['CV']);
+        // $data = $request->validated([]);
+        $data = $request->all();
+        $img_path = Storage::disk('public')->put('upload/img', $data['photograph']);
+        $file_path = Storage::disk('public')->put('upload/cv', $data['CV']);
         $data["photograph"] = $img_path;
         $data["CV"] = $file_path;
+        $chef->update($data);
+        // Parentesi relazione, senza il model
+        $chef->specializations()->sync($data['specializations']);
+        return redirect()->route('admin.chefs.show', $chef);
+        dd($data);
     }
 
     /**
