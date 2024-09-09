@@ -27,6 +27,7 @@ class UpdateChefRequest extends FormRequest
             "photograph"=>'nullable|min:10|max:2000',
             "telephone"=>'required|min:7|max:15',
             "specializations"=>'required|array|exists:specializations,id',
+            "visibility" => 'nullable'|'boolean',
         ];
     }
 }
