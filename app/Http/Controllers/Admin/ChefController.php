@@ -43,8 +43,8 @@ class ChefController extends Controller
     {
         $data = $request->validated();
 
-        $img_path = Storage::disk('public')->put('upload/img', isset($data['photograph']));
-        $file_path = Storage::disk('public')->put('upload/cv', isset($data['CV']));
+        $img_path = Storage::disk('public')->put('upload/img', ($data['photograph']));
+        $file_path = Storage::disk('public')->put('upload/cv', ($data['CV']));
 
         $data["photograph"] = $img_path;
         $data["CV"] = $file_path;
@@ -80,13 +80,13 @@ class ChefController extends Controller
     public function update(UpdateChefRequest $request, Chef $chef)
     {
         $data = $request->validated();
-       
+
 
 
         // $data = $request->validated([]);
-     
-        $img_path = Storage::disk('public')->put('upload/img', isset($data['photograph']));
-        $file_path = Storage::disk('public')->put('upload/cv', isset($data['CV']));
+
+        $img_path = Storage::disk('public')->put('upload/img', ($data['photograph']));
+        $file_path = Storage::disk('public')->put('upload/cv', ($data['CV']));
 
         $data["photograph"] = $img_path;
         $data["CV"] = $file_path;

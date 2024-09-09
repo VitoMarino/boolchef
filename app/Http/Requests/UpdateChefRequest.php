@@ -22,11 +22,11 @@ class UpdateChefRequest extends FormRequest
     public function rules(): array
     {
         return [
-            "address"=>'nullable|min:3|max:150',
-            "CV"=>'nullable|min:10|max:250',
-            "photograph"=>'nullable|min:10|max:2000',
-            "telephone"=>'required|min:7|max:15',
-            "specializations"=>'required|array|exists:specializations,id',
+            "address" => 'nullable|min:3|max:150',
+            "CV" => 'nullable|file|max:250',
+            "photograph" => 'nullable|file|max:2000',
+            "telephone" => 'required|min:7|max:15',
+            "specializations" => 'required|array|exists:specializations,id',
             "visibility" => 'nullable|boolean',
         ];
     }
