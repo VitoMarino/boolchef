@@ -42,13 +42,14 @@ class ChefController extends Controller
         $data = $request->all();
 
 
-        // $img_path = Storage::disk('public')->put('uploads/Images', $data['photograph']);
-        //$file_path = Storage::disk('public')->put('uploads/Cv', $data['CV']);
-        // $data["photograph"] = $img_path;
-        // $data["CV"] = $file_path;
+        $img_path = Storage::disk('public')->put('upload/img', $data['photograph']);
+        $file_path = Storage::disk('public')->put('upload/cv', $data['CV']);
+        $data["photograph"] = $img_path;
+        $data["CV"] = $file_path;
         $data['user_id'] = Auth::id();
         $newChef = Chef::create($data);
         return redirect()->route('admin.chefs.show', $newChef);
+
     }
 
     /**
