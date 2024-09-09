@@ -4,6 +4,16 @@
     <div class="container d-flex justify-content-center">
 
         <div class="card" style="width: 18rem;">
+            @if (session('edit-chef'))
+                <div class="alert alert-success">
+                    {{session('edit-chef')}}
+                </div>
+            @endif
+            @if (session('create-chef'))
+                <div class="alert alert-success">
+                    {{session('create-chef')}}
+                </div>
+            @endif
             <img src="{{asset('storage/'.$chef->photograph)}}" alt="Img">
             <div class="card-body">
                 <h2 class="card-title">Chef {{ $chef->users->name }} {{ $chef->users->lastname }} </h2>
