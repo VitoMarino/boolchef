@@ -70,9 +70,9 @@
                 @foreach ($specializations as $specialization)
                     <input type="checkbox" name="specializations[]" value="{{ $specialization->id }}" class="btn-check"
                         id="specialization-check-{{ $specialization->id }}" autocomplete="off"
-                        {{ in_array($specialization->id, old('specializations', isset($specialization) ? $chef->specializations->pluck('id')->toArray() : [])) ? 'checked' : '' }}>
-                    <label class="btn btn-outline-primary m-1" class="mb-2"
-                        for="specialization-check-{{ $specialization->name }}">
+                        {{ in_array($specialization->id, old('specializations',  $chef->specializations->pluck('id')->toArray())) ? 'checked' : '' }}>
+                    <label class="btn btn-outline-primary m-1"
+                        for="specialization-check-{{ $specialization->id }}">
                         {{ $specialization->name }}
                     </label>
                 @endforeach
