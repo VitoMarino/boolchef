@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreChefRequest;
+use App\Http\Requests\UpdateChefRequest;
 use App\Models\Chef;
 use App\Models\Specialization;
 use App\Models\User;
@@ -37,9 +39,9 @@ class ChefController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreChefRequest $request)
     {
-        $data = $request->all();
+        $data = $request->validated();
 
         $img_path = Storage::disk('public')->put('upload/img', isset($data['photograph']));
         $file_path = Storage::disk('public')->put('upload/cv', isset($data['CV']));
@@ -74,12 +76,18 @@ class ChefController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Chef $chef)
+
+    public function update(UpdateChefRequest $request, Chef $chef)
     {
+        $data = $request->validated();
+       
+
+
         // $data = $request->validated([]);
-        $data = $request->all();
+     
         $img_path = Storage::disk('public')->put('upload/img', isset($data['photograph']));
         $file_path = Storage::disk('public')->put('upload/cv', isset($data['CV']));
+
         $data["photograph"] = $img_path;
         $data["CV"] = $file_path;
         $chef->update($data);
