@@ -11,21 +11,24 @@
                 Indirizzo
             </strong>
         </label>
-        <input type="text" value="Address" name="address" class="form-control mb-3">
+        <input type="text" value="{{old('address',$chef->address)}}
+        " name="address" class="form-control mb-3">
 
         <label for="telephone">
             <strong>
                 Numero di telefono
             </strong>
         </label>
-        <input type="text" value="Telephone" name="telephone" class="form-control mb-3">
+        <input type="text" value="{{old('telephone',$chef->telephone)}}
+        " name="telephone" class="form-control mb-3">
 
         <label for="descriprion_of_dishes">
             <strong>
                 Descrizione dei piatti
             </strong>
         </label>
-        <textarea class="form-control mb-3" placeholder="Descriprion of dishes" value="descriprion_of_dishes" name="descriprion_of_dishes">
+        <textarea class="form-control mb-3" placeholder="Description of dishes" value="" name="description_of_dishes" rows="5" cols="33">
+            {{old('description_of_dishes',$chef->description_of_dishes)}}
         </textarea>
 
         <!--Input file--->
@@ -41,10 +44,10 @@
             </strong>
         </label>
         <select class="form-select mb-3" aria-label="Default select example" name="visibility" id="visibility">
-            <option value="0">
+            <option value="0"{{ old('visibility',  $chef->visibility  == 0 ? 'selected' : '' )}}>
                 Not visible
             </option>
-            <option value="1">
+            <option value="1"{{ old('visibility',  $chef->visibility  == 1 ? 'selected' : '' )}}>
                 Visible
             </option>
         </select>
