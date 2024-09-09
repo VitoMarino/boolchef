@@ -85,7 +85,6 @@ class ChefController extends Controller
         // Parentesi relazione, senza il model
         $chef->specializations()->sync($data['specializations']);
         return redirect()->route('admin.chefs.show', $chef);
-        dd($data);
     }
 
     /**
