@@ -55,13 +55,15 @@
                 Seleziona la specializzazione
             </strong>
         </label>
-        @foreach ($specializations as $specialization)
-        <input type="checkbox" name="specializations[]" value="{{ $specialization->id }}"
-        id="specialization-check-{{ $specialization->id }}" autocomplete="off">
-        <label class="mb-2" for="specialization-check-{{ $specialization->name }}">
-            {{ $specialization->name }}
-        </label>
-        @endforeach
+        <div class="d-flex flex-wrap" role="group" aria-label="Basic checkbox toggle button group">
+            @foreach ($specializations as $specialization)
+            <input type="checkbox" class="btn-check" name="specializations[]" value="{{ $specialization->id }}"
+            id="specialization-check-{{ $specialization->id }}" autocomplete="off">
+            <label class="btn btn-outline-primary m-1" for="specialization-check-{{ $specialization->id }}">
+                {{ $specialization->name }}
+            </label>
+            @endforeach
+        </div>
 
         <!--Button submit-->
         <div class="mt-4">
