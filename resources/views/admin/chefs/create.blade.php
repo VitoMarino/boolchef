@@ -18,8 +18,7 @@
                     Indirizzo
                 </strong>
             </label>
-            <input type="text" value="{{ old('address') }}
-        " name="address"
+            <input type="text" value="{{ old('address') }}" name="address"
                 class="form-control mb-3">
                 @error('telephone')
                     <div class="alert alert-danger mb-3">
@@ -31,8 +30,7 @@
                     Numero di telefono
                 </strong>
             </label>
-            <input type="text" value="{{ old('telephone') }}
-        " name="telephone"
+            <input type="text" value="{{ old('telephone') }}" name="telephone"
                 class="form-control mb-3">
                 @error('descriprion_of_dishes')
                     <div class="alert alert-danger mb-3">
