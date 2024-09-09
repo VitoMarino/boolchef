@@ -41,8 +41,9 @@ class ChefController extends Controller
     {
         $data = $request->all();
 
-        $img_path = Storage::disk('public')->put('upload/img', $data['photograph']);
-        $file_path = Storage::disk('public')->put('upload/cv', $data['CV']);
+        $img_path = Storage::disk('public')->put('upload/img', isset($data['photograph']));
+        $file_path = Storage::disk('public')->put('upload/cv', isset($data['CV']));
+
         $data["photograph"] = $img_path;
         $data["CV"] = $file_path;
         $data['user_id'] = Auth::id();
@@ -77,8 +78,8 @@ class ChefController extends Controller
     {
         // $data = $request->validated([]);
         $data = $request->all();
-        $img_path = Storage::disk('public')->put('upload/img', $data['photograph']);
-        $file_path = Storage::disk('public')->put('upload/cv', $data['CV']);
+        $img_path = Storage::disk('public')->put('upload/img', isset($data['photograph']));
+        $file_path = Storage::disk('public')->put('upload/cv', isset($data['CV']));
         $data["photograph"] = $img_path;
         $data["CV"] = $file_path;
         $chef->update($data);
