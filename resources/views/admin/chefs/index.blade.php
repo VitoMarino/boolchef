@@ -12,6 +12,7 @@
                 <th>Specializazione</th>
                 <th>Edit</th>
                 <th>Show</th>
+                <th>Delete</th>
             </thead>
 
             <!--Contenuto tabella-->
@@ -47,6 +48,11 @@
                         <td>
                             <a class="button btn-primary btn btn-sm" href="{{ route('admin.chefs.show', $chef) }}">
                                 Show
+                            </a>
+                        </td>
+                        <td>
+                            <a class="button btn-danger btn btn-sm" href="{{ route('admin.chefs.show', $chef) }}">
+                                Delete
                             </a>
                         </td>
                     </tr>
