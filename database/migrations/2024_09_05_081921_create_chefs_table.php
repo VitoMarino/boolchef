@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('description_of_dishes', 255)->nullable();
             $table->boolean('visibility');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

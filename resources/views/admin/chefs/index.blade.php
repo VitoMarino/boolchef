@@ -51,9 +51,12 @@
                             </a>
                         </td>
                         <td>
-                            <a class="button btn-danger btn btn-sm" href="{{ route('admin.chefs.show', $chef) }}">
-                                Delete
-                            </a>
+                            <form action="{{ route('admin.chefs.destroy', $chef) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+
+                                <input type="submit" value="Delete" class="btn btn-danger btn-sm">
+                            </form>
                         </td>
                     </tr>
                 @endforeach
