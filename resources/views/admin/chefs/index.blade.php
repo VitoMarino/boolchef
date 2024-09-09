@@ -2,6 +2,14 @@
 
 @section('content')
     <div class="container">
+        <div>
+            @if (@session('delete-chef') )
+                <div class="alert alert-success">
+                    {{session('delete-chef')}}
+                    <a href="{{route('admin.projects.trash-index')}}">See the trash backet</a>
+                </div>
+            @endif
+        </div>
         <table class="table table-dark table-hover text-center">
             <!--Titoli tabella-->
             <thead>

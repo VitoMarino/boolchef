@@ -8,6 +8,11 @@
             method="POST" enctype="multipart/form-data">
             @method('POST')
             @csrf
+            @error('address')
+                <div class="alert alert-danger mb-3">
+                    {{ $message }}
+                </div>
+            @enderror
             <label for="address">
                 <strong>
                     Indirizzo
@@ -16,7 +21,11 @@
             <input type="text" value="{{ old('address') }}
         " name="address"
                 class="form-control mb-3">
-
+                @error('telephone')
+                    <div class="alert alert-danger mb-3">
+                        {{ $message }}
+                    </div>
+                @enderror
             <label for="telephone">
                 <strong>
                     Numero di telefono
@@ -25,7 +34,11 @@
             <input type="text" value="{{ old('telephone') }}
         " name="telephone"
                 class="form-control mb-3">
-
+                @error('descriprion_of_dishes')
+                    <div class="alert alert-danger mb-3">
+                        {{ $message }}
+                    </div>
+                @enderror
             <label for="descriprion_of_dishes">
                 <strong>
                     Descrizione dei piatti
@@ -33,24 +46,40 @@
             </label>
             <textarea class="form-control mb-3" placeholder="Description of dishes" value="" name="description_of_dishes"
                 rows="5" cols="33">
-            {{ old('description_of_dishes') }}
+                {{ old('description_of_dishes') }}
 
-        </textarea>
+            </textarea>
 
             <!--Input file--->
+            @error('photograph')
+                <div class="alert alert-danger mb-3">
+                    {{ $message }}
+                </div>
+            @enderror
             <label for="photograph">Carica foto profilo</label>
             <input class="mb-3" type="file" name="photograph" id="photograph">
+            @error('file')
+                <div class="alert alert-danger mb-3">
+                    {{ $message }}
+                </div>
+            @enderror
             <label for="file">Carica CV</label>
             <input class="mb-3" type="file" name="CV" id="CV">
 
 
 
             <!--Select della visibilità-->
+            @error('visibility')
+                <div class="alert alert-danger mb-3">
+                    {{ $message }}
+                </div>
+            @enderror
             <label for="visibility">
                 <strong>
                     Seleziona visibilità
                 </strong>
             </label>
+
             <select class="form-select mb-3" aria-label="Default select example" name="visibility" id="visibility">
                 <option value="0"{{ old('visibility') == 0 ? 'selected' : '' }}>
                     Not visible
@@ -61,6 +90,11 @@
             </select>
 
             <!--Checkbox-->
+            @error('specializations')
+                <div class="alert alert-danger mb-3">
+                    {{ $message }}
+                </div>
+            @enderror
             <label for="specializations">
                 <strong>
                     Seleziona la specializzazione
