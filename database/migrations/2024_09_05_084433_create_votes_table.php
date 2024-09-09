@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('votes', function (Blueprint $table) {
             $table->id();
-            $table->tinyInteger('Vote');
-            $table->string('Label', length: 30);
+            $table->tinyInteger('vote');
+            $table->string('label', 30);
             $table->timestamps();
         });
     }
@@ -24,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('vote');
+        Schema::dropIfExists('votes');
     }
 };

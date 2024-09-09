@@ -19,6 +19,8 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'lastname',
+        'address',
         'email',
         'password',
     ];
@@ -42,4 +44,9 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    // Relazione one to one con chef
+    public function Chef(){
+        return $this->hasOne(Chef::class, 'user_id', 'id');
+    }
 }
