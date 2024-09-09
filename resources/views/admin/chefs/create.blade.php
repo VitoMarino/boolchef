@@ -12,23 +12,23 @@
                     Indirizzo
                 </strong>
             </label>
-            <input type="text" value="Address" name="address" class="form-control mb-3">
+            <input type="text" name="address" class="form-control mb-3" placeholder='Address'>
 
             <label for="telephone">
                 <strong>
                     Numero di telefono
                 </strong>
             </label>
-            <input type="text" value="Telephone" name="telephone" class="form-control mb-3">
+            <input type="text" name="telephone" class="form-control mb-3" placeholder="Telephone">
 
             <label for="descriprion_of_dishes">
                 <strong>
                     Descrizione dei piatti
                 </strong>
             </label>
-            <textarea class="form-control mb-3" placeholder="Descriprion of dishes" value="descriprion_of_dishes"
-                name="descriprion_of_dishes">
-        </textarea>
+
+            <!--TEXT AREA-->
+            <textarea class="form-control mb-3" placeholder="Descriprion of dishes" name="descriprion_of_dishes"></textarea>
 
             <!--Input file--->
             <label for="photograph">Carica foto profilo</label>
