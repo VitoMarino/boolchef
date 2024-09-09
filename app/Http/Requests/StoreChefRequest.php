@@ -27,6 +27,7 @@ class StoreChefRequest extends FormRequest
             "photograph"=>'nullable|min:10|max:2000',
             "telephone"=>'required|unique:chefs|min:7|max:15',
             "specializations"=>'required|array|exists:specializations,id',
+            "visibility" => 'nullable'|'boolean',
         ];
     }
 }
