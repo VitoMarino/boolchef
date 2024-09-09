@@ -27,6 +27,7 @@ class StoreChefRequest extends FormRequest
             "photograph"=>'nullable|file|max:20000000',
             "telephone"=>'required|numeric|unique:chefs',
             "specializations"=>'required|array|exists:specializations,id',
+            "description_of_dishes"=>'required|max:255',
             "visibility" => 'nullable|boolean',
         ];
     }
