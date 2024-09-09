@@ -2,6 +2,14 @@
 
 @section('content')
     <div class="container">
+        <div>
+            @if (@session('delete-chef') )
+                <div class="alert alert-success">
+                    {{session('delete-chef')}}
+                    <a href="{{route('admin.projects.trash-index')}}">See the trash backet</a>
+                </div>
+            @endif
+        </div>
         <table class="table table-dark table-hover text-center">
             <!--Titoli tabella-->
             <thead>
@@ -12,6 +20,7 @@
                 <th>Specializazione</th>
                 <th>Edit</th>
                 <th>Show</th>
+                <th>Delete</th>
             </thead>
 
             <!--Contenuto tabella-->
@@ -48,6 +57,14 @@
                             <a class="button btn-primary btn btn-sm" href="{{ route('admin.chefs.show', $chef) }}">
                                 Show
                             </a>
+                        </td>
+                        <td>
+                            <form action="{{ route('admin.chefs.destroy', $chef) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+
+                                <input type="submit" value="Delete" class="btn btn-danger btn-sm">
+                            </form>
                         </td>
                     </tr>
                 @endforeach

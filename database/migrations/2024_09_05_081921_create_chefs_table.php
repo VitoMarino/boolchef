@@ -15,11 +15,12 @@ return new class extends Migration
             $table->id();
             $table->string('address', 255)->nullable();
             $table->string('CV', 255)->nullable();
-            $table->string('photograph', 255)->nullable();
+            $table->text('photograph')->nullable();
             $table->string('telephone', 255)->nullable()->unique();
             $table->string('description_of_dishes', 255)->nullable();
             $table->boolean('visibility');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
