@@ -23,10 +23,11 @@ class UpdateChefRequest extends FormRequest
     {
         return [
             "address"=>'nullable|string|min:3|max:150',
-            "CV"=>'nullable|file|min:10|max:250',
-            "photograph"=>'nullable|file|min:10|max:2000',
+            "CV"=>'nullable|file|max:20000000',
+            "photograph"=>'nullable|file|max:20000000',
             "telephone"=>'required|numeric|unique:chefs',
             "specializations"=>'required|array|exists:specializations,id',
+            "description_of_dishes"=>'required|max:255',
             "visibility" => 'nullable|boolean',
         ];
     }

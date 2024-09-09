@@ -33,7 +33,7 @@
                         Specializzata in cucina:
                     </strong>
                     @foreach ($chef->specializations as $specialization)
-                    {{ $specialization->id }}
+                    {{ $specialization->name }}
                     @endforeach
                 </li>
 
