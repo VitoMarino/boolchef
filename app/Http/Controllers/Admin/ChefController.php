@@ -51,7 +51,7 @@ class ChefController extends Controller
         $data['user_id'] = Auth::id();
         $newChef = Chef::create($data);
         $newChef->specializations()->sync($data['specializations']);
-        return redirect()->route('admin.chefs.show', $newChef);
+        return redirect()->route('admin.chefs.show', $newChef)->with('create-chef', $newChef->users->name . ' '. 'has been CREATE with success');
     }
 
     /**
@@ -80,11 +80,11 @@ class ChefController extends Controller
     public function update(UpdateChefRequest $request, Chef $chef)
     {
         $data = $request->validated();
-       
+
 
 
         // $data = $request->validated([]);
-     
+
         $img_path = Storage::disk('public')->put('upload/img', isset($data['photograph']));
         $file_path = Storage::disk('public')->put('upload/cv', isset($data['CV']));
 
@@ -93,7 +93,7 @@ class ChefController extends Controller
         $chef->update($data);
         // Parentesi relazione, senza il model
         $chef->specializations()->sync($data['specializations']);
-        return redirect()->route('admin.chefs.show', $chef);
+        return redirect()->route('admin.chefs.show', $chef)->with('edit-chef', $chef->users->name . ' '. 'has been edited with success');
     }
 
     /**
@@ -104,6 +104,6 @@ class ChefController extends Controller
         //
         $chef->delete();
 
-        return redirect()->route('admin.chefs.index');
+        return redirect()->route('admin.chefs.index')->with('delete-chef', $chef->users->name . ' '. 'has been DELETE with success');
     }
 }
