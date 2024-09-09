@@ -8,6 +8,11 @@
             method="POST" enctype="multipart/form-data">
             @method('PUT')
             @csrf
+            @error('address')
+                <div class="alert alert-danger mb-3">
+                    {{ $message }}
+                </div>
+            @enderror
             <label for="address">
                 <strong>
                     Indirizzo
@@ -16,7 +21,11 @@
             <input type="text" value="{{ old('address', $chef->address) }}
         " name="address"
                 class="form-control mb-3">
-
+                @error('telephone')
+                    <div class="alert alert-danger mb-3">
+                        {{ $message }}
+                    </div>
+                @enderror
             <label for="telephone">
                 <strong>
                     Numero di telefono
@@ -25,7 +34,11 @@
             <input type="text" value="{{ old('telephone', $chef->telephone) }}
         " name="telephone"
                 class="form-control mb-3">
-
+                @error('descriprion_of_dishes')
+                    <div class="alert alert-danger mb-3">
+                        {{ $message }}
+                    </div>
+                @enderror
             <label for="descriprion_of_dishes">
                 <strong>
                     Descrizione dei piatti
@@ -38,14 +51,29 @@
         </textarea>
 
             <!--Input file--->
+            @error('photograph')
+                <div class="alert alert-danger mb-3">
+                    {{ $message }}
+                </div>
+            @enderror
             <label for="photograph">Carica foto profilo</label>
             <input class="mb-3" type="file" name="photograph" id="photograph">
+            @error('file')
+                <div class="alert alert-danger mb-3">
+                    {{ $message }}
+                </div>
+            @enderror
             <label for="file">Carica CV</label>
             <input class="mb-3" type="file" name="CV" id="CV">
 
 
 
             <!--Select della visibilità-->
+            @error('visibility')
+                <div class="alert alert-danger mb-3">
+                    {{ $message }}
+                </div>
+            @enderror
             <label for="visibility">
                 <strong>
                     Seleziona visibilità
@@ -61,6 +89,11 @@
             </select>
 
             <!--Checkbox-->
+            @error('specializations')
+                <div class="alert alert-danger mb-3">
+                    {{ $message }}
+                </div>
+            @enderror
             <label for="specializations">
                 <strong>
                     Seleziona la specializzazione
