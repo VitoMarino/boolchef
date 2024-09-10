@@ -32,3 +32,4 @@ class UpdateChefRequest extends FormRequest
         ];
     }
 }
+
