@@ -22,6 +22,7 @@ class ChefController extends Controller
 
         $chefs = Chef::all();
 
+
         return view('admin.chefs.index', compact('chefs'));
     }
 
@@ -59,8 +60,9 @@ class ChefController extends Controller
      */
     public function show(Chef $chef)
     {
-
-        return view('admin.chefs.show', compact('chef'));
+        if(Auth::id() === $chef->id){
+            return view('admin.chefs.show', compact('chef'));
+        }
     }
 
     /**
@@ -92,6 +94,16 @@ class ChefController extends Controller
             $data["CV"] = $file_path;
         }
 
+<<<<<<< HEAD
+=======
+        // $data = $request->validated([]);
+
+        $img_path = Storage::disk('public')->put('upload/img', $data['photograph']);
+        $file_path = Storage::disk('public')->put('upload/cv', $data['CV']);
+
+        $data["photograph"] = $img_path;
+        $data["CV"] = $file_path;
+>>>>>>> 531fce6b1317f38298def3645356c75843f26814
         $chef->update($data);
 
         // Parentesi relazione. Senza parentesi chiamo il model

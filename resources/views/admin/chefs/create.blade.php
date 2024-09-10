@@ -18,7 +18,12 @@
                     Indirizzo
                 </strong>
             </label>
+<<<<<<< HEAD
+            <input type="text" value="{{ old('address') }}" name="address"
+                class="form-control mb-3">
+=======
             <input type="text" value="{{ old('address') }}" name="address" class="form-control mb-3" placeholder="Indirizzo">
+>>>>>>> ec00f858b694b62317c968871a1124b5f49e797f
                 @error('telephone')
                     <div class="alert alert-danger mb-3">
                         {{ $message }}
@@ -29,7 +34,12 @@
                     Numero di telefono
                 </strong>
             </label>
+<<<<<<< HEAD
+            <input type="text" value="{{ old('telephone') }}" name="telephone"
+                class="form-control mb-3">
+=======
             <input type="text" value="{{ old('telephone') }}" name="telephone" class="form-control mb-3" placeholder="Telefono">
+>>>>>>> ec00f858b694b62317c968871a1124b5f49e797f
                 @error('descriprion_of_dishes')
                     <div class="alert alert-danger mb-3">
                         {{ $message }}

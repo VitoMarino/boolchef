@@ -27,8 +27,19 @@ class StoreChefRequest extends FormRequest
             "photograph"=>'nullable|file|max:20000000',
             "telephone"=>'required|numeric|unique:chefs',
             "specializations"=>'required|array|exists:specializations,id',
-            "description_of_dishes"=>'required|max:255',
             "visibility" => 'nullable|boolean',
         ];
     }
+<<<<<<< HEAD
+=======
+
+    // public function messages(){
+    //     return [
+    //         'name.min' => 'Il name ha bisogno di almeno 3 caratteri',
+    //         'description.min'=> 'La descrizione ha bisogno di almeno 3 caratteri',
+    //         'species.name'=> 'La species ha bisogno di almeno 3 caratteri',
+    //         'image.url' => 'C\'è bisogno di un URL'
+    //     ];
+    // }
+>>>>>>> 531fce6b1317f38298def3645356c75843f26814
 }
