@@ -17,6 +17,6 @@ class Vote extends Model
 
     public function chefs()
     {
-        $this->belongsToMany(Chef::class);
+        return $this->belongsToMany(Chef::class);
     }
 }
