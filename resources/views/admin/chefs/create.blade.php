@@ -18,8 +18,12 @@
                     Indirizzo
                 </strong>
             </label>
+<<<<<<< HEAD
             <input type="text" value="{{ old('address') }}" name="address"
                 class="form-control mb-3">
+=======
+            <input type="text" value="{{ old('address') }}" name="address" class="form-control mb-3" placeholder="Indirizzo">
+>>>>>>> ec00f858b694b62317c968871a1124b5f49e797f
                 @error('telephone')
                     <div class="alert alert-danger mb-3">
                         {{ $message }}
@@ -30,8 +34,12 @@
                     Numero di telefono
                 </strong>
             </label>
+<<<<<<< HEAD
             <input type="text" value="{{ old('telephone') }}" name="telephone"
                 class="form-control mb-3">
+=======
+            <input type="text" value="{{ old('telephone') }}" name="telephone" class="form-control mb-3" placeholder="Telefono">
+>>>>>>> ec00f858b694b62317c968871a1124b5f49e797f
                 @error('descriprion_of_dishes')
                     <div class="alert alert-danger mb-3">
                         {{ $message }}
@@ -42,11 +50,7 @@
                     Descrizione dei piatti
                 </strong>
             </label>
-            <textarea class="form-control mb-3" placeholder="Description of dishes" value="" name="description_of_dishes"
-                rows="5" cols="33">
-                {{ old('description_of_dishes') }}
-
-            </textarea>
+            <textarea class="form-control mb-3" placeholder="Descrizione piatti" name="description_of_dishes">{{old('description_of_dishes')}}</textarea>
 
             <!--Input file--->
             @error('photograph')
@@ -64,8 +68,6 @@
             <label for="file">Carica CV</label>
             <input class="mb-3" type="file" name="CV" id="CV">
 
-
-
             <!--Select della visibilità-->
             @error('visibility')
                 <div class="alert alert-danger mb-3">
@@ -80,10 +82,10 @@
 
             <select class="form-select mb-3" aria-label="Default select example" name="visibility" id="visibility">
                 <option value="0"{{ old('visibility') == 0 ? 'selected' : '' }}>
-                    Not visible
+                    Non visibile
                 </option>
                 <option value="1"{{ old('visibility') == 1 ? 'selected' : '' }}>
-                    Visible
+                    Visibile
                 </option>
             </select>
 
