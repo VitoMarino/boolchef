@@ -22,7 +22,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get("/chefs", [ApiChefController::class, "index"])->name("api.chefs.index");
+Route::post("/chefs", [ApiChefController::class, "store"])->name("api.chefs.store");
 Route::get("/chefs/{chef}", [ApiChefController::class, "show"])->name("api.chefs.show");
+Route::patch("/chefs/{chef}", [ApiChefController::class, "update"])->name("api.chefs.update");
 
 
 
