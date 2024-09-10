@@ -30,8 +30,6 @@ class StoreChefRequest extends FormRequest
             "visibility" => 'nullable|boolean',
         ];
     }
-<<<<<<< HEAD
-=======
 
     // public function messages(){
     //     return [
@@ -41,5 +39,4 @@ class StoreChefRequest extends FormRequest
     //         'image.url' => 'C\'è bisogno di un URL'
     //     ];
     // }
->>>>>>> 531fce6b1317f38298def3645356c75843f26814
 }
