@@ -34,7 +34,3 @@ class UpdateChefRequest extends FormRequest
         ];
     }
 }
-<<<<<<< HEAD
-=======
-
->>>>>>> 531fce6b1317f38298def3645356c75843f26814
