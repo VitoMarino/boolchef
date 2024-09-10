@@ -17,4 +17,13 @@ class ChefController extends Controller
                 "results" => $chefs
             ]);
     }
+
+    public function show(Chef $chef){
+        $chef->loadMissing('user', 'sponsorships', 'specializations', 'votes', 'messages');
+        return response()->json(
+            [
+                "success" => true,
+                "results" => $chef
+            ]);
+    }
 }

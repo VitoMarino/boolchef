@@ -20,3 +20,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get("/chefs", [ApiChefController::class, "index"])->name("api.chefs.index");
+Route::get("/chefs/{chef}", [ApiChefController::class, "show"])->name("api.chefs.show");
