@@ -15,7 +15,7 @@
                         @endif
 
                         <div>
-                            <a href="{{ route('admin.chefs.create', $chef) }}">
+                            <a href="{{ route('admin.chefs.create') }}">
                                 Continua profilo
                             </a>
                         </div>

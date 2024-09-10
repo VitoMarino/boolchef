@@ -47,8 +47,8 @@
             <div class="text-center mt-1">
                 <a href="{{asset('storage/'.$chef->CV)}}">Scarica CV</a>
             </div>
-            <div class="card-body text-center">
-                <a href="{{ route('admin.chefs.index') }}" class="card-link">Back to the chefs</a>
+            <div class="text-center">
+                <a href="{{route('admin.chefs.edit', $chef)}}">Modifica profilo</a>
             </div>
         </div>
 

@@ -18,9 +18,7 @@
                     Indirizzo
                 </strong>
             </label>
-            <input type="text" value="{{ old('address') }}
-        " name="address"
-                class="form-control mb-3">
+            <input type="text" value="{{ old('address') }}" name="address" class="form-control mb-3" placeholder="Indirizzo">
                 @error('telephone')
                     <div class="alert alert-danger mb-3">
                         {{ $message }}
@@ -31,9 +29,7 @@
                     Numero di telefono
                 </strong>
             </label>
-            <input type="text" value="{{ old('telephone') }}
-        " name="telephone"
-                class="form-control mb-3">
+            <input type="text" value="{{ old('telephone') }}" name="telephone" class="form-control mb-3" placeholder="Telefono">
                 @error('descriprion_of_dishes')
                     <div class="alert alert-danger mb-3">
                         {{ $message }}
@@ -44,11 +40,7 @@
                     Descrizione dei piatti
                 </strong>
             </label>
-            <textarea class="form-control mb-3" placeholder="Description of dishes" value="" name="description_of_dishes"
-                rows="5" cols="33">
-                {{ old('description_of_dishes') }}
-
-            </textarea>
+            <textarea class="form-control mb-3" placeholder="Descrizione piatti" name="description_of_dishes">{{old('description_of_dishes')}}</textarea>
 
             <!--Input file--->
             @error('photograph')
@@ -65,8 +57,6 @@
             @enderror
             <label for="file">Carica CV</label>
             <input class="mb-3" type="file" name="CV" id="CV">
-
-
 
             <!--Select della visibilità-->
             @error('visibility')
