@@ -10,7 +10,7 @@ class ChefController extends Controller
 {
     public function index(){
         //RITORNA UN JSON CON X COSE
-        $chefs = Chef::with('users', 'sponsorships', 'specializations', 'votes')->paginate(5);
+        $chefs = Chef::with('user', 'sponsorships', 'specializations', 'votes')->paginate(5);
         return response()->json(
             [
                 "success" => true,
