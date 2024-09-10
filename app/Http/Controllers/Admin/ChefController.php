@@ -107,6 +107,6 @@ class ChefController extends Controller
         //
         $chef->delete();
 
-        return redirect()->route('admin.chefs.index')->with('delete-chef', $chef->users->name . ' '. 'has been DELETE with success');
+        return redirect()->route('dashboard')->with('delete-chef', $chef->users->name . ' '. 'has been DELETE with success');
     }
 }

@@ -47,10 +47,16 @@
             <div class="text-center mt-1">
                 <a href="{{asset('storage/'.$chef->CV)}}">Scarica CV</a>
             </div>
-            <div class="text-center">
-                <a href="{{route('admin.chefs.edit', $chef)}}">Modifica profilo</a>
+            <div class="text-center mb-2">
+                <form action="{{ route('admin.chefs.destroy', $chef) }}" method="POST">
+                    @csrf
+                    @method('DELETE')
+
+                    <input type="submit" value="Delete" class="btn btn-danger mb-2">
+                </form>
+
+                <a class="btn btn-primary" href="{{route('admin.chefs.edit', $chef)}}">Modifica profilo</a>
             </div>
         </div>
-
     </div>
 @endsection
