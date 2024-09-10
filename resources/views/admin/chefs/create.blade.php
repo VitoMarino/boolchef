@@ -82,10 +82,10 @@
 
             <select class="form-select mb-3" aria-label="Default select example" name="visibility" id="visibility">
                 <option value="0"{{ old('visibility') == 0 ? 'selected' : '' }}>
-                    Not visible
+                    Non visibile
                 </option>
                 <option value="1"{{ old('visibility') == 1 ? 'selected' : '' }}>
-                    Visible
+                    Visibile
                 </option>
             </select>
 
