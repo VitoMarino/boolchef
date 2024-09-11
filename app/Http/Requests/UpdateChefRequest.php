@@ -22,19 +22,16 @@ class UpdateChefRequest extends FormRequest
      */
     public function rules(): array
     {
+
         return [
-            "address"=>'nullable|string|min:3|max:150',
+            "address"=>'string|min:3|max:150',
             "CV"=>'nullable|file|max:20000000',
             "photograph"=>'nullable|file|max:20000000',
             // Mi rende unico il numero nella create ma mi permette di modificarlo nella edit
-            'telephone'=> ['required',Rule::unique('chefs')->ignore($this->chef, 'id')],
-            "specializations"=>'required|array|exists:specializations,id',
-            "description_of_dishes"=>'required|max:255',
+            'telephone'=> [Rule::unique('chefs')->ignore($this->chef, 'id')],
+            "specializations"=>'array|exists:specializations,id',
+            "description_of_dishes"=>'max:255',
             "visibility" => 'nullable|boolean',
-            "users" => 'array|exists:user,id',
-            "users.name" => ['required', 'string', 'max:255'],
-            'users.lastname' => ['required', 'string', 'max:255'],
-            'users.email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
         ];
     }
 }

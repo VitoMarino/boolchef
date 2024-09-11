@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreChefRequest;
+use App\Http\Requests\UpdateChefRequest;
 use App\Models\Chef;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -52,7 +53,7 @@ class ChefController extends Controller
             ]);
     }
 
-    public function update(StoreChefRequest $request, Chef $chef){
+    public function update(UpdateChefRequest $request, Chef $chef){
         $data = $request->validated();
 
         // Se nella request hai il file 'photograph' manda avanti la modifica. Altrimenti non fare nulla.
@@ -77,12 +78,7 @@ class ChefController extends Controller
         // Parentesi relazione. Senza parentesi chiamo il model
         $chef->specializations()->sync($data['specializations']);
 
-        if (isset($data['user'])) {
-            $chef->user()->update($data['user']);
-        }
-        dd($request->validated());
-
-        $chef->loadMissing('user', 'specializations');
+        $chef->loadMissing('specializations');
         return response()->json(
             [
                 "success" => true,
