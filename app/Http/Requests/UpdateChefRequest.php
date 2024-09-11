@@ -31,6 +31,10 @@ class UpdateChefRequest extends FormRequest
             "specializations"=>'required|array|exists:specializations,id',
             "description_of_dishes"=>'required|max:255',
             "visibility" => 'nullable|boolean',
+            "users" => 'array|exists:user,id',
+            "users.name" => ['required', 'string', 'max:255'],
+            'users.lastname' => ['required', 'string', 'max:255'],
+            'users.email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
         ];
     }
 }
