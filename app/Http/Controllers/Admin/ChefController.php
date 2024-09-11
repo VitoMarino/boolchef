@@ -43,12 +43,15 @@ class ChefController extends Controller
     public function store(StoreChefRequest $request)
     {
         $data = $request->validated();
+        if($request->hasFile('photograph')){
+            $img_path = Storage::disk('public')->put('upload/img', $data['photograph']);
+            $data["photograph"] = $img_path;
+        }
+        if($request->hasFile('CV')){
+            $file_path = Storage::disk('public')->put('upload/cv', $data['CV']);
+            $data["CV"] = $file_path;
+        }
 
-        $img_path = Storage::disk('public')->put('upload/img', $data['photograph']);
-        $file_path = Storage::disk('public')->put('upload/cv', $data['CV']);
-
-        $data["photograph"] = $img_path;
-        $data["CV"] = $file_path;
         $data['user_id'] = Auth::id();
         $newChef = Chef::create($data);
         $newChef->specializations()->sync($data['specializations']);
@@ -59,10 +62,17 @@ class ChefController extends Controller
      * Display the specified resource.
      */
     public function show(Chef $chef)
-    {
+    {   // Se sei autenticato manda il json
         if(Auth::id() === $chef->id){
             return view('admin.chefs.show', compact('chef'));
+        }else{ // Qui il server dovra rispondere non autenticato e poi vue di conseguenza fare cose
+            return redirect()->route('admin.dashboard')->with('wrong-user',  $chef->users->name . ' '. 'it\'s not your profile');
         }
+    }
+
+    public function viewDashboard()
+    {
+        return view('admin.dashboard');
     }
 
     /**
@@ -94,6 +104,7 @@ class ChefController extends Controller
             $data["CV"] = $file_path;
         }
 
+<<<<<<< HEAD
         // $data = $request->validated([]);
 
         $img_path = Storage::disk('public')->put('upload/img', $data['photograph']);
@@ -101,6 +112,8 @@ class ChefController extends Controller
 
         $data["photograph"] = $img_path;
         $data["CV"] = $file_path;
+=======
+>>>>>>> branchSicurezza
         $chef->update($data);
 
         // Parentesi relazione. Senza parentesi chiamo il model

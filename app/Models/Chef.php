@@ -52,7 +52,7 @@ class Chef extends Model
     }
 
     // Relazione one to one con User.
-    public function users(){
+    public function user(){
         return $this->belongsTo(User::class, 'user_id', 'id');
     }
 }

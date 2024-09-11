@@ -24,7 +24,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('admin/dashboard', [GuestHomeController::class, 'index'])->name('dashboard');
+Route::get('admin/dashboard', [AdminChefController::class, 'viewDashboard'])->name('admin.dashboard');
 
 // Questo sistema serve per raggruppare tutte le rotte e avere dei prefissi e un raggruppamento che mi velocizza la scrittura delle rotte
 Route::middleware('auth')->name('admin.')->prefix('admin/')->group(
