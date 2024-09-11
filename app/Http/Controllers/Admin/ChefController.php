@@ -104,16 +104,6 @@ class ChefController extends Controller
             $data["CV"] = $file_path;
         }
 
-<<<<<<< HEAD
-        // $data = $request->validated([]);
-
-        $img_path = Storage::disk('public')->put('upload/img', $data['photograph']);
-        $file_path = Storage::disk('public')->put('upload/cv', $data['CV']);
-
-        $data["photograph"] = $img_path;
-        $data["CV"] = $file_path;
-=======
->>>>>>> branchSicurezza
         $chef->update($data);
 
         // Parentesi relazione. Senza parentesi chiamo il model
