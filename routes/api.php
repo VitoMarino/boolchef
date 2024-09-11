@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\ChefController as ApiChefController;
 use App\Http\Controllers\Api\SpecializationController as ApiSpecializationController;
+use App\Http\Controllers\Api\UserController as ApiUserController;
 use App\Http\Controllers\Api\VoteController as ApiVoteController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -17,18 +19,25 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
+
+// Route::middleware('auth:sanctum')->group(function () {
+//     Route::post("/chefs", [ApiChefController::class, "store"])->name("api.chefs.store");
+//     Route::put("/chefs/{chef}", [ApiChefController::class, "update"])->name("api.chefs.update");
+// });
 
 Route::get("/chefs", [ApiChefController::class, "index"])->name("api.chefs.index");
 Route::post("/chefs", [ApiChefController::class, "store"])->name("api.chefs.store");
 Route::get("/chefs/{chef}", [ApiChefController::class, "show"])->name("api.chefs.show");
 Route::put("/chefs/{chef}", [ApiChefController::class, "update"])->name("api.chefs.update");
 
+Route::post("/users", [ApiUserController::class, "store"])->name("api.users.store");
 
 
-
+Route::post('/login', [AuthController::class, 'login']);
+Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth:sanctum');
 
 
 Route::get("/specializations", [ApiSpecializationController::class, "index"])->name("api.specializations.index");
