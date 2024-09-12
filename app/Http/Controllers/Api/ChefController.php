@@ -6,38 +6,45 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreChefRequest;
 use App\Http\Requests\UpdateChefRequest;
 use App\Models\Chef;
+use App\Models\Specialization;
+use App\Models\Vote;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 class ChefController extends Controller
 {
-    public function index(){
+    public function index()
+    {
         //RITORNA UN JSON CON X COSE
         $chefs = Chef::with('user', 'sponsorships', 'specializations', 'votes', 'reviews')->get();
         return response()->json(
             [
                 "success" => true,
                 "results" => $chefs
-            ]);
+            ]
+        );
     }
 
-    public function show(Chef $chef){
+    public function show(Chef $chef)
+    {
         $chef->loadMissing('user', 'sponsorships', 'specializations', 'votes', 'messages', 'reviews');
         return response()->json(
             [
                 "success" => true,
                 "results" => $chef
-            ]);
+            ]
+        );
     }
 
-    public function store(StoreChefRequest $request){
+    public function store(StoreChefRequest $request)
+    {
         $data = $request->validated();
-        if($request->hasFile('photograph')){
+        if ($request->hasFile('photograph')) {
             $img_path = Storage::disk('public')->put('upload/img', $data['photograph']);
             $data["photograph"] = $img_path;
         }
-        if($request->hasFile('CV')){
+        if ($request->hasFile('CV')) {
             $file_path = Storage::disk('public')->put('upload/cv', $data['CV']);
             $data["CV"] = $file_path;
         }
@@ -50,14 +57,16 @@ class ChefController extends Controller
             [
                 "success" => true,
                 "results" => $newChef
-            ]);
+            ]
+        );
     }
 
-    public function update(UpdateChefRequest $request, Chef $chef){
+    public function update(UpdateChefRequest $request, Chef $chef)
+    {
         $data = $request->validated();
 
         // Se nella request hai il file 'photograph' manda avanti la modifica. Altrimenti non fare nulla.
-        if($request->hasFile('photograph')){
+        if ($request->hasFile('photograph')) {
             if ($chef->photograph) {
                 Storage::disk('public')->delete($chef->photograph);
             }
@@ -65,7 +74,7 @@ class ChefController extends Controller
             $data["photograph"] = $img_path;
         }
 
-        if($request->hasFile('CV')){
+        if ($request->hasFile('CV')) {
             if ($chef->CV) {
                 Storage::disk('public')->delete($chef->CV);
             }
@@ -83,6 +92,40 @@ class ChefController extends Controller
             [
                 "success" => true,
                 "results" => $chef
-            ]);
+            ]
+        );
+    }
+
+    public function ChefSearch(Request $request)
+    {
+        // Ensure 'specialization_id' exists in the request data
+        $data = $request->all();
+
+        // Search for chefs by their specialization_id and eager-load related models
+        $chefs = Specialization::with('chefs',)
+            ->where('id', $data['id'])
+            ->get();
+
+        // Return the results in the JSON response
+        return response()->json([
+            'success' => true,
+            'results' => $chefs
+        ]);
+    }
+    public function VoteChefSearch(Request $request)
+    {
+        // Ensure 'specialization_id' exists in the request data
+        $data = $request->all();
+
+        // Search for chefs by their specialization_id and eager-load related models
+        $chefs = Vote::with('chefs',)
+            ->where('vote', $data['vote'])
+            ->get();
+
+        // Return the results in the JSON response
+        return response()->json([
+            'success' => true,
+            'results' => $chefs
+        ]);
     }
 }
