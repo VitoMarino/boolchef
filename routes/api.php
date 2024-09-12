@@ -33,6 +33,7 @@ Route::post("/chefs", [ApiChefController::class, "store"])->name("api.chefs.stor
 Route::get("/chefs/{chef}", [ApiChefController::class, "show"])->name("api.chefs.show");
 Route::put("/chefs/{chef}", [ApiChefController::class, "update"])->name("api.chefs.update");
 
+Route::get("/users", [ApiUserController::class, "index"])->name("api.users.index");
 Route::post("/users", [ApiUserController::class, "store"])->name("api.users.store");
 
 

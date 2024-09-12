@@ -9,6 +9,16 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
+    public function index(){
+        //RITORNA UN JSON CON X COSE
+        $users = User::with('chef')->get();
+        return response()->json(
+            [
+                "success" => true,
+                "results" => $users
+            ]);
+    }
+
     public function store(StoreUserController $request){
         $data = $request->validated();
 
