@@ -14,7 +14,7 @@ class ChefController extends Controller
 {
     public function index(){
         //RITORNA UN JSON CON X COSE
-        $chefs = Chef::with('user', 'sponsorships', 'specializations', 'votes')->get();
+        $chefs = Chef::with('user', 'sponsorships', 'specializations', 'votes', 'reviews')->get();
         return response()->json(
             [
                 "success" => true,
@@ -23,7 +23,7 @@ class ChefController extends Controller
     }
 
     public function show(Chef $chef){
-        $chef->loadMissing('user', 'sponsorships', 'specializations', 'votes', 'messages');
+        $chef->loadMissing('user', 'sponsorships', 'specializations', 'votes', 'messages', 'reviews');
         return response()->json(
             [
                 "success" => true,
