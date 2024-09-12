@@ -10,7 +10,7 @@ class SpecializationController extends Controller
 {
     public function index(){
         //RITORNA UN JSON CON X COSE
-        $specializations = Specialization::with('chefs')->paginate(5);
+        $specializations = Specialization::with('chefs')->get();
         return response()->json(
             [
                 "success" => true,

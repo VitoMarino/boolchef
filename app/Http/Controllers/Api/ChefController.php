@@ -14,7 +14,7 @@ class ChefController extends Controller
 {
     public function index(){
         //RITORNA UN JSON CON X COSE
-        $chefs = Chef::with('user', 'sponsorships', 'specializations', 'votes')->paginate(5);
+        $chefs = Chef::with('user', 'sponsorships', 'specializations', 'votes')->get();
         return response()->json(
             [
                 "success" => true,
