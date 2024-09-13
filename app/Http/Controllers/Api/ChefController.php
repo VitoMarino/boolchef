@@ -6,12 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreChefRequest;
 use App\Http\Requests\UpdateChefRequest;
 use App\Models\Chef;
-<<<<<<< HEAD
-use App\Models\User;
-=======
 use App\Models\Specialization;
-use App\Models\Vote;
->>>>>>> 134adf0fe316aa203f496fd6e0354d8adcef8c22
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -41,19 +37,12 @@ class ChefController extends Controller
         );
     }
 
-<<<<<<< HEAD
     public function store(StoreChefRequest $request){
         $email = session('user_email');
         $userId = User::where('email', $email)->firstOrFail()->id;
         $data = $request->validated();
         $data['user_id'] = $userId;
         if($request->hasFile('photograph')){
-=======
-    public function store(StoreChefRequest $request)
-    {
-        $data = $request->validated();
-        if ($request->hasFile('photograph')) {
->>>>>>> 134adf0fe316aa203f496fd6e0354d8adcef8c22
             $img_path = Storage::disk('public')->put('upload/img', $data['photograph']);
             $data["photograph"] = $img_path;
         }
