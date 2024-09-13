@@ -104,7 +104,7 @@
 
             <!--Button submit-->
             <div class="mt-4">
-                <input type="submit" class="btn btn-info">
+                <input type="submit" class="btn btn-warning">
             </div>
         </form>
 
