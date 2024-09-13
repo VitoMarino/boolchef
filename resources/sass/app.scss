@@ -1,5 +1,6 @@
 // Fonts
 @import url('https://fonts.bunny.net/css?family=Nunito');
+@import "@fortawesome/fontawesome-free/css/all.css";
 
 // Variables
 @import 'variables';
@@ -7,14 +8,16 @@
 // Bootstrap
 @import 'bootstrap/scss/bootstrap';
 
-a{
-    text-decoration: none;
+#header{
+    @import './header.scss';
 }
 
-header{
-    a{
-        margin-right: 1rem;
-    }
+*{
+    font-family: "Poppins", sans-serif;
+}
+
+a{
+    text-decoration: none;
 }
 
 img.img-logo{
