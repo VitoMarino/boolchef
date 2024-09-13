@@ -62,10 +62,10 @@ class ChefController extends Controller
      * Display the specified resource.
      */
     public function show(Chef $chef)
-    {   // Se sei autenticato manda il json
-        if(Auth::id() === $chef->id){
+    {
+        if(Auth::id() === $chef->user_id){
             return view('admin.chefs.show', compact('chef'));
-        }else{ // Qui il server dovra rispondere non autenticato e poi vue di conseguenza fare cose
+        }else{
             return redirect()->route('admin.dashboard')->with('wrong-user',  $chef->user->name . ' '. 'it\'s not your profile');
         }
     }
