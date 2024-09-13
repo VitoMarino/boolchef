@@ -8,22 +8,26 @@ use Illuminate\Http\Request;
 
 class SpecializationController extends Controller
 {
-    public function index(){
+    public function index()
+    {
         //RITORNA UN JSON CON X COSE
         $specializations = Specialization::with('chefs')->get();
         return response()->json(
             [
                 "success" => true,
                 "results" => $specializations
-            ]);
+            ]
+        );
     }
 
-    public function show(Specialization $specialization){
+    public function show(Specialization $specialization)
+    {
         $specialization->loadMissing('chefs');
         return response()->json(
             [
                 "success" => true,
                 "results" => $specialization
-            ]);
+            ]
+        );
     }
 }
