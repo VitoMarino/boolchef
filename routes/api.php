@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\ChefController;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\ChefController as ApiChefController;
 use App\Http\Controllers\Api\SpecializationController as ApiSpecializationController;
@@ -30,6 +31,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get("/chefs", [ApiChefController::class, "index"])->name("api.chefs.index");
 Route::post("/chefs", [ApiChefController::class, "store"])->name("api.chefs.store");
+Route::get("/chefs/search", [ApiChefController::class, "ChefSearch"])->name('api.chefs.search');
+Route::get("/chefs/vote/search", [ApiChefController::class, "VoteChefSearch"])->name('api.chefs.vote.search');
 Route::get("/chefs/{chef}", [ApiChefController::class, "show"])->name("api.chefs.show");
 Route::put("/chefs/{chef}", [ApiChefController::class, "update"])->name("api.chefs.update");
 
@@ -46,5 +49,3 @@ Route::get("/specializations/{specialization}", [ApiSpecializationController::cl
 
 Route::get("/votes", [ApiVoteController::class, "index"])->name("api.votes.index");
 Route::get("/votes/{vote}", [ApiVoteController::class, "show"])->name("api.votes.show");
-
-
