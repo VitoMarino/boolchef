@@ -74,7 +74,7 @@
         </div>
     </div>
 
-    <div class="d-flex">
+    <div class="d-flex justify-content-center">
         <!--CARD MESSAGGI-->
 
         <a href="/message">
