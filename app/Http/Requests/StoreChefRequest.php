@@ -26,8 +26,8 @@ class StoreChefRequest extends FormRequest
             "CV"=>'nullable|file|max:20000000',
             "photograph"=>'nullable|file|max:20000000',
             "telephone"=>'required|numeric|unique:chefs',
-            "specializations"=>'required|array|exists:specializations,id',
             "visibility" => 'nullable|boolean',
+            "specializations"=>'required|array|exists:specializations,id',
         ];
     }
 

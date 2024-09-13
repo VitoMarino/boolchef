@@ -16,8 +16,8 @@
             @endif
             <img src="{{asset('storage/'.$chef->photograph)}}" alt="Img">
             <div class="card-body">
-                <h2 class="card-title">Chef {{ $chef->users->name }} {{ $chef->users->lastname }} </h2>
-                <p class="card-text">Località {{ $chef->users->address }} </p>
+                <h2 class="card-title">Chef {{ $chef->user->name }} {{ $chef->user->lastname }} </h2>
+                <p class="card-text">Località {{ $chef->user->address }} </p>
             </div>
 
             <ul class="list-group list-group-flush">

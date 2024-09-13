@@ -55,7 +55,7 @@ class ChefController extends Controller
         $data['user_id'] = Auth::id();
         $newChef = Chef::create($data);
         $newChef->specializations()->sync($data['specializations']);
-        return redirect()->route('admin.chefs.show', $newChef)->with('create-chef', $newChef->users->name . ' '. 'has been CREATE with success');
+        return redirect()->route('admin.chefs.show', $newChef)->with('create-chef', $newChef->user->name . ' '. 'has been CREATE with success');
     }
 
     /**
@@ -66,7 +66,7 @@ class ChefController extends Controller
         if(Auth::id() === $chef->id){
             return view('admin.chefs.show', compact('chef'));
         }else{ // Qui il server dovra rispondere non autenticato e poi vue di conseguenza fare cose
-            return redirect()->route('admin.dashboard')->with('wrong-user',  $chef->users->name . ' '. 'it\'s not your profile');
+            return redirect()->route('admin.dashboard')->with('wrong-user',  $chef->user->name . ' '. 'it\'s not your profile');
         }
     }
 
@@ -108,7 +108,7 @@ class ChefController extends Controller
 
         // Parentesi relazione. Senza parentesi chiamo il model
         $chef->specializations()->sync($data['specializations']);
-        return redirect()->route('admin.chefs.show', $chef)->with('edit-chef', $chef->users->name . ' '. 'has been edited with success');
+        return redirect()->route('admin.chefs.show', $chef)->with('edit-chef', $chef->user->name . ' '. 'has been edited with success');
     }
 
     /**
@@ -119,6 +119,6 @@ class ChefController extends Controller
         //
         $chef->delete();
 
-        return redirect()->route('dashboard')->with('delete-chef', $chef->users->name . ' '. 'has been DELETE with success');
+        return redirect()->route('dashboard')->with('delete-chef', $chef->user->name . ' '. 'has been DELETE with success');
     }
 }

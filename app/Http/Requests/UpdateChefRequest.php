@@ -29,9 +29,9 @@ class UpdateChefRequest extends FormRequest
             "photograph"=>'nullable|file|max:20000000',
             // Mi rende unico il numero nella create ma mi permette di modificarlo nella edit
             'telephone'=> [Rule::unique('chefs')->ignore($this->chef, 'id')],
-            "specializations"=>'array|exists:specializations,id',
             "description_of_dishes"=>'max:255',
             "visibility" => 'nullable|boolean',
+            "specializations"=>'array|exists:specializations,id',
         ];
     }
 }
