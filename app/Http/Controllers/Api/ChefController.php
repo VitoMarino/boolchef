@@ -32,60 +32,60 @@ class ChefController extends Controller
             ]);
     }
 
-    public function store(StoreChefRequest $request){
-        $email = session('user_email');
-        $userId = User::where('email', $email)->firstOrFail()->id;
-        $data = $request->validated();
-        $data['user_id'] = $userId;
-        if($request->hasFile('photograph')){
-            $img_path = Storage::disk('public')->put('upload/img', $data['photograph']);
-            $data["photograph"] = $img_path;
-        }
-        if($request->hasFile('CV')){
-            $file_path = Storage::disk('public')->put('upload/cv', $data['CV']);
-            $data["CV"] = $file_path;
-        }
+    // public function store(StoreChefRequest $request){
+    //     $email = session('user_email');
+    //     $userId = User::where('email', $email)->firstOrFail()->id;
+    //     $data = $request->validated();
+    //     $data['user_id'] = $userId;
+    //     if($request->hasFile('photograph')){
+    //         $img_path = Storage::disk('public')->put('upload/img', $data['photograph']);
+    //         $data["photograph"] = $img_path;
+    //     }
+    //     if($request->hasFile('CV')){
+    //         $file_path = Storage::disk('public')->put('upload/cv', $data['CV']);
+    //         $data["CV"] = $file_path;
+    //     }
 
-        $newChef = Chef::create($data);
-        $newChef->specializations()->sync($data['specializations']);
-        $newChef->loadMissing('user', 'specializations');
-        return response()->json(
-            [
-                "success" => true,
-                "results" => $newChef
-            ]);
-    }
+    //     $newChef = Chef::create($data);
+    //     $newChef->specializations()->sync($data['specializations']);
+    //     $newChef->loadMissing('user', 'specializations');
+    //     return response()->json(
+    //         [
+    //             "success" => true,
+    //             "results" => $newChef
+    //         ]);
+    // }
 
-    public function update(UpdateChefRequest $request, Chef $chef){
-        $data = $request->validated();
+//     public function update(UpdateChefRequest $request, Chef $chef){
+//         $data = $request->validated();
 
-        // Se nella request hai il file 'photograph' manda avanti la modifica. Altrimenti non fare nulla.
-        if($request->hasFile('photograph')){
-            if ($chef->photograph) {
-                Storage::disk('public')->delete($chef->photograph);
-            }
-            $img_path = Storage::disk('public')->put('upload/img', $data['photograph']);
-            $data["photograph"] = $img_path;
-        }
+//         // Se nella request hai il file 'photograph' manda avanti la modifica. Altrimenti non fare nulla.
+//         if($request->hasFile('photograph')){
+//             if ($chef->photograph) {
+//                 Storage::disk('public')->delete($chef->photograph);
+//             }
+//             $img_path = Storage::disk('public')->put('upload/img', $data['photograph']);
+//             $data["photograph"] = $img_path;
+//         }
 
-        if($request->hasFile('CV')){
-            if ($chef->CV) {
-                Storage::disk('public')->delete($chef->CV);
-            }
-            $file_path = Storage::disk('public')->put('upload/cv', $data['CV']);
-            $data["CV"] = $file_path;
-        }
+//         if($request->hasFile('CV')){
+//             if ($chef->CV) {
+//                 Storage::disk('public')->delete($chef->CV);
+//             }
+//             $file_path = Storage::disk('public')->put('upload/cv', $data['CV']);
+//             $data["CV"] = $file_path;
+//         }
 
-        $chef->update($data);
+//         $chef->update($data);
 
-        // Parentesi relazione. Senza parentesi chiamo il model
-        $chef->specializations()->sync($data['specializations']);
+//         // Parentesi relazione. Senza parentesi chiamo il model
+//         $chef->specializations()->sync($data['specializations']);
 
-        $chef->loadMissing('specializations');
-        return response()->json(
-            [
-                "success" => true,
-                "results" => $chef
-            ]);
-    }
-}
+//         $chef->loadMissing('specializations');
+//         return response()->json(
+//             [
+//                 "success" => true,
+//                 "results" => $chef
+//             ]);
+//     }
+// }
