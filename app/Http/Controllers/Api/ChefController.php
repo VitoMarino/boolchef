@@ -9,6 +9,7 @@ use App\Models\Chef;
 use App\Models\Review;
 use App\Models\Specialization;
 use App\Models\User;
+use App\Models\Vote;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -38,12 +39,13 @@ class ChefController extends Controller
         );
     }
 
-    public function store(StoreChefRequest $request){
+    public function store(StoreChefRequest $request)
+    {
         $email = session('user_email');
         $userId = User::where('email', $email)->firstOrFail()->id;
         $data = $request->validated();
         $data['user_id'] = $userId;
-        if($request->hasFile('photograph')){
+        if ($request->hasFile('photograph')) {
             $img_path = Storage::disk('public')->put('upload/img', $data['photograph']);
             $data["photograph"] = $img_path;
         }
@@ -115,24 +117,6 @@ class ChefController extends Controller
             $chefs = Chef::with('user', 'sponsorships', 'specializations', 'votes', 'reviews')
                 ->get();
         }
-
-        // Return the results in the JSON response
-        return response()->json([
-            'success' => true,
-            'results' => $chefs
-        ]);
-    }
-
-
-    public function VoteSearch(Request $request)
-    {
-        // Ensure 'specialization_id' exists in the request data
-        $data = $request->all();
-
-        // Search for chefs by their specialization_id and eager-load related models
-        $chefs = Vote::with('chefs',)
-            ->where('vote', $data['vote'])
-            ->get();
 
         // Return the results in the JSON response
         return response()->json([
