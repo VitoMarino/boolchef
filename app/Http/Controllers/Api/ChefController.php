@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreChefRequest;
 use App\Http\Requests\UpdateChefRequest;
 use App\Models\Chef;
+use App\Models\Review;
 use App\Models\Specialization;
 use App\Models\Vote;
 use Illuminate\Http\Request;
@@ -96,15 +97,23 @@ class ChefController extends Controller
         );
     }
 
-    public function ChefSearch(Request $request)
+    public function SpecializationSearch(Request $request)
     {
-        // Ensure 'specialization_id' exists in the request data
-        $data = $request->all();
+        // Get the specialization IDs from the request data
+        $specializationIds = $request->input('id'); // Expecting 'id' to be an array
 
-        // Search for chefs by their specialization_id and eager-load related models
-        $chefs = Specialization::with('chefs',)
-            ->where('id', $data['id'])
-            ->get();
+        if (!empty($specializationIds)) {
+            // Filter chefs by the given specialization IDs
+            $chefs = Chef::with('user', 'sponsorships', 'specializations', 'votes', 'reviews')
+                ->whereHas('specializations', function ($query) use ($specializationIds) {
+                    $query->whereIn('specializations.id', $specializationIds);
+                })
+                ->get();
+        } else {
+            // If no IDs provided, return all chefs (or you can choose to return an empty response)
+            $chefs = Chef::with('user', 'sponsorships', 'specializations', 'votes', 'reviews')
+                ->get();
+        }
 
         // Return the results in the JSON response
         return response()->json([
@@ -112,7 +121,9 @@ class ChefController extends Controller
             'results' => $chefs
         ]);
     }
-    public function VoteChefSearch(Request $request)
+
+
+    public function VoteSearch(Request $request)
     {
         // Ensure 'specialization_id' exists in the request data
         $data = $request->all();
