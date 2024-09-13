@@ -17,13 +17,27 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-Route::get('/login', function () {
+Route::get('/', function () {
     return view('auth.login');
 });
 
 Auth::routes();
 
 Route::get('admin/dashboard', [AdminChefController::class, 'viewDashboard'])->name('admin.dashboard');
+
+// Rotte profilo utente
+Route::get('/message', function(){
+    return view('admin.chefs.profile.message');
+});
+Route::get('/review', function(){
+    return view('admin.chefs.profile.review');
+});
+Route::get('/sponsorship', function(){
+    return view('admin.chefs.profile.sponsorship');
+});
+Route::get('/static', function(){
+    return view('admin.chefs.profile.static');
+});
 
 // Questo sistema serve per raggruppare tutte le rotte e avere dei prefissi e un raggruppamento che mi velocizza la scrittura delle rotte
 Route::middleware('auth')->name('admin.')->prefix('admin/')->group(
