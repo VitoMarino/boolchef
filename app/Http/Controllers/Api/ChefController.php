@@ -8,7 +8,7 @@ use App\Http\Requests\UpdateChefRequest;
 use App\Models\Chef;
 use App\Models\Review;
 use App\Models\Specialization;
-use App\Models\Vote;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -38,10 +38,12 @@ class ChefController extends Controller
         );
     }
 
-    public function store(StoreChefRequest $request)
-    {
+    public function store(StoreChefRequest $request){
+        $email = session('user_email');
+        $userId = User::where('email', $email)->firstOrFail()->id;
         $data = $request->validated();
-        if ($request->hasFile('photograph')) {
+        $data['user_id'] = $userId;
+        if($request->hasFile('photograph')){
             $img_path = Storage::disk('public')->put('upload/img', $data['photograph']);
             $data["photograph"] = $img_path;
         }
@@ -50,7 +52,6 @@ class ChefController extends Controller
             $data["CV"] = $file_path;
         }
 
-        $data['user_id'] = Auth::id();
         $newChef = Chef::create($data);
         $newChef->specializations()->sync($data['specializations']);
         $newChef->loadMissing('user', 'specializations');

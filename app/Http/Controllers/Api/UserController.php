@@ -21,6 +21,8 @@ class UserController extends Controller
 
     public function store(StoreUserController $request){
         $data = $request->validated();
+        $email = $request->input('email');
+        session(['user_email' => $email]);
 
         $newUser = User::create($data);
         return response()->json(
