@@ -17,9 +17,8 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/login', function () {
+    return view('auth.login');
 });
 
 Auth::routes();
@@ -30,7 +29,6 @@ Route::get('admin/dashboard', [AdminChefController::class, 'viewDashboard'])->na
 Route::middleware('auth')->name('admin.')->prefix('admin/')->group(
     function () {
         // Qui sotto posso raggruppare e scrivere le mie rotte
-
 
         // Mi creo anche una risorsa
         Route::resource('/chefs', AdminChefController::class);
