@@ -13,15 +13,15 @@ document.addEventListener('DOMContentLoaded', function () {
         // Clear previous errors
         document.querySelectorAll('.invalid-feedback').forEach(el => el.innerHTML = '');
         document.querySelectorAll('.is-invalid').forEach(el => el.classList.remove('is-invalid'));
-        requiredField.style.display = 'block';
+        requiredField.forEach(field => field.style.display = 'block');
 
         // Validazione nome
         if (nameInput.value.trim() === '') {
             errors.push({ field: nameInput, message: 'Il nome è obbligatorio.' });
-            requiredField.style.display = 'none';
+            requiredField.forEach(field => field.style.display = 'none');
 
         } else if (nameInput.value.length > 255) {
-            requiredField.style.display = 'none';
+            requiredField.forEach(field => field.style.display = 'none');
 
             errors.push({ field: nameInput, message: 'Il nome non può superare 255 caratteri.' });
         }
@@ -29,28 +29,28 @@ document.addEventListener('DOMContentLoaded', function () {
         // Validazione cognome
         if (lastnameInput.value.trim() === '') {
             errors.push({ field: lastnameInput, message: 'Il cognome è obbligatorio.' });
-            requiredField.style.display = 'none';
+            requiredField.forEach(field => field.style.display = 'none');
         } else if (lastnameInput.value.length > 255) {
             errors.push({ field: lastnameInput, message: 'Il cognome non può superare 255 caratteri.' });
-            requiredField.style.display = 'none';
+            requiredField.forEach(field => field.style.display = 'none');
         }
 
         // Validazione email
         if (emailInput.value.trim()=== '') {
             errors.push({ field: emailInput, message: "Inserisci un'email valida." });
-            requiredField.style.display = 'none';
+            requiredField.forEach(field => field.style.display = 'none');
         }
 
         // Validazione password
         if (passwordInput.value.length < 8) {
             errors.push({ field: passwordInput, message: 'La password deve avere almeno 8 caratteri.' });
-            requiredField.style.display = 'none';
+            requiredField.forEach(field => field.style.display = 'none');
         }
 
         // Conferma password
         if (passwordInput.value !== passwordConfirmInput.value) {
             errors.push({ field: passwordConfirmInput, message: 'Le password non coincidono.' });
-            requiredField.style.display = 'none';
+            requiredField.forEach(field => field.style.display = 'none');
         }
 
         // Se ci sono errori, prevenire l'invio del form e visualizzare gli errori
