@@ -77,7 +77,7 @@
     <div class="d-flex">
         <!--CARD MESSAGGI-->
 
-        <a href="/message">
+        <a href="{{route('admin.chefs.profile.message', $chef)}}">
             <div class="card my_card m-3" style="width: 18rem">
                 <div class="card-body">
                     <i class="fa-regular fa-message"></i>
@@ -91,7 +91,7 @@
         </a>
 
         <!--CARD RECENSIONI-->
-        <a href="/review">
+        <a href="{{route('admin.chefs.profile.review', $chef)}}">
             <div class="card my_card m-3" style="width: 18rem">
                 <div class="card-body">
                     <i class="fa-solid fa-pen-to-square"></i>

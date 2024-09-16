@@ -26,12 +26,10 @@ Auth::routes();
 Route::get('admin/dashboard', [AdminChefController::class, 'viewDashboard'])->name('admin.dashboard');
 
 // Rotte profilo utente
-Route::get('/message', function(){
-    return view('admin.chefs.profile.message');
-});
-Route::get('/review', function(){
-    return view('admin.chefs.profile.review');
-});
+Route::get('/admin/message/{chef}', [ AdminChefController::class, 'viewMessage'])->name('admin.chefs.profile.message');
+
+Route::get('/admin/review/{chef}', [AdminChefController::class, 'viewReview'])->name('admin.chefs.profile.review');
+
 Route::get('/sponsorship', function(){
     return view('admin.chefs.profile.sponsorship');
 });

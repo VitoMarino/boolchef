@@ -8,6 +8,8 @@ use App\Http\Requests\UpdateChefRequest;
 use App\Models\Chef;
 use App\Models\Specialization;
 use App\Models\User;
+use App\Models\Message;
+use App\Models\Review;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -73,6 +75,24 @@ class ChefController extends Controller
     public function viewDashboard()
     {
         return view('admin.dashboard');
+    }
+
+    public function viewMessage(Chef $chef)
+    {
+
+        $chef = Chef::with('messages')->find($chef->id);
+        //dd($chef);
+
+        return view ('admin.chefs.profile.message', compact('chef'));
+    }
+
+    public function viewReview(Chef $chef)
+    {
+
+        $chef = Chef::with('reviews')->find($chef->id);
+        //dd($chef);
+
+        return view ('admin.chefs.profile.review', compact('chef'));
     }
 
     /**
