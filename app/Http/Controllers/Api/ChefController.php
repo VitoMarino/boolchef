@@ -40,22 +40,6 @@ class ChefController extends Controller
         );
     }
 
-<<<<<<< HEAD
-    public function store(StoreChefRequest $request)
-    {
-        $email = session('user_email');
-        $userId = User::where('email', $email)->firstOrFail()->id;
-        $data = $request->validated();
-        $data['user_id'] = $userId;
-        if ($request->hasFile('photograph')) {
-            $img_path = Storage::disk('public')->put('upload/img', $data['photograph']);
-            $data["photograph"] = $img_path;
-        }
-        if ($request->hasFile('CV')) {
-            $file_path = Storage::disk('public')->put('upload/cv', $data['CV']);
-            $data["CV"] = $file_path;
-        }
-=======
     // public function store(StoreChefRequest $request){
     //     $email = session('user_email');
     //     $userId = User::where('email', $email)->firstOrFail()->id;
@@ -99,45 +83,12 @@ class ChefController extends Controller
 //             $file_path = Storage::disk('public')->put('upload/cv', $data['CV']);
 //             $data["CV"] = $file_path;
 //         }
->>>>>>> 61ff4d88f4e95b144a7d92d269ac48548485462e
 
 //          $chef->update($data);
 
 // //       Parentesi relazione. Senza parentesi chiamo il model
 //          $chef->specializations()->sync($data['specializations']);
 
-<<<<<<< HEAD
-        // Se nella request hai il file 'photograph' manda avanti la modifica. Altrimenti non fare nulla.
-        if ($request->hasFile('photograph')) {
-            if ($chef->photograph) {
-                Storage::disk('public')->delete($chef->photograph);
-            }
-            $img_path = Storage::disk('public')->put('upload/img', $data['photograph']);
-            $data["photograph"] = $img_path;
-        }
-
-        if ($request->hasFile('CV')) {
-            if ($chef->CV) {
-                Storage::disk('public')->delete($chef->CV);
-            }
-            $file_path = Storage::disk('public')->put('upload/cv', $data['CV']);
-            $data["CV"] = $file_path;
-        }
-
-        $chef->update($data);
-
-        // Parentesi relazione. Senza parentesi chiamo il model
-        $chef->specializations()->sync($data['specializations']);
-
-        $chef->loadMissing('specializations');
-        return response()->json(
-            [
-                "success" => true,
-                "results" => $chef
-            ]
-        );
-    }
-=======
     //     $chef->loadMissing('specializations');
     //     return response()->json(
     //         [
@@ -146,7 +97,6 @@ class ChefController extends Controller
     //         ]
     //     );
     // }
->>>>>>> 61ff4d88f4e95b144a7d92d269ac48548485462e
 
     public function SpecializationSearch(Request $request)
     {
@@ -205,4 +155,3 @@ class ChefController extends Controller
         ]);
     }
 }
-
