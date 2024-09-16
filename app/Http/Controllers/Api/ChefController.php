@@ -31,7 +31,13 @@ class ChefController extends Controller
 
     public function show(Chef $chef)
     {
-        $chef->loadMissing('user', 'sponsorships', 'specializations', 'votes', 'messages', 'reviews');
+        $chef = Chef::with('user', 'sponsorships', 'specializations', 'votes', 'messages', 'reviews')
+            ->addSelect([
+                'average_vote' => Vote::select(DB::raw('AVG(votes.vote)'))
+                    ->join('chef_vote', 'votes.id', '=', 'chef_vote.vote_id')
+                    ->whereColumn('chef_vote.chef_id', 'chefs.id')
+            ])
+            ->find($chef->id);
         return response()->json(
             [
                 "success" => true,
@@ -55,29 +61,27 @@ class ChefController extends Controller
     //     $data["CV"] = $file_path;
     //  }
 
-    // $newChef = Chef::create($data);
-    // $newChef->specializations()->sync($data['specializations']);
-    //  $newChef->loadMissing('user', 'specializations');
-    //  return response()->json(
-    //   [
-    //        "success" => true,
-    //        "results" => $newChef
-    //      ]
-    //  );
+    //     $newChef = Chef::create($data);
+    //     $newChef->specializations()->sync($data['specializations']);
+    //     $newChef->loadMissing('user', 'specializations');
+    //     return response()->json(
+    //         [
+    //             "success" => true,
+    //             "results" => $newChef
+    //         ]);
     // }
 
-    // public function update(UpdateChefRequest $request, Chef $chef)
-    // {
-    // $data = $request->validated();
+    //     public function update(UpdateChefRequest $request, Chef $chef){
+    //         $data = $request->validated();
 
-    // Se nella request hai il file 'photograph' manda avanti la modifica. Altrimenti non fare nulla.
-    // if ($request->hasFile('photograph')) {
-    //    if ($chef->photograph) {
-    //       Storage::disk('public')->delete($chef->photograph);
-    //    }
-    //     $img_path = Storage::disk('public')->put('upload/img', $data['photograph']);
-    //      $data["photograph"] = $img_path;
-    //  }
+    //         // Se nella request hai il file 'photograph' manda avanti la modifica. Altrimenti non fare nulla.
+    //         if($request->hasFile('photograph')){
+    //             if ($chef->photograph) {
+    //                 Storage::disk('public')->delete($chef->photograph);
+    //             }
+    //             $img_path = Storage::disk('public')->put('upload/img', $data['photograph']);
+    //             $data["photograph"] = $img_path;
+    //         }
 
     //   if ($request->hasFile('CV')) {
     //     if ($chef->CV) {
