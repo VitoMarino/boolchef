@@ -50,6 +50,7 @@ Route::get("/specializations/{specialization}", [ApiSpecializationController::cl
 
 
 Route::get("/votes", [ApiVoteController::class, "index"])->name("api.votes.index");
+Route::post("/votes", [ApiVoteController::class, "store"])->name("api.vote.store");
 Route::get("/vote/search", [ApiChefController::class, "VoteSearch"])->name('api.vote.search');
 Route::get("/votes/{vote}", [ApiVoteController::class, "show"])->name("api.votes.show");
 
