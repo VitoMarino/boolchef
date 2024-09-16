@@ -19,7 +19,7 @@ class ChefVoteSeeder extends Seeder
         $vote = Vote::all()->pluck("id");
         foreach ($chefs as $chef) {
 
-            $chef->votes()->attach($faker->randomElement($vote));
+            $chef->votes()->attach($faker->randomElements($vote, rand(1 , 10)));
         }
     }
 }
