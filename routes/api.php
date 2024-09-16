@@ -54,3 +54,5 @@ Route::get("/vote/search", [ApiChefController::class, "VoteSearch"])->name('api.
 Route::get("/votes/{vote}", [ApiVoteController::class, "show"])->name("api.votes.show");
 
 Route::get("/reviews", [ReviewController::class, "index"])->name("api.reviews.index");
+Route::post("/reviews", [ReviewController::class, "store"])->name("api.reviews.store");
+
