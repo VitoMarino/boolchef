@@ -43,11 +43,11 @@ class ChefController extends Controller
     public function store(StoreChefRequest $request)
     {
         $data = $request->validated();
-        if($request->hasFile('photograph')){
+        if ($request->hasFile('photograph')) {
             $img_path = Storage::disk('public')->put('upload/img', $data['photograph']);
             $data["photograph"] = $img_path;
         }
-        if($request->hasFile('CV')){
+        if ($request->hasFile('CV')) {
             $file_path = Storage::disk('public')->put('upload/cv', $data['CV']);
             $data["CV"] = $file_path;
         }
@@ -55,7 +55,7 @@ class ChefController extends Controller
         $data['user_id'] = Auth::id();
         $newChef = Chef::create($data);
         $newChef->specializations()->sync($data['specializations']);
-        return redirect()->route('admin.chefs.show', $newChef)->with('create-chef', $newChef->user->name . ' '. 'has been CREATE with success');
+        return redirect()->route('admin.chefs.show', $newChef)->with('create-chef', $newChef->user->name . ' ' . 'has been CREATE with success');
     }
 
     /**
@@ -94,12 +94,12 @@ class ChefController extends Controller
         $data = $request->validated();
 
         // Se nella request hai il file 'photograph' manda avanti la modifica. Altrimenti non fare nulla.
-        if($request->hasFile('photograph')){
+        if ($request->hasFile('photograph')) {
             $img_path = Storage::disk('public')->put('upload/img', $data['photograph']);
             $data["photograph"] = $img_path;
         }
 
-        if($request->hasFile('CV')){
+        if ($request->hasFile('CV')) {
             $file_path = Storage::disk('public')->put('upload/cv', $data['CV']);
             $data["CV"] = $file_path;
         }
@@ -108,7 +108,7 @@ class ChefController extends Controller
 
         // Parentesi relazione. Senza parentesi chiamo il model
         $chef->specializations()->sync($data['specializations']);
-        return redirect()->route('admin.chefs.show', $chef)->with('edit-chef', $chef->user->name . ' '. 'has been edited with success');
+        return redirect()->route('admin.chefs.show', $chef)->with('edit-chef', $chef->user->name . ' ' . 'has been edited with success');
     }
 
     /**
@@ -119,6 +119,6 @@ class ChefController extends Controller
         //
         $chef->delete();
 
-        return redirect()->route('auth.login')->with('delete-chef', $chef->user->name . ' '. 'has been DELETE with success');
+        return redirect()->route('admin.dashboard')->with('delete-chef', $chef->user->name . ' ' . 'has been DELETE with success');
     }
 }

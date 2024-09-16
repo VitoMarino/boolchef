@@ -8,7 +8,7 @@
                 <div class="card-header">{{ __('Registrati come Chef') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
+                    <form method="POST" action="{{ route('register') }}" novalidate>
                         @csrf
 
                         <div class="row mb-3">
@@ -22,6 +22,8 @@
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
+                                <span class="invalid-feedback" role="alert"></span>
+                                <span class="valid-feedback"  style="display: block;">*Campo Obbligatorio</span>
                             </div>
                         </div>
 
@@ -36,6 +38,8 @@
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
+                                <span class="invalid-feedback" role="alert"></span>
+                                <span class="valid-feedback"  style="display: block;">*Campo Obbligatorio</span>
                             </div>
                         </div>
 
@@ -50,6 +54,8 @@
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
+                                <span class="invalid-feedback" role="alert"></span>
+                                <span class="valid-feedback"  style="display: block;">*Campo Obbligatorio</span>
                             </div>
                         </div>
 
@@ -64,6 +70,8 @@
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
+                                <span class="invalid-feedback" role="alert"></span>
+                                <span class="valid-feedback"  style="display: block;">Campo Obbligatorio</span>
                             </div>
                         </div>
 
@@ -72,6 +80,7 @@
 
                             <div class="col-md-6">
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                                <span class="invalid-feedback" role="alert"></span>
                             </div>
                         </div>
 
@@ -88,4 +97,8 @@
         </div>
     </div>
 </div>
+@endsection
+
+@section('scripts')
+    @vite('resources/js/myScript/form-validation.js')
 @endsection
