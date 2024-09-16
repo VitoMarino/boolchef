@@ -40,7 +40,6 @@ class ChefController extends Controller
         );
     }
 
-<<<<<<< HEAD
     // public function store(StoreChefRequest $request)
     // {
     //  $email = session('user_email');
@@ -55,21 +54,6 @@ class ChefController extends Controller
     //     $file_path = Storage::disk('public')->put('upload/cv', $data['CV']);
     //     $data["CV"] = $file_path;
     //  }
-=======
-    // public function store(StoreChefRequest $request){
-    //     $email = session('user_email');
-    //     $userId = User::where('email', $email)->firstOrFail()->id;
-    //     $data = $request->validated();
-    //     $data['user_id'] = $userId;
-    //     if($request->hasFile('photograph')){
-    //         $img_path = Storage::disk('public')->put('upload/img', $data['photograph']);
-    //         $data["photograph"] = $img_path;
-    //     }
-    //     if($request->hasFile('CV')){
-    //         $file_path = Storage::disk('public')->put('upload/cv', $data['CV']);
-    //         $data["CV"] = $file_path;
-    //     }
->>>>>>> 57b23e42d9ef4c0aee44f1e4d6e438b122ebe81e
 
     // $newChef = Chef::create($data);
     // $newChef->specializations()->sync($data['specializations']);
@@ -95,7 +79,6 @@ class ChefController extends Controller
     //      $data["photograph"] = $img_path;
     //  }
 
-<<<<<<< HEAD
     //   if ($request->hasFile('CV')) {
     //     if ($chef->CV) {
     // Storage::disk('public')->delete($chef->CV);
@@ -117,29 +100,6 @@ class ChefController extends Controller
     //      ]
     //  );
     //}
-=======
-//         if($request->hasFile('CV')){
-//             if ($chef->CV) {
-//                 Storage::disk('public')->delete($chef->CV);
-//             }
-//             $file_path = Storage::disk('public')->put('upload/cv', $data['CV']);
-//             $data["CV"] = $file_path;
-//         }
-
-//          $chef->update($data);
-
-// //       Parentesi relazione. Senza parentesi chiamo il model
-//          $chef->specializations()->sync($data['specializations']);
-
-    //     $chef->loadMissing('specializations');
-    //     return response()->json(
-    //         [
-    //             "success" => true,
-    //             "results" => $chef
-    //         ]
-    //     );
-    // }
->>>>>>> 57b23e42d9ef4c0aee44f1e4d6e438b122ebe81e
 
     public function SpecializationSearch(Request $request)
     {
@@ -149,13 +109,13 @@ class ChefController extends Controller
         $reviews = $request->input('reviews');
 
         $chefs = Chef::with('user', 'sponsorships', 'specializations', 'votes', 'reviews')
-                ->withCount('reviews');
+            ->withCount('reviews');
 
         // Aggiungi una sottoquery per calcolare la media dei voti
         $chefs = $chefs->addSelect([
-        'average_vote' => Vote::select(DB::raw('AVG(votes.vote)'))
-            ->join('chef_vote', 'votes.id', '=', 'chef_vote.vote_id')
-            ->whereColumn('chef_vote.chef_id', 'chefs.id')
+            'average_vote' => Vote::select(DB::raw('AVG(votes.vote)'))
+                ->join('chef_vote', 'votes.id', '=', 'chef_vote.vote_id')
+                ->whereColumn('chef_vote.chef_id', 'chefs.id')
         ]);
 
         // Applica il filtro per le specializzazioni se presente
