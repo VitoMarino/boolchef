@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreMessageRequest extends FormRequest
+class StoreReviewRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,9 +22,11 @@ class StoreMessageRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'review_title' => 'required|string|max:255',
+            'review' => 'required|string',
             'chef_id' => 'required|exists:chefs,id',
-            'text_mes' => 'required|string|min:5|max:500',
-            'email_customer' => 'required|email',
+            'user_name' => 'required|max:50',
+            'email' => 'required|max:90',
         ];
     }
 }

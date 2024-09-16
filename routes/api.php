@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\ChefController;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\ChefController as ApiChefController;
+use App\Http\Controllers\Api\MessageController;
 use App\Http\Controllers\Api\ReviewController;
 use App\Http\Controllers\Api\SpecializationController as ApiSpecializationController;
 use App\Http\Controllers\Api\UserController as ApiUserController;
@@ -57,3 +58,4 @@ Route::get("/votes/{vote}", [ApiVoteController::class, "show"])->name("api.votes
 Route::get("/reviews", [ReviewController::class, "index"])->name("api.reviews.index");
 Route::post("/reviews", [ReviewController::class, "store"])->name("api.reviews.store");
 
+Route::post("/messages", [MessageController::class, "store"])->name("api.messages.store");
