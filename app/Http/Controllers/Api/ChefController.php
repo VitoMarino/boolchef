@@ -31,7 +31,13 @@ class ChefController extends Controller
 
     public function show(Chef $chef)
     {
-        $chef->loadMissing('user', 'sponsorships', 'specializations', 'votes', 'messages', 'reviews');
+        $chef = Chef::with('user', 'sponsorships', 'specializations', 'votes', 'messages', 'reviews')
+            ->addSelect([
+                'average_vote' => Vote::select(DB::raw('AVG(votes.vote)'))
+                    ->join('chef_vote', 'votes.id', '=', 'chef_vote.vote_id')
+                    ->whereColumn('chef_vote.chef_id', 'chefs.id')
+            ])
+            ->find($chef->id);
         return response()->json(
             [
                 "success" => true,
@@ -39,7 +45,6 @@ class ChefController extends Controller
             ]
         );
     }
-
     // public function store(StoreChefRequest $request){
     //     $email = session('user_email');
     //     $userId = User::where('email', $email)->firstOrFail()->id;
@@ -53,7 +58,6 @@ class ChefController extends Controller
     //         $file_path = Storage::disk('public')->put('upload/cv', $data['CV']);
     //         $data["CV"] = $file_path;
     //     }
-
     //     $newChef = Chef::create($data);
     //     $newChef->specializations()->sync($data['specializations']);
     //     $newChef->loadMissing('user', 'specializations');
@@ -63,7 +67,6 @@ class ChefController extends Controller
     //             "results" => $newChef
     //         ]);
     // }
-
 //     public function update(UpdateChefRequest $request, Chef $chef){
 //         $data = $request->validated();
 
@@ -98,6 +101,7 @@ class ChefController extends Controller
     //     );
     // }
 
+
     public function SpecializationSearch(Request $request)
     {
         // Get the specialization IDs from the request data
@@ -106,13 +110,13 @@ class ChefController extends Controller
         $reviews = $request->input('reviews');
 
         $chefs = Chef::with('user', 'sponsorships', 'specializations', 'votes', 'reviews')
-                ->withCount('reviews');
+            ->withCount('reviews');
 
         // Aggiungi una sottoquery per calcolare la media dei voti
         $chefs = $chefs->addSelect([
-        'average_vote' => Vote::select(DB::raw('AVG(votes.vote)'))
-            ->join('chef_vote', 'votes.id', '=', 'chef_vote.vote_id')
-            ->whereColumn('chef_vote.chef_id', 'chefs.id')
+            'average_vote' => Vote::select(DB::raw('AVG(votes.vote)'))
+                ->join('chef_vote', 'votes.id', '=', 'chef_vote.vote_id')
+                ->whereColumn('chef_vote.chef_id', 'chefs.id')
         ]);
 
         // Applica il filtro per le specializzazioni se presente
