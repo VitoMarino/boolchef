@@ -39,7 +39,6 @@ class ChefController extends Controller
         );
     }
 
-<<<<<<< HEAD
     // public function store(StoreChefRequest $request){
     //     $email = session('user_email');
     //     $userId = User::where('email', $email)->firstOrFail()->id;
@@ -83,61 +82,12 @@ class ChefController extends Controller
 //             $file_path = Storage::disk('public')->put('upload/cv', $data['CV']);
 //             $data["CV"] = $file_path;
 //         }
-=======
-    public function store(StoreChefRequest $request)
-    {
-        $email = session('user_email');
-        $userId = User::where('email', $email)->firstOrFail()->id;
-        $data = $request->validated();
-        $data['user_id'] = $userId;
-        if ($request->hasFile('photograph')) {
-            $img_path = Storage::disk('public')->put('upload/img', $data['photograph']);
-            $data["photograph"] = $img_path;
-        }
-        if ($request->hasFile('CV')) {
-            $file_path = Storage::disk('public')->put('upload/cv', $data['CV']);
-            $data["CV"] = $file_path;
-        }
 
-        $newChef = Chef::create($data);
-        $newChef->specializations()->sync($data['specializations']);
-        $newChef->loadMissing('user', 'specializations');
-        return response()->json(
-            [
-                "success" => true,
-                "results" => $newChef
-            ]
-        );
-    }
-
-    public function update(UpdateChefRequest $request, Chef $chef)
-    {
-        $data = $request->validated();
-
-        // Se nella request hai il file 'photograph' manda avanti la modifica. Altrimenti non fare nulla.
-        if ($request->hasFile('photograph')) {
-            if ($chef->photograph) {
-                Storage::disk('public')->delete($chef->photograph);
-            }
-            $img_path = Storage::disk('public')->put('upload/img', $data['photograph']);
-            $data["photograph"] = $img_path;
-        }
-
-        if ($request->hasFile('CV')) {
-            if ($chef->CV) {
-                Storage::disk('public')->delete($chef->CV);
-            }
-            $file_path = Storage::disk('public')->put('upload/cv', $data['CV']);
-            $data["CV"] = $file_path;
-        }
->>>>>>> 648a3ff92e4a0dd760f7d0aad54c95d565cd6549
-
-        $chef->update($data);
+//        $chef->update($data);
 
         // Parentesi relazione. Senza parentesi chiamo il model
-        $chef->specializations()->sync($data['specializations']);
+//        $chef->specializations()->sync($data['specializations']);
 
-<<<<<<< HEAD
     //     $chef->loadMissing('specializations');
     //     return response()->json(
     //         [
@@ -146,16 +96,6 @@ class ChefController extends Controller
     //         ]
     //     );
     // }
-=======
-        $chef->loadMissing('specializations');
-        return response()->json(
-            [
-                "success" => true,
-                "results" => $chef
-            ]
-        );
-    }
->>>>>>> 648a3ff92e4a0dd760f7d0aad54c95d565cd6549
 
     public function SpecializationSearch(Request $request)
     {
