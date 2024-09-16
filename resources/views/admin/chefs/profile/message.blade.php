@@ -3,6 +3,8 @@
 @section('content')
 
 <h1 class="text-center">
-    Message
+    Messaggi
+    <i class="fa-regular fa-message"></i>
 </h1>
+<hr class="mb-5">
 @endsection
