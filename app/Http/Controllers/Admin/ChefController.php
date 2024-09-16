@@ -70,9 +70,9 @@ class ChefController extends Controller
         }
     }
 
-    public function viewDashboard()
+    public function viewDashboard(Chef $chef)
     {
-        return view('admin.dashboard');
+        return view('admin.dashboard', compact('chef'));
     }
 
     /**

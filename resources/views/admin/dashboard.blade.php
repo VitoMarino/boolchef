@@ -24,7 +24,6 @@
                                 Imposta il tuo profilo da chef
                             </a>
                         </div>
-
                     </div>
                 </div>
             </div>
