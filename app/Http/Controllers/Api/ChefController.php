@@ -31,7 +31,13 @@ class ChefController extends Controller
 
     public function show(Chef $chef)
     {
-        $chef->loadMissing('user', 'sponsorships', 'specializations', 'votes', 'messages', 'reviews');
+        $chef = Chef::with('user', 'sponsorships', 'specializations', 'votes', 'messages', 'reviews')
+        ->addSelect([
+            'average_vote' => Vote::select(DB::raw('AVG(votes.vote)'))
+                ->join('chef_vote', 'votes.id', '=', 'chef_vote.vote_id')
+                ->whereColumn('chef_vote.chef_id', 'chefs.id')
+            ])
+            ->find($chef->id);
         return response()->json(
             [
                 "success" => true,
