@@ -43,13 +43,13 @@ class LoginController extends Controller
     protected function authenticated(Request $request, $user)
     {
         $chef = $user->chef;
-
         if($chef) {
 
+            // Redirect to the route with the chef's ID
             return redirect()->route('admin.chefs.show', ['chef' => $chef->id]);
-
         } else {
 
+            // Handle the case where no related chef is found
             return redirect('admin/dashboard');
         }
 
