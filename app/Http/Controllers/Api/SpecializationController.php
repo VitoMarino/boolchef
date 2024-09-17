@@ -10,8 +10,8 @@ class SpecializationController extends Controller
 {
     public function index()
     {
-        //RITORNA UN JSON CON X COSE
-        $specializations = Specialization::with('chefs')->get();
+
+        $specializations = Specialization::with('chefs')->orderBy('name', 'asc')->get();
         return response()->json(
             [
                 "success" => true,
@@ -19,6 +19,7 @@ class SpecializationController extends Controller
             ]
         );
     }
+
 
     public function show(Specialization $specialization)
     {
