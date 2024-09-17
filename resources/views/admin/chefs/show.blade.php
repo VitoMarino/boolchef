@@ -74,7 +74,9 @@
         </div>
     </div>
 
+
     <div class="container d-flex">
+
         <!--CARD MESSAGGI-->
 
         <a href="{{route('admin.chefs.profile.message', $chef)}}">

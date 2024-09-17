@@ -59,3 +59,4 @@ Route::get("/reviews", [ReviewController::class, "index"])->name("api.reviews.in
 Route::post("/reviews", [ReviewController::class, "store"])->name("api.reviews.store");
 
 Route::post("/messages", [MessageController::class, "store"])->name("api.messages.store");
+

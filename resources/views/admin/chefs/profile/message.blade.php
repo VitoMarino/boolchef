@@ -2,9 +2,13 @@
 
 @section('content')
 
-<h1>
+
+<h1 class="text-center">
     Messaggi
+    <i class="fa-regular fa-message"></i>
 </h1>
+<hr class="mb-5">
+
 <div class="container">
 
     @foreach ($chef->messages as $message)

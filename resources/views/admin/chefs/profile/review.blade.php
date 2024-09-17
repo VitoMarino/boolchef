@@ -1,9 +1,12 @@
 @extends('layouts.admin')
 
 @section('content')
-<h1>
+<h1 class="text-center">
     Recensioni
+    <i class="fa-solid fa-pen-to-square"></i>
 </h1>
+
+<hr class="mb-5">
 
 <div class="container">
 
@@ -15,4 +18,5 @@
         <p><strong>Data:</strong> {{ $review->created_at }}</p>
     @endforeach
 </div>
+
 @endsection

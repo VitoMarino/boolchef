@@ -55,14 +55,14 @@
                 </div>
             @enderror
             <label for="photograph">Carica foto profilo</label>
-            <input class="mb-3" type="file" name="photograph" id="photograph">
+            <input class="mb-3 form-control" type="file" name="photograph" id="photograph">
             @error('file')
                 <div class="alert alert-danger mb-3">
                     {{ $message }}
                 </div>
             @enderror
             <label for="file">Carica CV</label>
-            <input class="mb-3" type="file" name="CV" id="CV">
+            <input class="mb-3 form-control" type="file" name="CV" id="CV">
 
             <!--Select della visibilità-->
             @error('visibility')

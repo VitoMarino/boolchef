@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use Auth;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 
@@ -26,7 +27,9 @@ class LoginController extends Controller
      *
      * @var string
      */
+
     //protected $redirectTo = '/admin/chefs/{$user_id}';
+
 
     /**
      * Create a new controller instance.
