@@ -72,6 +72,11 @@ class ChefController extends Controller
         }
     }
 
+    public function userAuthenticated($user_id)
+    {
+        return view('admin.chefs.show', compact('user_id'));
+    }
+
     public function viewDashboard()
     {
         return view('admin.dashboard');
