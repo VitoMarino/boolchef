@@ -26,6 +26,9 @@ Auth::routes();
 Route::get('admin/dashboard', [AdminChefController::class, 'viewDashboard'])->name('admin.dashboard');
 
 // Rotte profilo utente
+
+Route::get('/admin/chefs/show/{user_id}', [AdminChefController::class, 'userAuthenticated'])->name('admin.chefs.show');
+
 Route::get('/admin/message/{chef}', [ AdminChefController::class, 'viewMessage'])->name('admin.chefs.profile.message');
 
 Route::get('/admin/review/{chef}', [AdminChefController::class, 'viewReview'])->name('admin.chefs.profile.review');
@@ -36,6 +39,8 @@ Route::get('/sponsorship', function(){
 Route::get('/static', function(){
     return view('admin.chefs.profile.static');
 });
+
+//Route:get('/admin/chefs/{chef}', [AdminChefController::class, 'show'])->name('admin.chefs.profile');
 
 // Questo sistema serve per raggruppare tutte le rotte e avere dei prefissi e un raggruppamento che mi velocizza la scrittura delle rotte
 Route::middleware('auth')->name('admin.')->prefix('admin/')->group(
