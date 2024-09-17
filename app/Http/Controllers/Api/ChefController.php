@@ -105,7 +105,10 @@ class ChefController extends Controller
     public function SpecializationSearch(Request $request)
     {
         // Get the specialization IDs from the request data
-        $specializationIds = $request->input('id');
+        $specializationIds = $request->input('id', []);
+        if (!is_array($specializationIds)) {
+            $specializationIds = [$specializationIds];
+        }
         $vote = $request->input('vote');
         $reviews = $request->input('reviews');
 
@@ -157,5 +160,9 @@ class ChefController extends Controller
             'success' => true,
             'results' => $chefs
         ]);
+    }
+
+    public function searchSpecializationHome(Request $request){
+        $specializationIds = $request->input('id');
     }
 }
