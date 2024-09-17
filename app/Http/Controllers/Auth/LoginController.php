@@ -5,9 +5,8 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Auth;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
-use App\Models\Chef;
-use GuzzleHttp\Psr7\Request;
-use Illuminate\Support\Facades\Auth as FacadesAuth;
+use Illuminate\Http\Request;
+
 class LoginController extends Controller
 {
     /*
@@ -28,7 +27,9 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = 'admin/dashboard';
+
+    //protected $redirectTo = '/admin/chefs/{$user_id}';
+
 
     /**
      * Create a new controller instance.
@@ -39,5 +40,21 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
         $this->middleware('auth')->only('logout');
+    }
+
+
+    protected function authenticated(Request $request, $user)
+    {
+        $chef = $user->chef;
+        if($chef) {
+
+            // Redirect to the route with the chef's ID
+            return redirect()->route('admin.chefs.show', ['chef' => $chef->id]);
+        } else {
+
+            // Handle the case where no related chef is found
+            return redirect('admin/dashboard');
+        }
+
     }
 }

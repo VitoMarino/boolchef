@@ -21,7 +21,7 @@
 
                         <div>
                             <a href="{{ route('admin.chefs.create') }}">
-                                Imposta il tuo profilo da chef
+                                Crea il tuo profilo da chef
                             </a>
                         </div>
                     </div>

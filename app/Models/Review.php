@@ -18,7 +18,7 @@ class Review extends Model
         'email'
     ];
     // Relazione one to many con Chef. Review è la tabella secondaria.
-    public function chefs(){
+    public function chef(){
         return $this->belongsTo(Chef::class);
     }
 }
