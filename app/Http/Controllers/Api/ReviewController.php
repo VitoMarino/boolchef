@@ -14,7 +14,7 @@ class ReviewController extends Controller
 {
     public function index(){
         //RITORNA UN JSON CON X COSE
-        $votes = Review::with('chefs')->get();
+        $votes = Review::with('chef')->get();
         return response()->json(
             [
                 "success" => true,
