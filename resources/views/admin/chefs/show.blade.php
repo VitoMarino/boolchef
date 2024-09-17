@@ -44,7 +44,7 @@
             <img src="{{ asset('storage/' . $chef->photograph) }}" alt="Img">
             <div class="card-body">
                 <h4>Dati profilo</h4>
-                <p class="card-text">Località {{ $chef->user->address }} </p>
+                <p class="card-text"><strong>Località:</strong> {{ $chef->address }} </p>
             </div>
 
             <ul class="list-group list-group-flush">
@@ -57,7 +57,7 @@
 
                 <li class="list-group-item">
                     <strong>
-                        Specializzata in cucina:
+                        Specializzato in cucina:
                     </strong>
                     @foreach ($chef->specializations as $specialization)
                         {{ $specialization->name }}
@@ -74,7 +74,7 @@
         </div>
     </div>
 
-    <div class="d-flex">
+    <div class="container d-flex">
         <!--CARD MESSAGGI-->
 
         <a href="{{route('admin.chefs.profile.message', $chef)}}">
@@ -83,8 +83,7 @@
                     <i class="fa-regular fa-message"></i>
                     <h5 class="card-title">Messaggi</h5>
                     <p class="card-text">
-                        In questa sezione puoi visualizzare i messaggi che ti sono stati
-                        inviati e gestire i tuoi clienti
+                        In questa sezione puoi visualizzare i messaggi ricevuti e contattare i clienti
                     </p>
                 </div>
             </div>
