@@ -25,6 +25,8 @@ return new class extends Migration
                     ->onDelete('cascade');
 
             $table->primary(['chef_id', 'specialization_id']);
+
+
         });
     }
 
