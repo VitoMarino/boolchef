@@ -25,6 +25,7 @@ class ChefController extends Controller
         $chefs = Chef::all();
 
 
+
         return view('admin.chefs.index', compact('chefs'));
     }
 
