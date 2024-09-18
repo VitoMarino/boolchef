@@ -26,6 +26,9 @@
         </main>
 
         @include('partials.footer')
+
+        @yield('scripts')
+
     </div>
 </body>
 </html>

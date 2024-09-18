@@ -21,7 +21,18 @@ class ChefController extends Controller
     public function index()
     {
         //RITORNA UN JSON CON X COSE
-        $chefs = Chef::with('user', 'sponsorships', 'specializations', 'votes', 'reviews')->get();
+        $chefs = Chef::with('user', 'sponsorships', 'specializations', 'votes', 'reviews')->withCount('reviews')
+        ->addSelect([
+            'is_sponsored' => function ($query) {
+                $query->select(DB::raw('IF(COUNT(*) > 0, 1, 0)'))
+                    ->from('chef_sponsorship')
+                    ->whereColumn('chef_sponsorship.chef_id', 'chefs.id')
+                    ->where('chef_sponsorship.start_date', '<=', now())
+                    ->where('chef_sponsorship.end_date', '>=', now());
+            }
+        ])
+        ->orderByDesc('is_sponsored')
+        ->get();
         return response()->json(
             [
                 "success" => true,
@@ -128,7 +139,19 @@ class ChefController extends Controller
                 ->whereColumn('chef_vote.chef_id', 'chefs.id')
         ]);
 
-        // Apply filter for specializations if present
+
+        $chefs = $chefs->addSelect([
+            'is_sponsored' => function ($query) {
+                $query->select(DB::raw('COUNT(*) > 0'))
+                    ->from('chef_sponsorship')
+                    ->whereColumn('chef_sponsorship.chef_id', 'chefs.id')
+                    ->where('chef_sponsorship.start_date', '<=', now())
+                    ->where('chef_sponsorship.end_date', '>=', now());
+            }
+        ]);
+
+        // Applica il filtro per le specializzazioni se presente
+
         if (!empty($specializationIds)) {
             $chefs = $chefs->whereHas('specializations', function ($query) use ($specializationIds) {
                 $query->whereIn('specializations.id', $specializationIds);
@@ -145,7 +168,12 @@ class ChefController extends Controller
             $chefs = $chefs->having('reviews_count', '>=', $reviews);
         }
 
-        // Execute the query
+
+         // Ordina i risultati mettendo prima i profili sponsorizzati
+        $chefs = $chefs->orderByDesc('is_sponsored');
+
+        // Esegui la query
+
         $chefs = $chefs->get();
 
         // Return the results in the JSON response
