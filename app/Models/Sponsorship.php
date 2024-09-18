@@ -20,6 +20,8 @@ class Sponsorship extends Model
     // Relazione many to many con il model Chef
     public function chefs()
     {
-        return $this->belongsToMany(Chef::class);
+        return $this->belongsToMany(Chef::class)
+                    ->withPivot('start_date', 'end_date')
+                    ->withTimestamps();
     }
 }
