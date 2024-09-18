@@ -22,7 +22,7 @@ class ChefSeeder extends Seeder
                 'address' => "Via Esempio 123, Città Esempio",
                 'CV' => "Curriculum Vitae di Chef Esempio: Laureato in Scienze Gastronomiche presso l'Università di Esempio.",
                 'photograph' => "link_fotografia_chef_esempio.jpg",
-                'telephone' => "3456789012",
+                'telephone' => "3456789011",
                 'description_of_dishes' => "Specialità culinarie di Chef Esempio: piatti della tradizione rivisitati in chiave moderna, con particolare attenzione all'utilizzo di ingredienti freschi e di stagione. Ama sperimentare con sapori e tecniche innovative.",
                 'visibility' => true
             ],
@@ -182,7 +182,7 @@ class ChefSeeder extends Seeder
                 'address' => "Via Verdi 101, Pisa",
                 'CV' => "Curriculum Vitae di Chef Antonio Gatti: Esperto di cucina toscana, con un'attenzione particolare alla cucina casereccia.",
                 'photograph' => "link_fotografia_chef_antonio_gatti.jpg",
-                'telephone' => "3201234567",
+                'telephone' => "3201234568",
                 'description_of_dishes' => "Specialità: cacciucco alla livornese, panzanella, e altre specialità tipiche della costa toscana.",
                 'visibility' => true
             ],
@@ -250,12 +250,174 @@ class ChefSeeder extends Seeder
                 'description_of_dishes' => "Specialità: strangozzi al tartufo nero, zuppa di lenticchie di Castelluccio, e altre prelibatezze umbre.",
                 'visibility' => true
             ],
+            [
+                'address' => "Via dei Sapori 1, Milano",
+                'CV' => "Curriculum Vitae di Chef Matteo Grassi: Specializzato in cucina gourmet, con un'attenzione particolare alla presentazione dei piatti.",
+                'photograph' => "link_fotografia_chef_matteo_grassi.jpg",
+                'telephone' => "3478901234",
+                'description_of_dishes' => "Specialità: cucina contemporanea con un tocco di innovazione, utilizzo di ingredienti di alta qualità.",
+                'visibility' => true
+            ],
+            [
+                'address' => "Corso Garibaldi 12, Roma",
+                'CV' => "Curriculum Vitae di Chef Giulia Neri: Esperta di pasticceria e dessert innovativi.",
+                'photograph' => "link_fotografia_chef_giulia_neri.jpg",
+                'telephone' => "3245678901",
+                'description_of_dishes' => "Specialità: dessert complessi e creativi, che fondono la tradizione italiana con tecniche moderne.",
+                'visibility' => true
+            ],
+            [
+                'address' => "Piazza della Repubblica 25, Firenze",
+                'CV' => "Curriculum Vitae di Chef Lorenzo Verdi: Esperto in cucina tradizionale toscana e biologica.",
+                'photograph' => "link_fotografia_chef_lorenzo_verdi.jpg",
+                'telephone' => "3768901234",
+                'description_of_dishes' => "Specialità: piatti della tradizione toscana con ingredienti biologici e locali.",
+                'visibility' => true
+            ],
+            [
+                'address' => "Via del Borgo 15, Bologna",
+                'CV' => "Curriculum Vitae di Chef Elisa Ferrari: Maestra nella cucina emiliana, famosa per la sua pasta fresca.",
+                'photograph' => "link_fotografia_chef_elisa_ferrari.jpg",
+                'telephone' => "3525672901",
+                'description_of_dishes' => "Specialità: tortellini, lasagne e altre prelibatezze della tradizione emiliana.",
+                'visibility' => true
+            ],
+            [
+                'address' => "Via delle Rose 45, Napoli",
+                'CV' => "Curriculum Vitae di Chef Carlo Bianchi: Esperto in cucina partenopea, noto per le sue pizze napoletane.",
+                'photograph' => "link_fotografia_chef_carlo_bianchi.jpg",
+                'telephone' => "3678901236",
+                'description_of_dishes' => "Specialità: pizza napoletana tradizionale, fritti tipici napoletani e piatti di mare.",
+                'visibility' => true
+            ],
+            [
+                'address' => "Via del Mare 23, Palermo",
+                'CV' => "Curriculum Vitae di Chef Marta Gialli: Esperta di cucina siciliana, con particolare attenzione ai dolci tradizionali.",
+                'photograph' => "link_fotografia_chef_marta_gialli.jpg",
+                'telephone' => "3290123452",
+                'description_of_dishes' => "Specialità: cannoli, cassate e arancini, preparati con ingredienti locali freschi.",
+                'visibility' => true
+            ],
+            [
+                'address' => "Piazza dei Fiori 8, Torino",
+                'CV' => "Curriculum Vitae di Chef Davide Rossi: Maestro di cucina piemontese, noto per i piatti a base di carne.",
+                'photograph' => "link_fotografia_chef_davide_rossi.jpg",
+                'telephone' => "3201234567",
+                'description_of_dishes' => "Specialità: brasato al Barolo, tajarin al tartufo e piatti della tradizione piemontese.",
+                'visibility' => true
+            ],
+            [
+                'address' => "Via dei Colli 18, Genova",
+                'CV' => "Curriculum Vitae di Chef Paola Verdi: Esperta di cucina ligure, con un'attenzione particolare ai piatti di mare.",
+                'photograph' => "link_fotografia_chef_paola_verdi.jpg",
+                'telephone' => "3456789012",
+                'description_of_dishes' => "Specialità: trofie al pesto, cappon magro e piatti di pesce fresco.",
+                'visibility' => true
+            ],
+            [
+                'address' => "Via Roma 77, Venezia",
+                'CV' => "Curriculum Vitae di Chef Marco Grigi: Maestro di cucina veneziana, noto per i suoi piatti di pesce.",
+                'photograph' => "link_fotografia_chef_marco_grigi.jpg",
+                'telephone' => "3345678927",
+                'description_of_dishes' => "Specialità: sarde in saor, risotto di pesce e altri piatti lagunari.",
+                'visibility' => true
+            ],
+            [
+                'address' => "Viale della Libertà 33, Cagliari",
+                'CV' => "Curriculum Vitae di Chef Vittoria Blu: Esperta di cucina sarda e piatti di mare.",
+                'photograph' => "link_fotografia_chef_vittoria_blu.jpg",
+                'telephone' => "3890152456",
+                'description_of_dishes' => "Specialità: fregola con arselle, malloreddus e dolci tipici sardi.",
+                'visibility' => true
+            ],
+            [
+                'address' => "Via del Sole 29, Pisa",
+                'CV' => "Curriculum Vitae di Chef Simone Azzurri: Esperto in cucina toscana rustica.",
+                'photograph' => "link_fotografia_chef_simone_azzurri.jpg",
+                'telephone' => "3545678901",
+                'description_of_dishes' => "Specialità: cacciucco alla livornese e panzanella con verdure fresche di stagione.",
+                'visibility' => true
+            ],
+            [
+                'address' => "Via Verdi 21, Modena",
+                'CV' => "Curriculum Vitae di Chef Carlo Ferri: Maestro di cucina emiliana con una passione per i salumi e i formaggi.",
+                'photograph' => "link_fotografia_chef_carlo_ferri.jpg",
+                'telephone' => "3678901235",
+                'description_of_dishes' => "Specialità: gnocco fritto con affettati locali, tortelloni e piatti con aceto balsamico.",
+                'visibility' => true
+            ],
+            [
+                'address' => "Via delle Colline 45, Lucca",
+                'CV' => "Curriculum Vitae di Chef Laura Neri: Specializzata in cucina vegetariana e piatti biologici.",
+                'photograph' => "link_fotografia_chef_laura_neri.jpg",
+                'telephone' => "3457654321",
+                'description_of_dishes' => "Specialità: ribollita e pappa al pomodoro, piatti a base di verdure fresche e di stagione.",
+                'visibility' => true
+            ],
+            [
+                'address' => "Via della Fonte 18, Siena",
+                'CV' => "Curriculum Vitae di Chef Silvia Gialli: Esperta in cucina toscana e tradizione contadina.",
+                'photograph' => "link_fotografia_chef_silvia_gialli.jpg",
+                'telephone' => "3890123456",
+                'description_of_dishes' => "Specialità: bistecca alla fiorentina e pici all'aglione, con un tocco di creatività.",
+                'visibility' => true
+            ],
+            [
+                'address' => "Via Dante 50, Parma",
+                'CV' => "Curriculum Vitae di Chef Riccardo Rossi: Maestro di cucina emiliana, noto per la sua passione per i prodotti locali.",
+                'photograph' => "link_fotografia_chef_riccardo_rossi.jpg",
+                'telephone' => "3234567890",
+                'description_of_dishes' => "Specialità: risotto al parmigiano e piatti a base di prosciutto di Parma.",
+                'visibility' => true
+            ],
+            [
+                'address' => "Piazza San Marco 10, Venezia",
+                'CV' => "Curriculum Vitae di Chef Federico Moretti: Esperto di cucina veneta e piatti della tradizione veneziana.",
+                'photograph' => "link_fotografia_chef_federico_moretti.jpg",
+                'telephone' => "3333345678",
+                'description_of_dishes' => "Specialità: bigoli in salsa, fegato alla veneziana e baccalà mantecato.",
+                'visibility' => true
+            ],
+            [
+                'address' => "Via delle Alpi 55, Trento",
+                'CV' => "Curriculum Vitae di Chef Andrea Esposito: Specializzato in cucina montana e selvaggina.",
+                'photograph' => "link_fotografia_chef_andrea_esposito.jpg",
+                'telephone' => "3187654521",
+                'description_of_dishes' => "Specialità: polenta e spezzatino di cervo, canederli e altre specialità trentine.",
+                'visibility' => true
+            ],
+            [
+                'address' => "Via del Sole 12, Perugia",
+                'CV' => "Curriculum Vitae di Chef Marco Verde: Maestro della cucina umbra, con una passione per il tartufo.",
+                'photograph' => "link_fotografia_chef_marco_verde.jpg",
+                'telephone' => "390922222",
+                'description_of_dishes' => "Specialità: strangozzi al tartufo nero e piatti a base di cinghiale.",
+                'visibility' => true
+            ],
+            [
+                'address' => "Corso Italia 90, Milano",
+                'CV' => "Curriculum Vitae di Chef Francesca Gatti: Esperta in cucina italiana contemporanea e gourmet.",
+                'photograph' => "link_fotografia_chef_francesca_gatti.jpg",
+                'telephone' => "3345678901",
+                'description_of_dishes' => "Specialità: cucina creativa con ingredienti freschi e locali, combinata con tecniche moderne.",
+                'visibility' => true
+            ],
+            [
+                'address' => "Via dei Laghi 12, Como",
+                'CV' => "Curriculum Vitae di Chef Alessandro Rossi: Maestro nella cucina lombarda, con una passione per il risotto.",
+                'photograph' => "link_fotografia_chef_alessandro_rossi.jpg",
+                'telephone' => "3789012345",
+                'description_of_dishes' => "Specialità: risotto alla milanese, ossobuco e altre specialità lombarde.",
+                'visibility' => true
+            ],
         ];
         $users = User::all()->pluck('id')->toArray();
         foreach ($chefs as $chef) {
-            $userId = array_splice($users, array_rand($users), 1)[0];
-            $chef['user_id'] = $userId;
-            Chef::create($chef);
+            if (!empty($users)) {
+                $userId = array_splice($users, array_rand($users), 1)[0];
+                $chef['user_id'] = $userId;
+                Chef::create($chef);
+            }
         }
     }
 }
