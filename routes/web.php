@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\ChefController as AdminChefController;
 use App\Http\Controllers\Admin\HomeController as AdminHomeController;
+use App\Http\Controllers\Admin\PaymentController as AdminPaymentController;
 use App\Http\Controllers\Guest\CustomerController as GuestCustomerController;
 use App\Http\Controllers\HomeController as GuestHomeController;
 use Illuminate\Support\Facades\Auth;
@@ -32,6 +33,9 @@ Route::get('/admin/chefs/show/{user_id}', [AdminChefController::class, 'userAuth
 Route::get('/admin/message/{chef}', [ AdminChefController::class, 'viewMessage'])->name('admin.chefs.profile.message');
 
 Route::get('/admin/review/{chef}', [AdminChefController::class, 'viewReview'])->name('admin.chefs.profile.review');
+
+Route::get('/payment', [AdminPaymentController::class, 'showPaymentForm'])->name('payment.form');
+Route::post('/payment', [AdminPaymentController::class, 'processPayment'])->name('payment.process');
 
 Route::get('/sponsorship', function(){
     return view('admin.chefs.profile.sponsorship');
