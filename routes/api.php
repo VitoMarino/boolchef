@@ -6,6 +6,7 @@ use App\Http\Controllers\Api\ChefController as ApiChefController;
 use App\Http\Controllers\Api\MessageController;
 use App\Http\Controllers\Api\ReviewController;
 use App\Http\Controllers\Api\SpecializationController as ApiSpecializationController;
+use App\Http\Controllers\api\SponsorshipController;
 use App\Http\Controllers\Api\UserController as ApiUserController;
 use App\Http\Controllers\Api\VoteController as ApiVoteController;
 use Illuminate\Http\Request;
@@ -60,3 +61,4 @@ Route::post("/reviews", [ReviewController::class, "store"])->name("api.reviews.s
 
 Route::post("/messages", [MessageController::class, "store"])->name("api.messages.store");
 
+Route::get("/sponsorships", [SponsorshipController::class, "index"])->name("api.sponsorships.index");
