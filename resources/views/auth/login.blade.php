@@ -8,7 +8,7 @@
                 <div class="card-header">{{ __('Accedi come Chef') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('login') }}">
+                    <form method="POST" action="{{ route('login') }}" novalidate>
                         @csrf
 
                         <div class="row mb-3">
@@ -22,6 +22,9 @@
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
+                                <span class="invalid-feedback" role="alert">
+
+                                </span>
                             </div>
                         </div>
 
@@ -36,6 +39,10 @@
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
+
+                                <span class="invalid-feedback" role="alert">
+
+                                </span>
                             </div>
                         </div>
 
@@ -70,4 +77,8 @@
         </div>
     </div>
 </div>
+@endsection
+
+@section('scripts')
+   @vite('resources/js/myScript/login-validation.js')
 @endsection

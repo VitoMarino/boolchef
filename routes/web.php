@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\HomeController as AdminHomeController;
 use App\Http\Controllers\Admin\SponsorshipController;
 use App\Http\Controllers\Guest\CustomerController as GuestCustomerController;
 use App\Http\Controllers\HomeController as GuestHomeController;
+use App\Http\Controllers\Controller\Auth\LoginController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -21,6 +22,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('auth.login');
 });
+
+//Rotta di check email utente
+//Route::post('/check-email', [LoginController::class, 'checkEmail'])->name('check.email');
 
 Auth::routes();
 
