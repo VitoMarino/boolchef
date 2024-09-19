@@ -21,7 +21,11 @@ class ChefController extends Controller
      */
     public function index()
     {
+        $user = auth()->user();
+        if (!$user) {
 
+            return redirect()->route('login')->with('not-auth', "Devi aver effettutato l'accesso per visualizzare questa pagina.");
+        }
         $chefs = Chef::all();
 
 
@@ -35,8 +39,18 @@ class ChefController extends Controller
     public function create()
     {
         //
+        $user = auth()->user();
+        if (!$user) {
+
+            return redirect()->route('login')->with('not-auth', "Devi aver effettutato l'accesso per visualizzare questa pagina.");
+        }
+
         $chefs = new Chef();
         $specializations = Specialization::all();
+
+
+
+
         return view('admin.chefs.create', compact('chefs', 'specializations'));
     }
 
@@ -45,6 +59,9 @@ class ChefController extends Controller
      */
     public function store(StoreChefRequest $request)
     {
+
+
+
         $data = $request->validated();
         if ($request->hasFile('photograph')) {
             $img_path = Storage::disk('public')->put('upload/img', $data['photograph']);
@@ -66,40 +83,61 @@ class ChefController extends Controller
      */
     public function show(Chef $chef)
     {
-        if(Auth::id() === $chef->user_id){
+        //$user = auth()->user();
+        if (!Auth::check()) {
+
+            return redirect()->route('login')->with('not-auth', "Devi aver effettutato l'accesso per visualizzare questa pagina.");
+        }
+        if (Auth::id() === $chef->user_id) {
             return view('admin.chefs.show', compact('chef'));
-        }else{
-            return redirect()->route('admin.dashboard')->with('wrong-user',  $chef->user->name . ' '. 'it\'s not your profile');
+        } else {
+            return redirect()->route('admin.dashboard')->with('wrong-user',  $chef->user->name . ' ' . 'it\'s not your profile');
         }
     }
 
 
     public function userAuthenticated($user_id)
     {
+
         return view('admin.chefs.show', compact('user_id'));
     }
 
     public function viewDashboard()
     {
+        $user = auth()->user();
+        if (!$user) {
+
+            return redirect()->route('login')->with('not-auth', "Devi aver effettutato l'accesso per visualizzare questa pagina.");
+        }
         return view('admin.dashboard');
     }
 
     public function viewMessage(Chef $chef)
     {
+        $user = auth()->user();
+        if (!$user) {
+
+            return redirect()->route('login')->with('not-auth', "Devi aver effettutato l'accesso per visualizzare questa pagina.");
+        }
 
         $chef = Chef::with('messages')->find($chef->id);
         //dd($chef);
 
-        return view ('admin.chefs.profile.message', compact('chef'));
+        return view('admin.chefs.profile.message', compact('chef'));
     }
 
     public function viewReview(Chef $chef)
     {
+        $user = auth()->user();
+        if (!$user) {
+
+            return redirect()->route('login')->with('not-auth', "Devi aver effettutato l'accesso per visualizzare questa pagina.");
+        }
 
         $chef = Chef::with('reviews')->find($chef->id);
         //dd($chef);
 
-        return view ('admin.chefs.profile.review', compact('chef'));
+        return view('admin.chefs.profile.review', compact('chef'));
     }
 
     /**
@@ -107,6 +145,11 @@ class ChefController extends Controller
      */
     public function edit(Chef $chef)
     {
+        $user = auth()->user();
+        if (!$user) {
+
+            return redirect()->route('login')->with('not-auth', "Devi aver effettutato l'accesso per visualizzare questa pagina.");
+        }
         //
         $specializations = Specialization::all();
         return view('admin.chefs.edit', compact('chef', 'specializations'));
