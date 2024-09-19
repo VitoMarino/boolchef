@@ -20,7 +20,8 @@
                 <ul class="navbar-nav ms-auto">
                     <!-- Authentication Links -->
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url('http://localhost:5174/') }}">Homepage</a>
+                        <!--OCCHIO ALLA PORTA LOCAL HOST QUANDO APRITE E USATE I PROGETTI, CAMBIA IN BASE A NOI SVILUPPATORI-->
+                        <a class="nav-link" href="{{ url('http://localhost:5173/') }}">Homepage</a>
                     </li>
                     @guest
                         @if (Route::has('login'))

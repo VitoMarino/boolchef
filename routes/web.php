@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\HomeController as AdminHomeController;
 use App\Http\Controllers\Admin\SponsorshipController;
 use App\Http\Controllers\Guest\CustomerController as GuestCustomerController;
 use App\Http\Controllers\HomeController as GuestHomeController;
+use App\Http\Controllers\Controller\Auth\LoginController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -23,6 +24,9 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
+//Rotta di check email utente
+//Route::post('/check-email', [LoginController::class, 'checkEmail'])->name('check.email');
+
 Auth::routes();
 
 Route::get('admin/dashboard', [AdminChefController::class, 'viewDashboard'])->name('admin.dashboard');
@@ -35,9 +39,11 @@ Route::get('/admin/message/{chef}', [AdminChefController::class, 'viewMessage'])
 
 Route::get('/admin/review/{chef}', [AdminChefController::class, 'viewReview'])->name('admin.chefs.profile.review');
 
-Route::get('/sponsorship', function () {
-    return view('admin.chefs.profile.sponsorship');
-});
+
+Route::get('/payment', [AdminPaymentController::class, 'showPaymentForm'])->name('payment.form');
+Route::post('/payment', [AdminPaymentController::class, 'processPayment'])->name('payment.process');
+
+
 
 Route::get('/sponsorship', [SponsorshipController::class, 'index'])->name('admin.sponsorships.index');
 
@@ -61,6 +67,7 @@ Route::name('admin.')->prefix('admin/')->group(
 
         Route::resource('/customers', GuestCustomerController::class);
     }
+
 );
 //Route::middleware('auth')->group(
    // function () {
@@ -84,3 +91,4 @@ Route::name('admin.')->prefix('admin/')->group(
 //}
 
 //);
+

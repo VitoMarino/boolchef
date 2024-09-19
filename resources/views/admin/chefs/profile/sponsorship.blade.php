@@ -101,6 +101,10 @@
         </div>
     </div>
 
+    <div class="text-center mt-3">
+        <a href="{{route('payment.form')}}">Vai al checkout</a>
+    </div>
+
 @endsection
 
 

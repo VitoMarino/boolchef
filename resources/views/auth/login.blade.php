@@ -1,42 +1,37 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
 
-                @if (session('not-auth'))
-                    <div class="alert alert-danger">
-                        {{ session('not-auth') }}
-                    </div>
-                @endif
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+        
+            @if (session('not-auth'))
+                <div class="alert alert-danger">
+                    {{ session('not-auth') }}
+                </div>
+            @endif
+            <div class="card">
+                <div class="card-header">{{ __('Accedi come Chef') }}</div>
 
+                <div class="card-body">
+                    <form method="POST" action="{{ route('login') }}" novalidate>
+                        @csrf
 
-                <div class="card">
-                    <div class="card-header">{{ __('Accedi come Chef') }}</div>
+                        <div class="row mb-3">
+                            <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('E-mail') }}</label>
 
-                    <div class="card-body">
+                            <div class="col-md-6">
+                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
 
+                                @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                                <span class="invalid-feedback" role="alert">
 
-
-                        <form method="POST" action="{{ route('login') }}">
-                            @csrf
-
-                            <div class="row mb-3">
-                                <label for="email"
-                                    class="col-md-4 col-form-label text-md-end">{{ __('E-mail') }}</label>
-
-                                <div class="col-md-6">
-                                    <input id="email" type="email"
-                                        class="form-control @error('email') is-invalid @enderror" name="email"
-                                        value="{{ old('email') }}" required autocomplete="email" autofocus>
-
-                                    @error('email')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
+                                </span>
                             </div>
 
                             <div class="row mb-3">
@@ -48,12 +43,17 @@
                                         class="form-control @error('password') is-invalid @enderror" name="password"
                                         required autocomplete="current-password">
 
-                                    @error('password')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
+
+                                @error('password')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+
+                                <span class="invalid-feedback" role="alert">
+
+                                </span>
+
                             </div>
 
                             <div class="row mb-3">
@@ -89,4 +89,8 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('scripts')
+   @vite('resources/js/myScript/login-validation.js')
 @endsection
