@@ -26,7 +26,9 @@ class Chef extends Model
     // Relazione many to many con il model Sponsor
     public function sponsorships()
     {
-        return $this->belongsToMany(Sponsorship::class);
+        return $this->belongsToMany(Sponsorship::class)
+                    ->withPivot('start_date', 'end_date')
+                    ->withTimestamps();
     }
 
     // Relazione many to many con il model Specialization
@@ -54,5 +56,15 @@ class Chef extends Model
     // Relazione one to one con User.
     public function user(){
         return $this->belongsTo(User::class, 'user_id', 'id');
+    }
+
+    public function isSponsored()
+    {
+        $now = now();
+
+        return $this->sponsorships()
+                    ->wherePivot('start_date', '<=', $now)
+                    ->wherePivot('end_date', '>=', $now)
+                    ->exists();
     }
 }

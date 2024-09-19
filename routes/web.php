@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\Admin\ChefController as AdminChefController;
 use App\Http\Controllers\Admin\HomeController as AdminHomeController;
-use App\Http\Controllers\Admin\PaymentController as AdminPaymentController;
+use App\Http\Controllers\Admin\SponsorshipController;
 use App\Http\Controllers\Guest\CustomerController as GuestCustomerController;
 use App\Http\Controllers\HomeController as GuestHomeController;
 use Illuminate\Support\Facades\Auth;
@@ -40,6 +40,12 @@ Route::post('/payment', [AdminPaymentController::class, 'processPayment'])->name
 Route::get('/sponsorship', function(){
     return view('admin.chefs.profile.sponsorship');
 });
+
+Route::get('/sponsorship',[SponsorshipController::class, 'index'])->name('admin.sponsorships.index');
+
+
+Route::post('/sponsorships/checkout', [SponsorshipController::class, 'checkout'])->name('admin.sponsorships.checkout');
+
 Route::get('/static', function(){
     return view('admin.chefs.profile.static');
 });
