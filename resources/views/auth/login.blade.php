@@ -1,9 +1,16 @@
 @extends('layouts.app')
 
 @section('content')
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
+        
+            @if (session('not-auth'))
+                <div class="alert alert-danger">
+                    {{ session('not-auth') }}
+                </div>
+            @endif
             <div class="card">
                 <div class="card-header">{{ __('Accedi come Chef') }}</div>
 
@@ -26,13 +33,16 @@
 
                                 </span>
                             </div>
-                        </div>
 
-                        <div class="row mb-3">
-                            <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
+                            <div class="row mb-3">
+                                <label for="password"
+                                    class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
 
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+                                <div class="col-md-6">
+                                    <input id="password" type="password"
+                                        class="form-control @error('password') is-invalid @enderror" name="password"
+                                        required autocomplete="current-password">
+
 
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
@@ -43,40 +53,42 @@
                                 <span class="invalid-feedback" role="alert">
 
                                 </span>
+
                             </div>
-                        </div>
 
-                        <div class="row mb-3">
-                            <div class="col-md-6 offset-md-4">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+                            <div class="row mb-3">
+                                <div class="col-md-6 offset-md-4">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" name="remember" id="remember"
+                                            {{ old('remember') ? 'checked' : '' }}>
 
-                                    <label class="form-check-label" for="remember">
-                                        {{ __('Ricordami') }}
-                                    </label>
+                                        <label class="form-check-label" for="remember">
+                                            {{ __('Ricordami') }}
+                                        </label>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <div class="row mb-0">
-                            <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-warning">
-                                    {{ __('Accedi') }}
-                                </button>
+                            <div class="row mb-0">
+                                <div class="col-md-8 offset-md-4">
+                                    <button type="submit" class="btn btn-warning">
+                                        {{ __('Accedi') }}
+                                    </button>
 
-                                @if (Route::has('password.request'))
-                                    <a class="btn btn-link text-decoration-none" href="{{ route('password.request') }}">
-                                        {{ __('Non ricordi la password?') }}
-                                    </a>
-                                @endif
+                                    @if (Route::has('password.request'))
+                                        <a class="btn btn-link text-decoration-none"
+                                            href="{{ route('password.request') }}">
+                                            {{ __('Non ricordi la password?') }}
+                                        </a>
+                                    @endif
+                                </div>
                             </div>
-                        </div>
-                    </form>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 @endsection
 
 @section('scripts')

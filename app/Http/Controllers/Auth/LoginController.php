@@ -46,8 +46,13 @@ class LoginController extends Controller
 
     protected function authenticated(Request $request, $user)
     {
+        $user = auth()->user();
+        if (!$user) {
+
+            return redirect()->route('login')->with('not-auth', "Devi aver effettutato l'accesso per visualizzare questa pagina.");
+        }
         $chef = $user->chef;
-        if($chef) {
+        if ($chef) {
 
             // Redirect to the route with the chef's ID
             return redirect()->route('admin.chefs.show', ['chef' => $chef->id]);
@@ -56,7 +61,6 @@ class LoginController extends Controller
             // Handle the case where no related chef is found
             return redirect('admin/dashboard');
         }
-
     }
 
     //Funzione per checkare se la mail dell'utente corrisponde alla mail presente nel database

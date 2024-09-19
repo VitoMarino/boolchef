@@ -22,17 +22,26 @@ class ChefController extends Controller
     {
         //RITORNA UN JSON CON X COSE
         $chefs = Chef::with('user', 'sponsorships', 'specializations', 'votes', 'reviews')->withCount('reviews')
-        ->addSelect([
-            'is_sponsored' => function ($query) {
-                $query->select(DB::raw('IF(COUNT(*) > 0, 1, 0)'))
-                    ->from('chef_sponsorship')
-                    ->whereColumn('chef_sponsorship.chef_id', 'chefs.id')
-                    ->where('chef_sponsorship.start_date', '<=', now())
-                    ->where('chef_sponsorship.end_date', '>=', now());
+            ->addSelect([
+                'is_sponsored' => function ($query) {
+                    $query->select(DB::raw('IF(COUNT(*) > 0, 1, 0)'))
+                        ->from('chef_sponsorship')
+                        ->whereColumn('chef_sponsorship.chef_id', 'chefs.id')
+                        ->where('chef_sponsorship.start_date', '<=', now())
+                        ->where('chef_sponsorship.end_date', '>=', now());
+                }
+            ])
+            ->orderByDesc('is_sponsored')
+            ->get();
+        $chefs->each(function ($chef) {
+            if ($chef->photograph) {
+                $chef->photograph = asset('storage/' . $chef->photograph);
             }
-        ])
-        ->orderByDesc('is_sponsored')
-        ->get();
+            if ($chef->CV) {
+                $chef->CV = asset('storage/' . $chef->CV);
+            }
+        });
+
         return response()->json(
             [
                 "success" => true,
@@ -48,8 +57,15 @@ class ChefController extends Controller
                 'average_vote' => Vote::select(DB::raw('AVG(votes.vote)'))
                     ->join('chef_vote', 'votes.id', '=', 'chef_vote.vote_id')
                     ->whereColumn('chef_vote.chef_id', 'chefs.id')
+
             ])
             ->find($chef->id);
+        if ($chef->photograph) {
+            $chef->photograph = asset('storage/' . $chef->photograph);
+        }
+        if ($chef->CV) {
+            $chef->CV = asset('storage/' . $chef->CV);
+        }
         return response()->json(
             [
                 "success" => true,
@@ -169,12 +185,20 @@ class ChefController extends Controller
         }
 
 
-         // Ordina i risultati mettendo prima i profili sponsorizzati
+        // Ordina i risultati mettendo prima i profili sponsorizzati
         $chefs = $chefs->orderByDesc('is_sponsored');
 
         // Esegui la query
 
         $chefs = $chefs->get();
+        $chefs->each(function ($chef) {
+            if ($chef->photograph) {
+                $chef->photograph = asset('storage/' . $chef->photograph);
+            }
+            if ($chef->CV) {
+                $chef->CV = asset('storage/' . $chef->CV);
+            }
+        });
 
         // Return the results in the JSON response
         return response()->json([

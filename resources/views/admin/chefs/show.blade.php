@@ -10,14 +10,14 @@
     <hr>
 
     <section class="d-flex justify-content-center">
-        @if(session('success-payment'))
+        @if (session('success-payment'))
             <div class="alert alert-success">
-                {{session('success-payment')}}
+                {{ session('success-payment') }}
             </div>
         @endif
-        @if(session('error-payment'))
+        @if (session('error-payment'))
             <div class="alert alert-danger">
-                {{session('error-payment')}}
+                {{ session('error-payment') }}
             </div>
         @endif
         <div class="me-3">
@@ -89,7 +89,7 @@
 
         <!--CARD MESSAGGI-->
 
-        <a href="{{route('admin.chefs.profile.message', $chef)}}">
+        <a href="{{ route('admin.chefs.profile.message', $chef) }}">
             <div class="card my_card m-3" style="width: 18rem">
                 <div class="card-body">
                     <i class="fa-regular fa-message"></i>
@@ -102,7 +102,7 @@
         </a>
 
         <!--CARD RECENSIONI-->
-        <a href="{{route('admin.chefs.profile.review', $chef)}}">
+        <a href="{{ route('admin.chefs.profile.review', $chef) }}">
             <div class="card my_card m-3" style="width: 18rem">
                 <div class="card-body">
                     <i class="fa-solid fa-pen-to-square"></i>
