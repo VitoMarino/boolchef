@@ -18,7 +18,7 @@
                     Indirizzo
                 </strong>
             </label>
-            <input type="text" value="{{ old('address') }}" name="address" class="form-control mb-3" placeholder="Indirizzo">
+            <input type="text" value="{{ old('address') }}" name="address" id="address" class="form-control mb-3" placeholder="Indirizzo">
                 @error('telephone')
                     <div class="alert alert-danger mb-3">
                         {{ $message }}
@@ -29,7 +29,7 @@
                     Numero di telefono
                 </strong>
             </label>
-            <input type="text" value="{{ old('telephone') }}" name="telephone" class="form-control mb-3" placeholder="Telefono">
+            <input type="text" value="{{ old('telephone') }}" name="telephone" id="telephone" class="form-control mb-3" placeholder="Telefono">
                 @error('descriprion_of_dishes')
                     <div class="alert alert-danger mb-3">
                         {{ $message }}
@@ -40,7 +40,7 @@
                     Descrizione dei piatti
                 </strong>
             </label>
-            <textarea class="form-control mb-3" placeholder="Descrizione piatti" name="description_of_dishes">{{old('description_of_dishes')}}</textarea>
+            <textarea class="form-control mb-3" placeholder="Descrizione piatti" name="description_of_dishes" id="description_of_dishes" >{{old('description_of_dishes')}}</textarea>
 
             <!--Input file--->
             @error('photograph')
@@ -109,4 +109,8 @@
         </form>
 
     </div>
+@endsection
+
+@section('scripts')
+@vite('resources/js/myScript/form-validation-create.js')
 @endsection

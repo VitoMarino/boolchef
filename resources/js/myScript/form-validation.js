@@ -9,6 +9,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
     form.addEventListener('submit', function (event) {
         let errors = [];
+        // Regex per validare l'email
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
         // Clear previous errors
         document.querySelectorAll('.invalid-feedback').forEach(el => el.innerHTML = '');
@@ -38,6 +40,9 @@ document.addEventListener('DOMContentLoaded', function () {
         // Validazione email
         if (emailInput.value.trim()=== '') {
             errors.push({ field: emailInput, message: "Inserisci un'email valida." });
+            requiredField.forEach(field => field.style.display = 'none');
+        }else if (!emailRegex.test(emailInput.value)) {
+            errors.push({ field: emailInput, message: "L'email non è valida." });
             requiredField.forEach(field => field.style.display = 'none');
         }
 
