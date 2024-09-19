@@ -22,11 +22,11 @@ class StoreReviewRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'review_title' => 'required|string|max:255',
+            'review_title' => 'required|string|max:50',
             'review' => 'required|string',
             'chef_id' => 'required|exists:chefs,id',
             'user_name' => 'required|max:50',
-            'email' => 'required|max:90',
+            'email' => 'required|max:50',
         ];
     }
 }

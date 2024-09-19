@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('messages', function (Blueprint $table) {
             $table->id();
             $table->text('text_mes');
-            $table->string('email_customer');
+            $table->string('email_customer', 50);
             $table->timestamps();
         });
     }
