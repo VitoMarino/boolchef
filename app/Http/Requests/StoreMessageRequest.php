@@ -24,7 +24,7 @@ class StoreMessageRequest extends FormRequest
         return [
             'chef_id' => 'required|exists:chefs,id',
             'text_mes' => 'required|string|min:5|max:500',
-            'email_customer' => 'required|email',
+            'email_customer' => 'required|email|max:50',
         ];
     }
 }
