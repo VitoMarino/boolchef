@@ -9,13 +9,16 @@
 <hr class="mb-5">
 
 <div class="container">
-
     @foreach ($chef->reviews as $review)
-        <p><strong>Titolo:</strong> {{ $review->review_title }}</p>
-        <p><strong>Nome utente:</strong> {{ $review->user_name }}</p>
-        <p><strong>Recensione:</strong> {{ $review->review }}</p>
-        <p><strong>Email utente:</strong> {{ $review->email }}</p>
-        <p><strong>Data:</strong> {{ $review->created_at }}</p>
+    <div class="card m-5">
+        <ul class="list-group">
+            <li class="list-group-item"><strong>Titolo:</strong> {{ $review->review_title }}</li>
+            <li class="list-group-item"><strong>Nome utente:</strong> {{ $review->user_name }}</li>
+            <li class="list-group-item"><strong>Recensione:</strong> {{ $review->review }}</li>
+            <li class="list-group-item"><strong>Email utente:</strong> {{ $review->email }}</li>
+            <li class="list-group-item"><strong>Data:</strong> {{ $review->created_at }}</li>
+        </ul>
+    </div>
     @endforeach
 </div>
 
