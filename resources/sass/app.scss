@@ -8,12 +8,9 @@
 // Bootstrap
 @import 'bootstrap/scss/bootstrap';
 
-#header{
-    @import './header.scss';
-}
-
 *{
     font-family: "Poppins", sans-serif;
+    list-style: none;
 }
 
 a{
