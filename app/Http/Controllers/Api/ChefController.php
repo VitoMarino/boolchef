@@ -44,12 +44,21 @@ class ChefController extends Controller
     public function show(Chef $chef)
     {
         $chef = Chef::with('user', 'sponsorships', 'specializations', 'votes', 'messages', 'reviews')
-            ->addSelect([
-                'average_vote' => Vote::select(DB::raw('AVG(votes.vote)'))
-                    ->join('chef_vote', 'votes.id', '=', 'chef_vote.vote_id')
-                    ->whereColumn('chef_vote.chef_id', 'chefs.id')
-            ])
-            ->find($chef->id);
+    ->addSelect([
+        'average_vote' => Vote::select(DB::raw('AVG(votes.vote)'))
+            ->join('chef_vote', 'votes.id', '=', 'chef_vote.vote_id')
+            ->whereColumn('chef_vote.chef_id', 'chefs.id')
+    ])
+    ->addSelect([
+        'is_sponsored' => function ($query) {
+            $query->select(DB::raw('IF(COUNT(*) > 0, 1, 0)'))
+                ->from('chef_sponsorship')
+                ->whereColumn('chef_sponsorship.chef_id', 'chefs.id')
+                ->where('chef_sponsorship.start_date', '<=', now())
+                ->where('chef_sponsorship.end_date', '>=', now());
+        }
+    ])
+    ->find($chef->id);
         return response()->json(
             [
                 "success" => true,
