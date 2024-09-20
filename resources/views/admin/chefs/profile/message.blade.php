@@ -12,8 +12,13 @@
 <div class="container">
 
     @foreach ($chef->messages as $message)
-        <p><strong>Email utente:</strong> {{ $message->email_customer }}</p>
-        <p><strong>Messaggio:</strong> {{ $message->text_mes }}</p>
+    <div class="card m-5">
+        <ul class="list-group">
+            <li class="list-group-item"><strong>Email utente:</strong> {{ $message->email_customer }}</li>
+            <li class="list-group-item"><strong>Messaggio:</strong> {{ $message->text_mes }}</li>
+            <li class="list-group-item"><strong>Ricevuto il:</strong> {{ $message->created_at }}</li>
+        </ul>
+    </div>
     @endforeach
 </div>
 
