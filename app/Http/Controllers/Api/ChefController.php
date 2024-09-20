@@ -53,6 +53,7 @@ class ChefController extends Controller
     public function show(Chef $chef)
     {
         $chef = Chef::with('user', 'sponsorships', 'specializations', 'votes', 'messages', 'reviews')
+
             ->addSelect([
                 'average_vote' => Vote::select(DB::raw('AVG(votes.vote)'))
                     ->join('chef_vote', 'votes.id', '=', 'chef_vote.vote_id')
@@ -68,6 +69,14 @@ class ChefController extends Controller
                 }
             ])
             ->find($chef->id);
+
+        if ($chef->photograph) {
+            $chef->photograph = asset('storage/' . $chef->photograph);
+        }
+        if ($chef->CV) {
+            $chef->CV = asset('storage/' . $chef->CV);
+        }
+
         return response()->json(
             [
                 "success" => true,
