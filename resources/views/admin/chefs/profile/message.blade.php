@@ -17,4 +17,8 @@
     @endforeach
 </div>
 
+<div class="text-center mt-3">
+    <a class="btn btn-warning" href="{{route('admin.chefs.show', $chef)}}">Torna al tuo profilo</a>
+</div>
+
 @endsection
