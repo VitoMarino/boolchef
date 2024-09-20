@@ -9,17 +9,20 @@
     </h4>
     <hr>
 
-    <section class="d-flex justify-content-center">
+    <div class="d-flex justify-content-center">
         @if (session('success-payment'))
-            <div class="alert alert-success">
-                {{ session('success-payment') }}
-            </div>
-        @endif
-        @if (session('error-payment'))
-            <div class="alert alert-danger">
-                {{ session('error-payment') }}
-            </div>
-        @endif
+        <div class="alert alert-success">
+            {{ session('success-payment') }}
+        </div>
+    @endif
+    @if (session('error-payment'))
+        <div class="alert alert-danger">
+            {{ session('error-payment') }}
+        </div>
+    @endif
+    </div>
+
+    <section class="d-flex justify-content-center">
         <div class="me-3">
             <a class="btn btn-success" href="{{ asset('storage/' . $chef->CV) }}">Il tuo CV</a>
         </div>
