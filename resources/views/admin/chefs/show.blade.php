@@ -128,14 +128,18 @@
         </a>
 
         <!--CARD STATISTICHE-->
-        <a href="">
+        <!--<a href="">-->
             <div class="card my_card m-3" style="width: 18rem">
                 <div class="card-body bg-body-secondary text-body-secondary">
                     <div>
-                        <i class="fa-solid fa-chart-line"></i>
-                        <h5 class="card-title">Statistiche</h5>
+                        <div class="d-flex justify-content-between">
+                            <i class="fa-solid fa-chart-line"></i>
+
+                            <span class="badge rounded-pill text-bg-secondary">Prossimamente</span>
+                        </div>
+                            <h5 class="card-title me-2">Statistiche</h5>
                         <p class="card-text">
-                            Qui potrai vedere l'andamento generale del tuo profilo
+                           Qui potrai vedere l'andamento generale del tuo profilo
                         </p>
                     </div>
                 </div>

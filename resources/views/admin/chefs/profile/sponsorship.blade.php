@@ -1,7 +1,9 @@
 @extends('layouts.admin')
 
 @section('content')
-    <h1 class="text-center">
+<div class="text-center">
+
+    <h1>
         Scegli un pacchetto di Sponsorizzazioni
         <i class="fa-solid fa-sack-dollar"></i>
     </h1>
@@ -13,7 +15,7 @@
         </div>
     @endif
 
-    <div class="d-flex justify-content-center">
+    <div>
         @if ($chef->isSponsored())
             <div>
                 <h4>La tua sponsorizzazione attuale:</h4>
@@ -35,15 +37,18 @@
         </div>
 
         @endif
+    </div>
+</div>
 
 
 
 
+    <div class="container d-flex justify-content-center">
 
-        <div class="card me-3" style="width: 18rem;">
+        <div class="card me-3 p-3" style="width: 18rem;">
             <div class="card-body">
                 <h4>
-                    Basic
+                    Base
                     <i class="fa-solid fa-sack-dollar"></i>
                 </h4>
                 <p class="card-text">
@@ -55,14 +60,17 @@
                 @csrf
                 <input type="hidden" name="sponsorship_id" value="1">
                 <div id="dropin-container-1"></div>
-                <button type="submit" class="btn btn-primary">Acquista</button>
+                <div class="text-center">
+
+                    <button type="submit" class="btn btn-primary">Acquista</button>
+                </div>
             </form>
         </div>
 
-        <div class="card me-3" style="width: 18rem;">
+        <div class="card me-3 p-3" style="width: 18rem;">
             <div class="card-body">
                 <h4>
-                    Essential
+                    Premium
                     <i class="fa-solid fa-sack-dollar"></i>
                     <i class="fa-solid fa-sack-dollar"></i>
                 </h4>
@@ -75,14 +83,17 @@
                 @csrf
                 <input type="hidden" name="sponsorship_id" value="2">
                 <div id="dropin-container-2"></div>
-                <button type="submit" class="btn btn-primary">Acquista</button>
+                <div class="text-center">
+
+                    <button type="submit" class="btn btn-primary">Acquista</button>
+                </div>
             </form>
         </div>
 
-        <div class="card" style="width: 18rem;">
+        <div class="card me-3 p-3" style="width: 18rem;">
             <div class="card-body">
                 <h4>
-                    Pro
+                    Ultimate
                     <i class="fa-solid fa-sack-dollar"></i>
                     <i class="fa-solid fa-sack-dollar"></i>
                     <i class="fa-solid fa-sack-dollar"></i>
@@ -96,14 +107,18 @@
                 @csrf
                 <input type="hidden" name="sponsorship_id" value="3">
                 <div id="dropin-container-3"></div>
-                <button type="submit" class="btn btn-primary">Acquista</button>
+                <div class="text-center">
+
+                    <button type="submit" class="btn btn-primary">Acquista</button>
+                </div>
             </form>
         </div>
     </div>
 
-    <div class="text-center mt-3">
-        <a href="{{route('payment.form')}}">Vai al checkout</a>
-    </div>
+<div class="text-center mt-3">
+    <a class="btn btn-warning" href="{{route('admin.chefs.show', $chef)}}">Torna al tuo profilo</a>
+</div>
+
 
 @endsection
 
