@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\ChefController as AdminChefController;
 use App\Http\Controllers\Admin\HomeController as AdminHomeController;
+use App\Http\Controllers\Admin\PaymentController as AdminPaymentController;
 use App\Http\Controllers\Admin\SponsorshipController;
 use App\Http\Controllers\Guest\CustomerController as GuestCustomerController;
 use App\Http\Controllers\HomeController as GuestHomeController;
