@@ -6,7 +6,6 @@
             @if (@session('delete-chef') )
                 <div class="alert alert-success">
                     {{session('delete-chef')}}
-                    <a href="{{route('admin.projects.trash-index')}}">See the trash backet</a>
                 </div>
             @endif
         </div>

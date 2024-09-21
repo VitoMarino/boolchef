@@ -44,11 +44,9 @@
                     Descrizione dei piatti
                 </strong>
             </label>
-            <textarea class="form-control mb-3" placeholder="Description of dishes" value="" name="description_of_dishes"
-                rows="5" cols="33">
-            {{ old('description_of_dishes', $chef->description_of_dishes) }}
-
-        </textarea>
+            <textarea class="form-control mb-3" placeholder="Description of dishes" value="" name="description_of_dishes" rows="5" cols="33">
+                {{ old('description_of_dishes', $chef->description_of_dishes) }}
+            </textarea>
 
             <!--Input file--->
             @error('photograph')
@@ -57,16 +55,14 @@
                 </div>
             @enderror
             <label for="photograph">Carica foto profilo</label>
-            <input class="mb-3" type="file" name="photograph" id="photograph">
+            <input class="mb-3 form-control" type="file" name="photograph" id="photograph">
             @error('file')
                 <div class="alert alert-danger mb-3">
                     {{ $message }}
                 </div>
             @enderror
             <label for="file">Carica CV</label>
-            <input class="mb-3" type="file" name="CV" id="CV">
-
-
+            <input class="mb-3 form-control" type="file" name="CV" id="CV">
 
             <!--Select della visibilità-->
             @error('visibility')

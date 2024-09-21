@@ -18,9 +18,8 @@
                     Indirizzo
                 </strong>
             </label>
-            <input type="text" value="{{ old('address') }}
-        " name="address"
-                class="form-control mb-3">
+            <input type="text" value="{{ old('address') }}" name="address" id="address" class="form-control mb-3" placeholder="Indirizzo">
+            <span class="invalid-feedback"></span>
                 @error('telephone')
                     <div class="alert alert-danger mb-3">
                         {{ $message }}
@@ -31,24 +30,20 @@
                     Numero di telefono
                 </strong>
             </label>
-            <input type="text" value="{{ old('telephone') }}
-        " name="telephone"
-                class="form-control mb-3">
-                @error('descriprion_of_dishes')
+            <input type="text" value="{{ old('telephone') }}" name="telephone" id="telephone" class="form-control mb-3" placeholder="Telefono">
+            <span class="invalid-feedback"></span>
+                @error('description_of_dishes')
                     <div class="alert alert-danger mb-3">
                         {{ $message }}
                     </div>
                 @enderror
-            <label for="descriprion_of_dishes">
+            <label for="description_of_dishes">
                 <strong>
                     Descrizione dei piatti
                 </strong>
             </label>
-            <textarea class="form-control mb-3" placeholder="Description of dishes" value="" name="description_of_dishes"
-                rows="5" cols="33">
-                {{ old('description_of_dishes') }}
-
-            </textarea>
+            <textarea class="form-control mb-3" placeholder="Descrizione piatti" name="description_of_dishes" id="description_of_dishes" >{{old('description_of_dishes')}}</textarea>
+            <span class="invalid-feedback"></span>
 
             <!--Input file--->
             @error('photograph')
@@ -57,16 +52,16 @@
                 </div>
             @enderror
             <label for="photograph">Carica foto profilo</label>
-            <input class="mb-3" type="file" name="photograph" id="photograph">
+            <input class="mb-3 form-control" type="file" name="photograph" id="photograph">
+            <span class="invalid-feedback"></span>
             @error('file')
                 <div class="alert alert-danger mb-3">
                     {{ $message }}
                 </div>
             @enderror
             <label for="file">Carica CV</label>
-            <input class="mb-3" type="file" name="CV" id="CV">
-
-
+            <input class="mb-3 form-control" type="file" name="CV" id="CV">
+            <span class="invalid-feedback"></span>
 
             <!--Select della visibilità-->
             @error('visibility')
@@ -82,12 +77,13 @@
 
             <select class="form-select mb-3" aria-label="Default select example" name="visibility" id="visibility">
                 <option value="0"{{ old('visibility') == 0 ? 'selected' : '' }}>
-                    Not visible
+                    Non visibile
                 </option>
                 <option value="1"{{ old('visibility') == 1 ? 'selected' : '' }}>
-                    Visible
+                    Visibile
                 </option>
             </select>
+            <span class="invalid-feedback"></span>
 
             <!--Checkbox-->
             @error('specializations')
@@ -95,6 +91,7 @@
                     {{ $message }}
                 </div>
             @enderror
+            <span class="invalid-feedback"></span>
             <label for="specializations">
                 <strong>
                     Seleziona la specializzazione
@@ -114,9 +111,13 @@
 
             <!--Button submit-->
             <div class="mt-4">
-                <input type="submit" class="btn btn-info">
+                <input type="submit" class="btn btn-warning">
             </div>
         </form>
 
     </div>
+@endsection
+
+@section('scripts')
+@vite('resources/js/myScript/form-validation-create.js')
 @endsection

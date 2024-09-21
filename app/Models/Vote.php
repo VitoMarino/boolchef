@@ -11,12 +11,12 @@ class Vote extends Model
     use HasFactory;
 
     protected $fillable = [
-        'Vote',
-        'Label',
+        'vote',
+        'label',
     ];
 
     public function chefs()
     {
-        $this->belongsToMany(Chef::class);
+        return $this->belongsToMany(Chef::class);
     }
 }

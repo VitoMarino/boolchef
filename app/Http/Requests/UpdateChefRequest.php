@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class UpdateChefRequest extends FormRequest
 {
@@ -21,13 +22,16 @@ class UpdateChefRequest extends FormRequest
      */
     public function rules(): array
     {
+
         return [
-            "address"=>'nullable|string|min:3|max:150',
+            "address"=>'string|min:3|max:150',
             "CV"=>'nullable|file|max:20000000',
             "photograph"=>'nullable|file|max:20000000',
-            "telephone"=>'required|numeric|unique:chefs',
-            "specializations"=>'required|array|exists:specializations,id',
+            // Mi rende unico il numero nella create ma mi permette di modificarlo nella edit
+            'telephone'=> [Rule::unique('chefs')->ignore($this->chef, 'id')],
+            "description_of_dishes"=>'max:255',
             "visibility" => 'nullable|boolean',
+            "specializations"=>'array|exists:specializations,id',
         ];
     }
 }

@@ -2,10 +2,15 @@
 
 @section('content')
     <div class="container">
+        @if(session('wrong-user'))
+            <div class="alert alert-danger">
+                {{session('wrong-user')}}
+            </div>
+        @endif
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">{{ __('Dashboard') }}</div>
+                    <div class="card-header">{{ __('Registrazione Chef') }}</div>
 
                     <div class="card-body">
                         @if (session('status'))
@@ -14,7 +19,11 @@
                             </div>
                         @endif
 
-                        {{ __('You are logged in!') }}
+                        <div>
+                            <a href="{{ route('admin.chefs.create') }}">
+                                Crea il tuo profilo da chef
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel Admin') }}</title>
+    <title>{{ config('name', 'BoolChef Login-Register') }}</title>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
@@ -26,6 +26,9 @@
         </main>
 
         @include('partials.footer')
+
+        @yield('scripts')
+
     </div>
 </body>
 </html>

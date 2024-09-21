@@ -26,8 +26,17 @@ class StoreChefRequest extends FormRequest
             "CV"=>'nullable|file|max:20000000',
             "photograph"=>'nullable|file|max:20000000',
             "telephone"=>'required|numeric|unique:chefs',
-            "specializations"=>'required|array|exists:specializations,id',
             "visibility" => 'nullable|boolean',
+            "specializations"=>'required|array|exists:specializations,id',
         ];
     }
+
+    // public function messages(){
+    //     return [
+    //         'name.min' => 'Il name ha bisogno di almeno 3 caratteri',
+    //         'description.min'=> 'La descrizione ha bisogno di almeno 3 caratteri',
+    //         'species.name'=> 'La species ha bisogno di almeno 3 caratteri',
+    //         'image.url' => 'C\'è bisogno di un URL'
+    //     ];
+    // }
 }

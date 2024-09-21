@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use Auth;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
+use App\Models\User;
 
 class LoginController extends Controller
 {
@@ -25,7 +28,9 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/admin/dashboard';
+
+    //protected $redirectTo = '/admin/chefs/{$user_id}';
+
 
     /**
      * Create a new controller instance.
@@ -37,4 +42,36 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
         $this->middleware('auth')->only('logout');
     }
+
+
+    protected function authenticated(Request $request, $user)
+    {
+        $user = auth()->user();
+        if (!$user) {
+
+            return redirect()->route('login')->with('not-auth', "Devi aver effettutato l'accesso per visualizzare questa pagina.");
+        }
+        $chef = $user->chef;
+        if ($chef) {
+
+            // Redirect to the route with the chef's ID
+            return redirect()->route('admin.chefs.show', ['chef' => $chef->id]);
+        } else {
+
+            // Handle the case where no related chef is found
+            return redirect('admin/dashboard');
+        }
+    }
+
+    //Funzione per checkare se la mail dell'utente corrisponde alla mail presente nel database
+//    public function checkEmail(Request $request)
+//    {
+//        $request->validate([
+//            'email'=>'required|email',
+//        ]);
+
+//        $userExists = User::where('email', $request->email)->exists();
+
+//        return response()->json(['exists' => $userExists]);
+//    }
 }

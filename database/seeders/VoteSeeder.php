@@ -15,54 +15,53 @@ class VoteSeeder extends Seeder
     {
         $votesData = [
             [
-                "Vote" => 7,
-                "Label" => "Sopra la media"
-
-            ],
-            [
-                "Vote" => 6,
-                "Label" => "Nella media"
-
-            ],
-            [
-                "Vote" => 8,
-                "Label" => "Ottimo"
-
-            ],
-            [
-                "Vote" => 5,
-                "Label" => "Sotto la media"
-
-            ],
-            [
-                "Vote" => 10,
-                "Label" => "Uno dei migliori chef!!!!!"
+                "Vote" => 1,
+                "label" => "Sconsigliato",
 
             ],
             [
                 "Vote" => 2,
-                "Label" => "Sconsigliato"
+                "label" => "Ko insufficente",
 
             ],
             [
-                "Vote" => 9,
-                "Label" => "Ottimo"
+                "Vote" => 3,
+                "label" => "Gravemente insufficente",
+
+            ],
+            [
+                "Vote" => 4,
+                "label" => "Sconsigliato",
 
             ],
             [
                 "Vote" => 5,
-                "Label" => "nella media"
+                "label" => "Non sufficente",
+
+            ],
+            [
+                "Vote" => 6,
+                "label" => "Sufficente",
 
             ],
             [
                 "Vote" => 7,
-                "Label" => "Sopra la media"
+                "label" => "Buono",
 
             ],
             [
-                "Vote" => 1,
-                "Label" => "Sconsigliato"
+                "Vote" => 8,
+                "label" => "Consigliato",
 
+            ],
+            [
+                "Vote" => 9,
+                "label" => "Super Consigliato",
+
+            ],
+            [
+                "Vote" => 10,
+                "label" => "Eccellente",
             ],
 
         ];

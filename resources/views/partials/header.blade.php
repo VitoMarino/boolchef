@@ -1,16 +1,8 @@
-<header>
+<header class="header" id="header">
     <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
         <div class="container">
-            <a class="navbar-brand" href="{{ url('/') }}">
-                {{ config('app.name', 'Laravel') }}
-            </a>
-
-            <a href="{{ route('admin.chefs.index') }}">
-                Chef index
-            </a>
-
-            <a href="{{route('admin.chefs.create')}}">
-                Create new chef
+            <a class="navbar-brand" href="{{ url('http://localhost:5174/') }}">
+                <img class="img-logo" src="{{ asset('img/LOGO.png') }}" alt="BoolChef">
             </a>
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -27,16 +19,20 @@
                 <!-- Right Side Of Navbar -->
                 <ul class="navbar-nav ms-auto">
                     <!-- Authentication Links -->
+                    <li class="nav-item">
+                        <!--OCCHIO ALLA PORTA LOCAL HOST QUANDO APRITE E USATE I PROGETTI, CAMBIA IN BASE A NOI SVILUPPATORI-->
+                        <a class="nav-link" href="{{ url('http://localhost:5173/') }}">Homepage</a>
+                    </li>
                     @guest
                         @if (Route::has('login'))
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                <a class="nav-link" href="{{ route('login') }}">{{ __('Accedi') }}</a>
                             </li>
                         @endif
 
                         @if (Route::has('register'))
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                <a class="nav-link" href="{{ route('register') }}">{{ __('Registrati') }}</a>
                             </li>
                         @endif
                     @else

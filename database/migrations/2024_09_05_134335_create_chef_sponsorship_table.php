@@ -23,6 +23,9 @@ return new class extends Migration
 
             //
             $table->primary(['chef_id', 'sponsorship_id']);
+
+            $table->timestamps();
+
         });
     }
 
